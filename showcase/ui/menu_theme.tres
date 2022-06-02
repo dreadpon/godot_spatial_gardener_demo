@@ -1,9 +1,8 @@
-[gd_resource type="Theme" load_steps=30 format=2]
+[gd_resource type="Theme" load_steps=29 format=2]
 
 [ext_resource path="res://showcase/ui/textures/button_regular_normal.png" type="Texture" id=1]
 [ext_resource path="res://showcase/ui/textures/panel.png" type="Texture" id=2]
-[ext_resource path="res://addons/dreadpon.spatial_gardener/fonts/dynamic/urbanist_regular.tres" type="DynamicFont" id=3]
-[ext_resource path="res://addons/dreadpon.spatial_gardener/fonts/ttf/Urbanist-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://addons/dreadpon.spatial_gardener/utility/console/fonts/ttf/Urbanist-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://showcase/ui/textures/button_regular_hover.png" type="Texture" id=5]
 [ext_resource path="res://showcase/ui/textures/slider_grabber_disabled.png" type="Texture" id=6]
 [ext_resource path="res://showcase/ui/textures/slider_grabber.png" type="Texture" id=7]
@@ -17,7 +16,7 @@
 size = 32
 use_filter = true
 extra_spacing_char = 2
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=12]
 content_margin_left = 140.0
@@ -114,7 +113,7 @@ corner_radius_bottom_left = 4
 [sub_resource type="DynamicFont" id=19]
 size = 58
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 content_margin_left = 240.0
@@ -131,17 +130,17 @@ margin_bottom = 128.0
 [sub_resource type="DynamicFont" id=18]
 size = 24
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=17]
 size = 48
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=20]
 size = 32
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="StyleBoxFlat" id=21]
 content_margin_left = 30.0
@@ -155,7 +154,6 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
-default_font = ExtResource( 3 )
 Button/fonts/font = SubResource( 3 )
 Button/styles/disabled = SubResource( 12 )
 Button/styles/focus = SubResource( 24 )

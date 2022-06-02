@@ -63,10 +63,10 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 757.0
-margin_top = 46.0
-margin_right = 1802.0
-margin_bottom = 1393.0
+margin_left = 934.0
+margin_top = 341.0
+margin_right = 1626.0
+margin_bottom = 1098.0
 rect_min_size = Vector2( 400, 0 )
 custom_constants/separation = 40
 alignment = 1
@@ -75,26 +75,25 @@ __meta__ = {
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
-margin_left = 155.0
-margin_right = 890.0
-margin_bottom = 277.0
+margin_right = 692.0
+margin_bottom = 271.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer"]
 margin_left = 240.0
 margin_top = 100.0
-margin_right = 495.0
-margin_bottom = 177.0
+margin_right = 452.0
+margin_bottom = 171.0
 rect_pivot_offset = Vector2( 155, -125 )
 text = "PAUSED"
 align = 1
 valign = 1
 
 [node name="WindowTabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 317.0
-margin_right = 1045.0
-margin_bottom = 1347.0
+margin_top = 311.0
+margin_right = 692.0
+margin_bottom = 757.0
 custom_styles/tab_fg = SubResource( 3 )
 custom_styles/tab_disabled = SubResource( 3 )
 custom_styles/tab_bg = SubResource( 3 )
@@ -102,7 +101,6 @@ custom_styles/panel = SubResource( 3 )
 tabs_visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 30
@@ -111,13 +109,13 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer"]
-margin_right = 735.0
+margin_right = 692.0
 margin_bottom = 317.0
 custom_constants/separation = 10
 
 [node name="ButtonResume" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
-margin_left = 162.0
-margin_right = 573.0
+margin_left = 140.0
+margin_right = 551.0
 margin_bottom = 99.0
 rect_min_size = Vector2( 0, 50 )
 focus_neighbour_top = NodePath("../../ButtonQuit")
@@ -129,10 +127,10 @@ size_flags_horizontal = 4
 text = "RESUME"
 
 [node name="ButtonSettings" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
-margin_left = 146.0
-margin_top = 218.0
-margin_right = 589.0
-margin_bottom = 317.0
+margin_left = 124.0
+margin_top = 109.0
+margin_right = 567.0
+margin_bottom = 208.0
 rect_min_size = Vector2( 0, 50 )
 focus_neighbour_top = NodePath("../ButtonResume")
 focus_neighbour_bottom = NodePath("../../ButtonQuit")
@@ -143,10 +141,10 @@ size_flags_horizontal = 4
 text = "SETTINGS"
 
 [node name="ButtonRestart" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
-margin_left = 154.0
-margin_top = 109.0
-margin_right = 581.0
-margin_bottom = 208.0
+margin_left = 132.0
+margin_top = 218.0
+margin_right = 559.0
+margin_bottom = 317.0
 rect_min_size = Vector2( 0, 50 )
 focus_neighbour_top = NodePath("../../ButtonQuit")
 focus_neighbour_bottom = NodePath("../ButtonSettings")
@@ -157,9 +155,9 @@ size_flags_horizontal = 4
 text = "RESTART"
 
 [node name="ButtonQuit" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer"]
-margin_left = 188.0
+margin_left = 166.0
 margin_top = 347.0
-margin_right = 547.0
+margin_right = 525.0
 margin_bottom = 446.0
 rect_min_size = Vector2( 0, 50 )
 focus_neighbour_top = NodePath("../VBoxContainer/ButtonSettings")
@@ -171,6 +169,7 @@ size_flags_horizontal = 4
 text = "QUIT"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 40
