@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/looped_bart_generator_loop.ogg-045e30a93d08c37c38bd57d73cebd692.oggstr"
+
+[deps]
+
+source_file="res://showcase/audio/looped_bart_generator_loop.ogg"
+dest_files=[ "res://.import/looped_bart_generator_loop.ogg-045e30a93d08c37c38bd57d73cebd692.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
