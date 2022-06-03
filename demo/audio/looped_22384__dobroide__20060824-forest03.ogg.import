@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/looped_22384__dobroide__20060824-forest03.ogg-8eb13c28f678fe5f29c55e636c7254fc.oggstr"
+
+[deps]
+
+source_file="res://demo/audio/looped_22384__dobroide__20060824-forest03.ogg"
+dest_files=[ "res://.import/looped_22384__dobroide__20060824-forest03.ogg-8eb13c28f678fe5f29c55e636c7254fc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

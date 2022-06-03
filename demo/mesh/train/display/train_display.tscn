@@ -1,0 +1,94 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://demo/ui/menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://demo/mesh/train/display/train_display.gd" type="Script" id=2]
+
+
+[sub_resource type="StyleBoxFlat" id=1]
+draw_center = false
+
+[node name="TrainDisplay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -2560.0
+margin_bottom = -1440.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 750.0
+margin_bottom = 230.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_right = 750.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 750, 230 )
+
+[node name="Names" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_right = 373.0
+margin_bottom = 230.0
+size_flags_horizontal = 3
+
+[node name="SpeedName" type="Label" parent="CenterContainer/HBoxContainer/Names"]
+margin_right = 373.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+text = "SPEED"
+align = 2
+
+[node name="StatusName" type="Label" parent="CenterContainer/HBoxContainer/Names"]
+margin_top = 75.0
+margin_right = 373.0
+margin_bottom = 146.0
+size_flags_horizontal = 3
+text = "STATUS"
+align = 2
+
+[node name="DepartureName" type="Label" parent="CenterContainer/HBoxContainer/Names"]
+margin_top = 150.0
+margin_right = 373.0
+margin_bottom = 221.0
+size_flags_horizontal = 3
+text = "DEPARTURE IN"
+align = 2
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/HBoxContainer"]
+margin_left = 377.0
+margin_right = 417.0
+margin_bottom = 230.0
+custom_constants/separation = 40
+custom_styles/separator = SubResource( 1 )
+
+[node name="Vals" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 421.0
+margin_right = 750.0
+margin_bottom = 230.0
+size_flags_horizontal = 3
+
+[node name="SpeedVal" type="Label" parent="CenterContainer/HBoxContainer/Vals"]
+margin_right = 329.0
+margin_bottom = 71.0
+size_flags_horizontal = 3
+text = "30.0 u/s"
+
+[node name="StatusVal" type="Label" parent="CenterContainer/HBoxContainer/Vals"]
+margin_top = 75.0
+margin_right = 329.0
+margin_bottom = 146.0
+size_flags_horizontal = 3
+text = "SLOWDOWN"
+
+[node name="DepartureVal" type="Label" parent="CenterContainer/HBoxContainer/Vals"]
+margin_top = 150.0
+margin_right = 329.0
+margin_bottom = 221.0
+size_flags_horizontal = 3
+text = "00:15"

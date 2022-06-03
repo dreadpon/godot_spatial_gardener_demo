@@ -1,0 +1,146 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://demo/mesh/train/train/train_loco.gd" type="Script" id=1]
+[ext_resource path="res://demo/mesh/train/train/train_loco/AnimationPlayer.scn" type="PackedScene" id=2]
+[ext_resource path="res://demo/mesh/train/train/train_loco/train_loco.scn" type="PackedScene" id=3]
+[ext_resource path="res://demo/mesh/train/train/train_smoke/train_smoke_train_smoke.mesh" type="ArrayMesh" id=4]
+[ext_resource path="res://demo/audio/looped_rails.ogg" type="AudioStream" id=5]
+[ext_resource path="res://demo/audio/looped_bart_generator_loop.ogg" type="AudioStream" id=6]
+[ext_resource path="res://demo/mesh/train/display/train_display.tscn" type="PackedScene" id=7]
+
+
+[sub_resource type="Curve" id=128053]
+_data = [ Vector2( 0, 0 ), 0.0, 9.09687, 0, 0, Vector2( 0.354767, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -4.86098, 0.0, 0, 0 ]
+
+[sub_resource type="BoxShape" id=128045]
+extents = Vector3( 2.06155, 0.751238, 6.697 )
+
+[sub_resource type="BoxShape" id=128048]
+extents = Vector3( 1.60297, 0.751238, 1.00458 )
+
+[sub_resource type="BoxShape" id=128049]
+extents = Vector3( 1.57462, 0.751238, 1.46224 )
+
+[sub_resource type="BoxShape" id=128050]
+extents = Vector3( 1.25149, 0.218518, 2.59916 )
+
+[sub_resource type="BoxShape" id=128051]
+extents = Vector3( 2.28914, 2.25973, 0.562892 )
+
+[sub_resource type="BoxShape" id=128052]
+extents = Vector3( 2.28914, 2.14598, 0.214055 )
+
+[sub_resource type="BoxShape" id=128046]
+extents = Vector3( 1.22713, 1.66233, 3.38439 )
+
+[sub_resource type="BoxShape" id=128047]
+extents = Vector3( 0.796223, 1.66233, 3.24637 )
+
+[sub_resource type="ViewportTexture" id=128054]
+flags = 12
+viewport_path = NodePath("Viewport")
+
+[node name="TrainLocoScene" type="KinematicBody"]
+collision_mask = 0
+script = ExtResource( 1 )
+animation_name = "train_loco_drive_baked"
+animation_speed_world_basis = 5.0
+emit_smoke = false
+
+[node name="train_loco" parent="." instance=ExtResource( 3 )]
+
+[node name="AnimationPlayer" parent="." instance=ExtResource( 2 )]
+playback_speed = 0.0
+
+[node name="smoke" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.37492, 4.31901 )
+emitting = false
+amount = 30
+lifetime = 5.0
+randomness = 0.2
+local_coords = false
+mesh = ExtResource( 4 )
+flag_rotate_y = true
+direction = Vector3( 0, 1, 0 )
+spread = 5.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 20.0
+linear_accel = -2.0
+angle = 0.5
+angle_random = 0.5
+scale_amount = 2.0
+scale_amount_random = 0.8
+scale_amount_curve = SubResource( 128053 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="."]
+transform = Transform( -0.999999, -5.02407e-18, -8.83541e-08, 0, 1, 5.74829e-11, 8.74227e-08, -5.74687e-11, -1, -1.25393e-09, 0.904999, -0.0143433 )
+shape = SubResource( 128045 )
+
+[node name="CollisionShape13" type="CollisionShape" parent="."]
+transform = Transform( -0.999999, -3.96156e-08, -7.79316e-08, 0, 0.891434, -0.453151, 8.74227e-08, -0.45315, -0.891434, -4.63084e-07, 1.33384, -5.29706 )
+shape = SubResource( 128048 )
+
+[node name="CollisionShape14" type="CollisionShape" parent="."]
+transform = Transform( -0.999999, 0, -8.74228e-08, 0, 1, 0, 8.74227e-08, 0, -1, -2.85484e-07, 1.68872, -3.26556 )
+shape = SubResource( 128049 )
+
+[node name="CollisionShape18" type="CollisionShape" parent="."]
+transform = Transform( -0.959608, 0.281337, -8.74228e-08, 0.281336, 0.959609, 0, 8.38916e-08, -2.45953e-08, -1, 1.12863, 6.86921, -3.17767 )
+shape = SubResource( 128050 )
+
+[node name="CollisionShape19" type="CollisionShape" parent="."]
+transform = Transform( -0.959608, -0.281337, -8.74228e-08, -0.281336, 0.959609, 0, 8.38916e-08, 2.45953e-08, -1, -1.129, 6.869, -3.178 )
+shape = SubResource( 128050 )
+
+[node name="CollisionShape15" type="CollisionShape" parent="."]
+transform = Transform( -0.999999, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, -1.71617e-07, 4.59765, -1.09165 )
+shape = SubResource( 128051 )
+
+[node name="CollisionShape16" type="CollisionShape" parent="."]
+transform = Transform( 1.30306e-07, 0.112128, -0.993694, 8.46629e-09, 0.993693, 0.112128, 0.999999, -2.30239e-08, 1.28535e-07, 1.98432, 4.36143, -3.31573 )
+shape = SubResource( 128052 )
+
+[node name="CollisionShape17" type="CollisionShape" parent="."]
+transform = Transform( -4.37113e-08, -0.112128, 0.993694, 0, 0.993693, 0.112128, -0.999999, 4.90127e-09, -4.34358e-08, -1.984, 4.361, -3.316 )
+shape = SubResource( 128052 )
+
+[node name="CollisionShape11" type="CollisionShape" parent="."]
+transform = Transform( -0.999999, -5.02408e-18, -8.83541e-08, 0, 1, 5.74829e-11, 8.74227e-08, -5.74688e-11, -1, 2.12854e-07, 2.43974, 2.43477 )
+shape = SubResource( 128046 )
+
+[node name="CollisionShape12" type="CollisionShape" parent="."]
+transform = Transform( -0.999999, -1.06496e-08, -8.67717e-08, 0, 0.992552, -0.121817, 8.74227e-08, -0.121817, -0.992553, 1.9442e-07, 4.74119, 2.22391 )
+shape = SubResource( 128047 )
+
+[node name="audio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 5 )
+unit_size = 50.0
+max_db = -4.0
+max_distance = 150.0
+out_of_range_mode = 1
+bus = "train_rails"
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="audio2" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 6 )
+unit_size = 25.0
+max_db = -4.0
+pitch_scale = 1.5
+max_distance = 150.0
+out_of_range_mode = 1
+bus = "train_steam"
+attenuation_filter_cutoff_hz = 20500.0
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 750, 230 )
+transparent_bg = true
+hdr = false
+usage = 3
+render_target_v_flip = true
+
+[node name="TrainDisplay" parent="Viewport" instance=ExtResource( 7 )]
+
+[node name="TrainDisplaySpatial" type="Sprite3D" parent="."]
+transform = Transform( -1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.0450649, 3.44901, -1.82196 )
+pixel_size = 0.0035
+texture = SubResource( 128054 )

@@ -231,7 +231,7 @@ func play_ground_sfx():
 
 func play_sfx(sfx_name:String):
 	var audio_player = $ActionAudio
-	audio_player.stream = load("res://showcase/audio/%s.ogg" % [sfx_name])
+	audio_player.stream = load("res://demo/audio/%s.ogg" % [sfx_name])
 	audio_player.pitch_scale = rand_range(0.8, 1.5)
 	audio_player.play(0.0)
 

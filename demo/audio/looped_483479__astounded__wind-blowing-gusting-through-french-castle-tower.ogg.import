@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/looped_483479__astounded__wind-blowing-gusting-through-french-castle-tower.ogg-c021f8a119b37eb4b26693899c802f8a.oggstr"
+
+[deps]
+
+source_file="res://demo/audio/looped_483479__astounded__wind-blowing-gusting-through-french-castle-tower.ogg"
+dest_files=[ "res://.import/looped_483479__astounded__wind-blowing-gusting-through-french-castle-tower.ogg-c021f8a119b37eb4b26693899c802f8a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

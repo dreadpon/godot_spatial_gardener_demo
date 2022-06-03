@@ -1,0 +1,548 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://demo/ui/pause_menu.gd" type="Script" id=1]
+[ext_resource path="res://demo/ui/menu_theme.tres" type="Theme" id=2]
+[ext_resource path="res://demo/ui/textures/button_regular_normal.png" type="Texture" id=3]
+
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 1, 1, 1, 0.25098 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id=11]
+content_margin_left = 140.0
+content_margin_right = 140.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 256, 152 )
+margin_left = 128.0
+margin_right = 128.0
+margin_top = 32.0
+margin_bottom = 32.0
+modulate_color = Color( 0.9, 0.9, 0.9, 1 )
+
+[sub_resource type="StyleBoxTexture" id=13]
+content_margin_left = 210.0
+content_margin_right = 210.0
+content_margin_top = 30.0
+content_margin_bottom = 30.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 256, 152 )
+margin_left = 128.0
+margin_right = 128.0
+margin_top = 32.0
+margin_bottom = 32.0
+modulate_color = Color( 1, 0, 0, 1 )
+
+[node name="PauseMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 934.0
+margin_top = 341.0
+margin_right = 1626.0
+margin_bottom = 1098.0
+rect_min_size = Vector2( 400, 0 )
+custom_constants/separation = 40
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
+margin_right = 692.0
+margin_bottom = 271.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer"]
+margin_left = 240.0
+margin_top = 100.0
+margin_right = 452.0
+margin_bottom = 171.0
+rect_pivot_offset = Vector2( 155, -125 )
+text = "PAUSED"
+align = 1
+valign = 1
+
+[node name="WindowTabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
+margin_top = 311.0
+margin_right = 692.0
+margin_bottom = 757.0
+custom_styles/tab_fg = SubResource( 3 )
+custom_styles/tab_disabled = SubResource( 3 )
+custom_styles/tab_bg = SubResource( 3 )
+custom_styles/panel = SubResource( 3 )
+tabs_visible = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer"]
+margin_right = 692.0
+margin_bottom = 317.0
+custom_constants/separation = 10
+
+[node name="ButtonResume" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
+margin_left = 140.0
+margin_right = 551.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 0, 50 )
+focus_neighbour_top = NodePath("../../ButtonQuit")
+focus_neighbour_bottom = NodePath("../ButtonSettings")
+focus_next = NodePath("../ButtonSettings")
+focus_previous = NodePath("../../ButtonQuit")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+text = "RESUME"
+
+[node name="ButtonSettings" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
+margin_left = 124.0
+margin_top = 109.0
+margin_right = 567.0
+margin_bottom = 208.0
+rect_min_size = Vector2( 0, 50 )
+focus_neighbour_top = NodePath("../ButtonResume")
+focus_neighbour_bottom = NodePath("../../ButtonQuit")
+focus_next = NodePath("../../ButtonQuit")
+focus_previous = NodePath("../ButtonResume")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+text = "SETTINGS"
+
+[node name="ButtonRestart" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
+margin_left = 132.0
+margin_top = 218.0
+margin_right = 559.0
+margin_bottom = 317.0
+rect_min_size = Vector2( 0, 50 )
+focus_neighbour_top = NodePath("../../ButtonQuit")
+focus_neighbour_bottom = NodePath("../ButtonSettings")
+focus_next = NodePath("../ButtonSettings")
+focus_previous = NodePath("../../ButtonQuit")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+text = "RESTART"
+
+[node name="ButtonQuit" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer"]
+margin_left = 166.0
+margin_top = 347.0
+margin_right = 525.0
+margin_bottom = 446.0
+rect_min_size = Vector2( 0, 50 )
+focus_neighbour_top = NodePath("../VBoxContainer/ButtonSettings")
+focus_neighbour_bottom = NodePath("../VBoxContainer/ButtonResume")
+focus_next = NodePath("../VBoxContainer/ButtonResume")
+focus_previous = NodePath("../VBoxContainer/ButtonSettings")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+text = "QUIT"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3"]
+margin_right = 1045.0
+margin_bottom = 891.0
+custom_constants/separation = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer"]
+margin_right = 705.0
+margin_bottom = 891.0
+size_flags_horizontal = 2
+custom_constants/separation = 0
+
+[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_right = 705.0
+margin_bottom = 99.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Enable/disable sound"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "SOUND"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 99.0
+margin_right = 705.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Set sound volume 
+0% - 100%"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "SOUND VOLUME"
+
+[node name="Button7" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 198.0
+margin_right = 705.0
+margin_bottom = 297.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Set game mode to fullscreen"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "FULLSCREEN"
+
+[node name="Button5" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 297.0
+margin_right = 705.0
+margin_bottom = 396.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Set rendering quality (mainly shadows)
+Low - Med - High
+
+FPS impact: big"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "RENDERING QUALITY"
+
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 705.0
+margin_bottom = 495.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Enable/disable Depth of Field blur (blur faraway objects)
+
+FPS impact: big"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "DOF BLUR"
+
+[node name="Button8" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 495.0
+margin_right = 705.0
+margin_bottom = 594.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Set Depth of Field blur quality
+Low - Med - High
+
+FPS impact: low (enabled/disabled matters more)"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "DOF BLUR QUALITY"
+
+[node name="Button6" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 594.0
+margin_right = 705.0
+margin_bottom = 693.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Enable/disable Vertical Synchronization
+Enabling this helps prevent screen tearing and stabilizes FPS on higher-end machines
+But it locks FPS to that of the given monitor (typically 60 FPS)
+
+FPS impact: depends on the given monitor"
+focus_mode = 0
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "VSYNC"
+
+[node name="Button9" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 693.0
+margin_right = 705.0
+margin_bottom = 792.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Set the speed for rotating camera using a mouse"
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "MOUSE SENSITIVITY"
+
+[node name="Button10" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 792.0
+margin_right = 705.0
+margin_bottom = 891.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Set the speed for rotating camera using a controller/joypad"
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "CONTROLLER SENSITIVITY"
+
+[node name="GridContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer"]
+margin_left = 745.0
+margin_right = 1045.0
+margin_bottom = 891.0
+rect_min_size = Vector2( 300, 0 )
+size_flags_horizontal = 2
+custom_constants/separation = 0
+
+[node name="CheckButtonSound" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 10.0
+margin_right = 150.0
+margin_bottom = 88.0
+focus_neighbour_top = NodePath("../../../ButtonReturn")
+focus_neighbour_bottom = NodePath("../SliderSoundVolume")
+focus_next = NodePath("../SliderSoundVolume")
+focus_previous = NodePath("../../../ButtonReturn")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+
+[node name="SliderSoundVolume" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 124.0
+margin_right = 300.0
+margin_bottom = 172.0
+focus_neighbour_top = NodePath("../CheckButtonSound")
+focus_neighbour_bottom = NodePath("../CheckButtonFullscreen")
+focus_next = NodePath("../CheckButtonFullscreen")
+focus_previous = NodePath("../../../ButtonReturn")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+scrollable = false
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonFullscreen" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 208.0
+margin_right = 150.0
+margin_bottom = 286.0
+focus_neighbour_top = NodePath("../SliderSoundVolume")
+focus_neighbour_bottom = NodePath("../SliderRenderingQuality")
+focus_next = NodePath("../SliderRenderingQuality")
+focus_previous = NodePath("../SliderSoundVolume")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+
+[node name="SliderRenderingQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 322.0
+margin_right = 300.0
+margin_bottom = 370.0
+focus_neighbour_top = NodePath("../CheckButtonFullscreen")
+focus_neighbour_bottom = NodePath("../CheckButtonDOFBlur")
+focus_next = NodePath("../CheckButtonDOFBlur")
+focus_previous = NodePath("../CheckButtonFullscreen")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 2.0
+scrollable = false
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonDOFBlur" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 406.0
+margin_right = 150.0
+margin_bottom = 484.0
+rect_pivot_offset = Vector2( 127, 534 )
+focus_neighbour_top = NodePath("../SliderRenderingQuality")
+focus_neighbour_bottom = NodePath("../SliderDOFBlurQuality")
+focus_next = NodePath("../SliderDOFBlurQuality")
+focus_previous = NodePath("../SliderRenderingQuality")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+
+[node name="SliderDOFBlurQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 520.0
+margin_right = 300.0
+margin_bottom = 568.0
+focus_neighbour_top = NodePath("../CheckButtonDOFBlur")
+focus_neighbour_bottom = NodePath("../CheckButtonVSync")
+focus_next = NodePath("../CheckButtonVSync")
+focus_previous = NodePath("../CheckButtonDOFBlur")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 2.0
+scrollable = false
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckButtonVSync" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 604.0
+margin_right = 150.0
+margin_bottom = 682.0
+focus_neighbour_top = NodePath("../SliderDOFBlurQuality")
+focus_neighbour_bottom = NodePath("../SliderMouseSensitivity")
+focus_next = NodePath("../SliderMouseSensitivity")
+focus_previous = NodePath("../SliderDOFBlurQuality")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+
+[node name="SliderMouseSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 718.0
+margin_right = 300.0
+margin_bottom = 766.0
+focus_neighbour_top = NodePath("../CheckButtonVSync")
+focus_neighbour_bottom = NodePath("../SliderControllerSensitivity")
+focus_next = NodePath("../SliderControllerSensitivity")
+focus_previous = NodePath("../CheckButtonVSync")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+scrollable = false
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SliderControllerSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 817.0
+margin_right = 300.0
+margin_bottom = 865.0
+focus_neighbour_top = NodePath("../SliderMouseSensitivity")
+focus_neighbour_bottom = NodePath("../../../ButtonReturn")
+focus_next = NodePath("../../../ButtonReturn")
+focus_previous = NodePath("../SliderMouseSensitivity")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+max_value = 1.0
+step = 0.01
+scrollable = false
+ticks_on_borders = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonReturn" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3"]
+margin_left = 320.0
+margin_top = 931.0
+margin_right = 724.0
+margin_bottom = 1030.0
+rect_min_size = Vector2( 0, 50 )
+focus_neighbour_top = NodePath("../HBoxContainer/GridContainer/SliderControllerSensitivity")
+focus_neighbour_bottom = NodePath("../HBoxContainer/GridContainer/CheckButtonSound")
+focus_next = NodePath("../HBoxContainer/GridContainer/CheckButtonSound")
+focus_previous = NodePath("../HBoxContainer/GridContainer/SliderControllerSensitivity")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+text = "RETURN"
+
+[node name="Control" type="Control" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ButtonReturn"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonNeedsReboot" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ButtonReturn/Control"]
+visible = false
+margin_left = -64.0
+margin_top = -54.0
+margin_right = 957.001
+margin_bottom = 54.0
+size_flags_horizontal = 6
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 1, 0.235294, 0.235294, 1 )
+custom_colors/font_color_focus = Color( 1, 0.235294, 0.235294, 1 )
+custom_colors/font_color = Color( 1, 0.235294, 0.235294, 1 )
+custom_colors/font_color_hover = Color( 1, 0.235294, 0.235294, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.235294, 0.235294, 1 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+text = "RESTART TO APPLY CHANGES!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonResume" to="." method="resume"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonSettings" to="." method="show_tab" binds= [ 1 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonRestart" to="." method="restart"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/ButtonQuit" to="." method="quit"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonSound" to="." method="set_setting" binds= [ "sound" ]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderSoundVolume" to="." method="set_setting" binds= [ "sound_volume" ]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonFullscreen" to="." method="set_setting" binds= [ "fullscreen" ]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderRenderingQuality" to="." method="set_setting" binds= [ "rendering_quality" ]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonDOFBlur" to="." method="set_setting" binds= [ "dof_blur" ]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderDOFBlurQuality" to="." method="set_setting" binds= [ "dof_blur_quality" ]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonVSync" to="." method="set_setting" binds= [ "vsync" ]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderMouseSensitivity" to="." method="set_setting" binds= [ "mouse_sensitivity" ]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderControllerSensitivity" to="." method="set_setting" binds= [ "controller_sensitivity" ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ButtonReturn" to="." method="show_tab" binds= [ 0 ]]

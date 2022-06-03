@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/looped_rails.ogg-a8c29eded9c2e1d8514556d757cc1539.oggstr"
+
+[deps]
+
+source_file="res://demo/audio/looped_rails.ogg"
+dest_files=[ "res://.import/looped_rails.ogg-a8c29eded9c2e1d8514556d757cc1539.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

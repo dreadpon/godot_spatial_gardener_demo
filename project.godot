@@ -15,17 +15,16 @@ lightning_quality=0.0
 [application]
 
 config/name="Foliage Tool"
-run/main_scene="res://showcase/showcase.tscn"
 config/project_settings_override="user://save_files/settings.cfg"
 config/icon="res://icon.png"
 
 [audio]
 
-default_bus_layout="res://showcase/showcase_bus_layout.tres"
+default_bus_layout="res://demo/showcase/showcase_bus_layout.tres"
 
 [autoload]
 
-ShowcaseSettings="*res://showcase/utility/showcase_settings.gd"
+ShowcaseSettings="*res://demo/utility/showcase_settings.gd"
 
 [controls]
 

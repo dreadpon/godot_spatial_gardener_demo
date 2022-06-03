@@ -4,9 +4,9 @@
 [ext_resource path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" type="Script" id=2]
 [ext_resource path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_LOD_variant.gd" type="Script" id=3]
 [ext_resource path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd" type="Script" id=4]
-[ext_resource path="res://showcase/mesh/cylinder/physics_bodies/cylinder_LOD_2.tscn" type="PackedScene" id=5]
-[ext_resource path="res://showcase/mesh/cylinder/meshes/cylinder_LOD_2.tres" type="CylinderMesh" id=6]
-[ext_resource path="res://showcase/mesh/tree/meshes/tree_pine-LOD2.mesh" type="ArrayMesh" id=7]
+[ext_resource path="res://demo/mesh/cylinder/physics_bodies/cylinder_LOD_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://demo/mesh/cylinder/meshes/cylinder_LOD_2.tres" type="CylinderMesh" id=6]
+[ext_resource path="res://demo/mesh/tree/meshes/tree_pine-LOD2.mesh" type="ArrayMesh" id=7]
 
 [sub_resource type="Resource" id=1]
 resource_name = "Greenhouse_LODVariant"

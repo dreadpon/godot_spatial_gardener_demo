@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/step_dirt.ogg-6d55948b44976cdae4e0b71acdb57023.oggstr"
+
+[deps]
+
+source_file="res://demo/audio/step_dirt.ogg"
+dest_files=[ "res://.import/step_dirt.ogg-6d55948b44976cdae4e0b71acdb57023.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
