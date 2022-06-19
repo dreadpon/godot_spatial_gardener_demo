@@ -14,7 +14,7 @@ lightning_quality=0.0
 
 [application]
 
-config/name="Foliage Tool"
+config/name="Dreadpon's Spatial Gardener Demo"
 config/project_settings_override="user://save_files/settings.cfg"
 config/icon="res://icon.png"
 
