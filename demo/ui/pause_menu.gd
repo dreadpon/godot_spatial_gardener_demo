@@ -6,6 +6,7 @@ onready var button_restart := $CenterContainer/VBoxContainer/WindowTabContainer/
 onready var button_settings := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonSettings
 onready var button_quit := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/ButtonQuit
 
+onready var check_button_show_hud := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonShowHUD
 onready var check_button_sound := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonSound
 onready var slider_sound_volume := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderSoundVolume
 onready var check_button_fullscreen := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonFullscreen
@@ -27,6 +28,7 @@ var needs_reboot:bool = false setget set_needs_reboot
 
 func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
+	check_button_show_hud.pressed = ShowcaseSettings.get_setting_val("show_hud")
 	check_button_sound.pressed = ShowcaseSettings.get_setting_val("sound")
 	slider_sound_volume.value = ShowcaseSettings.get_setting_val("sound_volume")
 	check_button_fullscreen.pressed = ShowcaseSettings.get_setting_val("fullscreen")
@@ -91,4 +93,4 @@ func set_needs_reboot(val):
 
 func restart():
 	resume()
-	ShowcaseSettings.restart()
+	ShowcaseSettings.restart(get_tree().current_scene.filename)

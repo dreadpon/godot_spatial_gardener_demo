@@ -4,7 +4,6 @@
 [ext_resource path="res://demo/ui/menu_theme.tres" type="Theme" id=2]
 [ext_resource path="res://demo/ui/textures/button_regular_normal.png" type="Texture" id=3]
 
-
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 1, 1, 1, 0.25098 )
 
@@ -64,19 +63,20 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 934.0
-margin_top = 341.0
-margin_right = 1626.0
-margin_bottom = 1098.0
+margin_left = 757.0
+margin_top = 20.0
+margin_right = 1802.0
+margin_bottom = 1420.0
 rect_min_size = Vector2( 400, 0 )
-custom_constants/separation = 40
+custom_constants/separation = 20
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
-margin_right = 692.0
+margin_left = 176.0
+margin_right = 868.0
 margin_bottom = 271.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 4
@@ -92,9 +92,9 @@ align = 1
 valign = 1
 
 [node name="WindowTabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
-margin_top = 311.0
-margin_right = 692.0
-margin_bottom = 757.0
+margin_top = 291.0
+margin_right = 1045.0
+margin_bottom = 1400.0
 custom_styles/tab_fg = SubResource( 3 )
 custom_styles/tab_disabled = SubResource( 3 )
 custom_styles/tab_bg = SubResource( 3 )
@@ -102,9 +102,10 @@ custom_styles/panel = SubResource( 3 )
 tabs_visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 30
+custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -170,25 +171,42 @@ size_flags_horizontal = 4
 text = "QUIT"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/separation = 40
+custom_constants/separation = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3"]
 margin_right = 1045.0
-margin_bottom = 891.0
+margin_bottom = 990.0
 custom_constants/separation = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer"]
 margin_right = 705.0
-margin_bottom = 891.0
+margin_bottom = 990.0
 size_flags_horizontal = 2
 custom_constants/separation = 0
 
-[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+[node name="Button11" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
 margin_right = 705.0
 margin_bottom = 99.0
+rect_min_size = Vector2( 0, 50 )
+hint_tooltip = "Show/hide heads-up-display (FPS counter, etc.)"
+mouse_default_cursor_shape = 16
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+text = "SHOW HUD"
+
+[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
+margin_top = 99.0
+margin_right = 705.0
+margin_bottom = 198.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Enable/disable sound"
 focus_mode = 0
@@ -205,9 +223,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "SOUND"
 
 [node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 99.0
+margin_top = 198.0
 margin_right = 705.0
-margin_bottom = 198.0
+margin_bottom = 297.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Set sound volume 
 0% - 100%"
@@ -225,9 +243,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "SOUND VOLUME"
 
 [node name="Button7" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 198.0
+margin_top = 297.0
 margin_right = 705.0
-margin_bottom = 297.0
+margin_bottom = 396.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Set game mode to fullscreen"
 focus_mode = 0
@@ -239,9 +257,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "FULLSCREEN"
 
 [node name="Button5" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 297.0
+margin_top = 396.0
 margin_right = 705.0
-margin_bottom = 396.0
+margin_bottom = 495.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Set rendering quality (mainly shadows)
 Low - Med - High
@@ -261,9 +279,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "RENDERING QUALITY"
 
 [node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 495.0
 margin_right = 705.0
-margin_bottom = 495.0
+margin_bottom = 594.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Enable/disable Depth of Field blur (blur faraway objects)
 
@@ -277,9 +295,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "DOF BLUR"
 
 [node name="Button8" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 495.0
+margin_top = 594.0
 margin_right = 705.0
-margin_bottom = 594.0
+margin_bottom = 693.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Set Depth of Field blur quality
 Low - Med - High
@@ -294,9 +312,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "DOF BLUR QUALITY"
 
 [node name="Button6" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 594.0
+margin_top = 693.0
 margin_right = 705.0
-margin_bottom = 693.0
+margin_bottom = 792.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Enable/disable Vertical Synchronization
 Enabling this helps prevent screen tearing and stabilizes FPS on higher-end machines
@@ -312,9 +330,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "VSYNC"
 
 [node name="Button9" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 693.0
+margin_top = 792.0
 margin_right = 705.0
-margin_bottom = 792.0
+margin_bottom = 891.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Set the speed for rotating camera using a mouse"
 mouse_default_cursor_shape = 16
@@ -325,9 +343,9 @@ custom_styles/pressed = SubResource( 11 )
 text = "MOUSE SENSITIVITY"
 
 [node name="Button10" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-margin_top = 792.0
+margin_top = 891.0
 margin_right = 705.0
-margin_bottom = 891.0
+margin_bottom = 990.0
 rect_min_size = Vector2( 0, 50 )
 hint_tooltip = "Set the speed for rotating camera using a controller/joypad"
 mouse_default_cursor_shape = 16
@@ -340,12 +358,12 @@ text = "CONTROLLER SENSITIVITY"
 [node name="GridContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer"]
 margin_left = 745.0
 margin_right = 1045.0
-margin_bottom = 891.0
+margin_bottom = 990.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_horizontal = 2
 custom_constants/separation = 0
 
-[node name="CheckButtonSound" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+[node name="CheckButtonShowHUD" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
 margin_top = 10.0
 margin_right = 150.0
 margin_bottom = 88.0
@@ -357,10 +375,22 @@ mouse_default_cursor_shape = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
 
+[node name="CheckButtonSound" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
+margin_top = 109.0
+margin_right = 150.0
+margin_bottom = 187.0
+focus_neighbour_top = NodePath("../../../ButtonReturn")
+focus_neighbour_bottom = NodePath("../SliderSoundVolume")
+focus_next = NodePath("../SliderSoundVolume")
+focus_previous = NodePath("../../../ButtonReturn")
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
+
 [node name="SliderSoundVolume" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 124.0
+margin_top = 223.0
 margin_right = 300.0
-margin_bottom = 172.0
+margin_bottom = 271.0
 focus_neighbour_top = NodePath("../CheckButtonSound")
 focus_neighbour_bottom = NodePath("../CheckButtonFullscreen")
 focus_next = NodePath("../CheckButtonFullscreen")
@@ -377,9 +407,9 @@ __meta__ = {
 }
 
 [node name="CheckButtonFullscreen" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 208.0
+margin_top = 307.0
 margin_right = 150.0
-margin_bottom = 286.0
+margin_bottom = 385.0
 focus_neighbour_top = NodePath("../SliderSoundVolume")
 focus_neighbour_bottom = NodePath("../SliderRenderingQuality")
 focus_next = NodePath("../SliderRenderingQuality")
@@ -389,9 +419,9 @@ size_flags_horizontal = 2
 size_flags_vertical = 6
 
 [node name="SliderRenderingQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 322.0
+margin_top = 421.0
 margin_right = 300.0
-margin_bottom = 370.0
+margin_bottom = 469.0
 focus_neighbour_top = NodePath("../CheckButtonFullscreen")
 focus_neighbour_bottom = NodePath("../CheckButtonDOFBlur")
 focus_next = NodePath("../CheckButtonDOFBlur")
@@ -407,9 +437,9 @@ __meta__ = {
 }
 
 [node name="CheckButtonDOFBlur" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 406.0
+margin_top = 505.0
 margin_right = 150.0
-margin_bottom = 484.0
+margin_bottom = 583.0
 rect_pivot_offset = Vector2( 127, 534 )
 focus_neighbour_top = NodePath("../SliderRenderingQuality")
 focus_neighbour_bottom = NodePath("../SliderDOFBlurQuality")
@@ -420,9 +450,9 @@ size_flags_horizontal = 2
 size_flags_vertical = 6
 
 [node name="SliderDOFBlurQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 520.0
+margin_top = 619.0
 margin_right = 300.0
-margin_bottom = 568.0
+margin_bottom = 667.0
 focus_neighbour_top = NodePath("../CheckButtonDOFBlur")
 focus_neighbour_bottom = NodePath("../CheckButtonVSync")
 focus_next = NodePath("../CheckButtonVSync")
@@ -438,9 +468,9 @@ __meta__ = {
 }
 
 [node name="CheckButtonVSync" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 604.0
+margin_top = 703.0
 margin_right = 150.0
-margin_bottom = 682.0
+margin_bottom = 781.0
 focus_neighbour_top = NodePath("../SliderDOFBlurQuality")
 focus_neighbour_bottom = NodePath("../SliderMouseSensitivity")
 focus_next = NodePath("../SliderMouseSensitivity")
@@ -450,9 +480,9 @@ size_flags_horizontal = 2
 size_flags_vertical = 6
 
 [node name="SliderMouseSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 718.0
+margin_top = 817.0
 margin_right = 300.0
-margin_bottom = 766.0
+margin_bottom = 865.0
 focus_neighbour_top = NodePath("../CheckButtonVSync")
 focus_neighbour_bottom = NodePath("../SliderControllerSensitivity")
 focus_next = NodePath("../SliderControllerSensitivity")
@@ -469,9 +499,9 @@ __meta__ = {
 }
 
 [node name="SliderControllerSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-margin_top = 817.0
+margin_top = 916.0
 margin_right = 300.0
-margin_bottom = 865.0
+margin_bottom = 964.0
 focus_neighbour_top = NodePath("../SliderMouseSensitivity")
 focus_neighbour_bottom = NodePath("../../../ButtonReturn")
 focus_next = NodePath("../../../ButtonReturn")
@@ -489,9 +519,9 @@ __meta__ = {
 
 [node name="ButtonReturn" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3"]
 margin_left = 320.0
-margin_top = 931.0
+margin_top = 1010.0
 margin_right = 724.0
-margin_bottom = 1030.0
+margin_bottom = 1109.0
 rect_min_size = Vector2( 0, 50 )
 focus_neighbour_top = NodePath("../HBoxContainer/GridContainer/SliderControllerSensitivity")
 focus_neighbour_bottom = NodePath("../HBoxContainer/GridContainer/CheckButtonSound")
@@ -536,6 +566,7 @@ __meta__ = {
 [connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonSettings" to="." method="show_tab" binds= [ 1 ]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonRestart" to="." method="restart"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/ButtonQuit" to="." method="quit"]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonShowHUD" to="." method="set_setting" binds= [ "show_hud" ]]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonSound" to="." method="set_setting" binds= [ "sound" ]]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderSoundVolume" to="." method="set_setting" binds= [ "sound_volume" ]]
 [connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonFullscreen" to="." method="set_setting" binds= [ "fullscreen" ]]

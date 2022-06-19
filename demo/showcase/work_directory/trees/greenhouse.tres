@@ -148,7 +148,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "class": "Greenhouse_PlantState"
 }
-plant/plant_brush_active = false
+plant/plant_brush_active = true
 plant/plant = SubResource( 22 )
 
 [sub_resource type="Resource" id=31]
@@ -278,7 +278,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "class": "Greenhouse_PlantState"
 }
-plant/plant_brush_active = true
+plant/plant_brush_active = false
 plant/plant = SubResource( 24 )
 
 [resource]

@@ -12,6 +12,13 @@ export(Resource) var fall_mode = null setget set_fall_mode
 # TODO add fly mode
 #export(Resource) var fly_mode = null setget set_fly_mode
 
+export(String) var config_path:String = ""
+# A config section + key ids
+# Dictionary key is the exported controller property, value is array
+# array[0] = section, array[1] = key, array[2] = mode (0 = substitute, 1 = multiply)
+export(Dictionary) var props_config:Dictionary = {}
+
+
 export var gravity:float = 9.8
 export var weight:float = 5.0
 export var jump_acceleration:float = 20.0
@@ -75,10 +82,16 @@ func _unhandled_input(event):
 	if Engine.editor_hint: return
 	
 	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		var mouse_sensitivity_actual = mouse_sensitivity#* ShowcaseSettings.get_setting_val("mouse_sensitivity")
+		var mouse_sensitivity_actual = get_property_from_config("mouse_sensitivity")
 		rotate_y(deg2rad(-event.relative.x * mouse_sensitivity_actual))
 		camera_axis.rotate_x(deg2rad(-event.relative.y * mouse_sensitivity_actual))
 		camera_axis.rotation.x = clamp(camera_axis.rotation.x, deg2rad(-89), deg2rad(89))
+	
+	if event is InputEventScreenTouch:
+		if event.pressed:
+			Input.action_press("jump")
+		else:
+			Input.action_release("jump")
 
 
 func _process(delta):
@@ -97,7 +110,7 @@ func _physics_process(delta):
 
 
 func rotate_controller_camera(delta):
-	var controller_sensitivity_actual = controller_sensitivity# * ShowcaseSettings.get_setting_val("controller_sensitivity")
+	var controller_sensitivity_actual = get_property_from_config("controller_sensitivity")
 	if Input.is_action_pressed("camera_left"):
 		rotate_y(deg2rad(controller_sensitivity_actual * Input.get_action_strength("camera_left") * delta))
 	if Input.is_action_pressed("camera_right"):
@@ -234,6 +247,32 @@ func play_sfx(sfx_name:String):
 	audio_player.stream = load("res://demo/audio/%s.ogg" % [sfx_name])
 	audio_player.pitch_scale = rand_range(0.8, 1.5)
 	audio_player.play(0.0)
+
+
+func get_property_from_config(prop:String):
+	# TODO handle case when prop doesn't exist on object
+	var prop_val = get(prop)
+	
+	if props_config.has(prop):
+		var prop_info = props_config[prop]
+		var config:ConfigFile = ConfigFile.new()
+		
+		var error = config.load(config_path)
+		if error != OK:
+			push_warning("Config file loading failed: %s, error %s!" % [config_path, error])
+		else:
+			if config.has_section_key(prop_info[0], prop_info[1]):
+				match prop_info[2]:
+					0:
+						prop_val = config.get_value(prop_info[0], prop_info[1])
+					1:
+						prop_val *= config.get_value(prop_info[0], prop_info[1])
+			else:
+				push_warning("No section_key in config: [%s] %s" % [prop_info[0], prop_info[1]])
+	else:
+		push_warning("No prop in props_config: %s" % [prop])
+	
+	return prop_val
 
 
 

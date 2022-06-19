@@ -30,6 +30,7 @@ margin_right = 285.0
 margin_bottom = 124.0
 theme = ExtResource( 4 )
 custom_styles/panel = SubResource( 189183 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -41,7 +42,6 @@ margin_right = 215.0
 margin_bottom = 78.0
 custom_fonts/font = SubResource( 189182 )
 text = "TEST"
-script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

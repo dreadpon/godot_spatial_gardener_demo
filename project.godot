@@ -53,14 +53,18 @@ window/stretch/aspect="expand"
 
 enabled=PoolStringArray( "res://addons/dreadpon.spatial_gardener/plugin.cfg" )
 
+[global]
+
+scene=false
+
 [graphics]
 
-fullscreen=true
+fullscreen=false
 lightning_quality=2.0
 dof_blur=false
 vsync=true
-rendering_quality=2.0
-dof_blur_quality=1.0
+rendering_quality=1.0
+dof_blur_quality=2.0
 
 [input]
 
@@ -169,6 +173,10 @@ camera_right={
  ]
 }
 
+[interface]
+
+show_hud=true
+
 [layer_names]
 
 3d_physics/layer_1="gameplay"
@@ -184,14 +192,15 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-quality/directional_shadow/size=8192
+quality/directional_shadow/size.mobile=1024
 quality/shadows/filter_mode=2
-quality/filters/msaa=3
+quality/filters/msaa=2
 quality/filters/use_fxaa=true
-quality/filters/use_debanding=true
 environment/default_environment="res://default_env.tres"
-rendering/quality/shadow_atlas/size=8192
+rendering/quality/shadow_atlas/size=4096
 rendering/quality/shadows/filter_mode=2
+rendering/quality/shadow_atlas/size.mobile=1024
+rendering/quality/shadows/filter_mode.mobile=1
 
 [sound]
 

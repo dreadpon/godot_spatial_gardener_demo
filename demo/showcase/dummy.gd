@@ -2,4 +2,6 @@ extends Node
 
 
 func _ready():
-	get_tree().change_scene("res://demo/showcase.tscn")
+	if !ShowcaseSettings.scene_to_restart.empty():
+		get_tree().change_scene(ShowcaseSettings.scene_to_restart)
+		ShowcaseSettings.scene_to_restart = ""

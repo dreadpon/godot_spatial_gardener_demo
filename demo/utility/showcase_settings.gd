@@ -10,8 +10,14 @@ var dir_root_save:String  = "save_files"
 var file_settings:String  = "settings"
 var ext_settings:String  = ".cfg"
 
+var scene_to_restart:String = ""
+
 
 var default_settings = {
+	"show_hud": {
+		"section": "interface", 
+		"val": true
+	},
 	"sound": {
 		"section": "sound", 
 		"val": true
@@ -162,8 +168,11 @@ func set_rendering_quality(stage:int):
 			config.set_value("rendering", "quality/filters/use_fxaa", false)
 			config.set_value("rendering", "quality/filters/use_debanding", false)
 			config.set_value("rendering", "quality/directional_shadow/size", 2048)
+			config.set_value("rendering", "quality/directional_shadow/size.mobile", 512)
 			config.set_value("rendering", "rendering/quality/shadow_atlas/size", 2048)
+			config.set_value("rendering", "rendering/quality/shadow_atlas/size.mobile", 512)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 1)
+			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 0)
 		
 		1:
 			config.set_value("rendering", "quality/filters/use_nearest_mipmap_filter", false)
@@ -171,22 +180,28 @@ func set_rendering_quality(stage:int):
 			config.set_value("rendering", "quality/filters/use_fxaa", true)
 			config.set_value("rendering", "quality/filters/use_debanding", false)
 			config.set_value("rendering", "quality/directional_shadow/size", 4096)
+			config.set_value("rendering", "quality/directional_shadow/size.mobile", 1024)
 			config.set_value("rendering", "rendering/quality/shadow_atlas/size", 4096)
+			config.set_value("rendering", "rendering/quality/shadow_atlas/size.mobile", 1024)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 2)
+			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 1)
 		
 		2:
 			config.set_value("rendering", "quality/filters/use_nearest_mipmap_filter", false)
 			config.set_value("rendering", "quality/filters/msaa", 3)
 			config.set_value("rendering", "quality/filters/use_fxaa", true)
 			config.set_value("rendering", "quality/filters/use_debanding", true)
+			config.set_value("rendering", "quality/directional_shadow/size.mobile", 2048)
 			config.set_value("rendering", "quality/directional_shadow/size", 8192)
 			config.set_value("rendering", "rendering/quality/shadow_atlas/size", 8192)
+			config.set_value("rendering", "rendering/quality/shadow_atlas/size.mobile", 2048)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 2)
+			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 1)
 	
 	config.save(full_path)
 
 
-func restart():
+func restart(scene_path:String):
 	# This is a workaround
 	# Because Godot doesn't consider current scene 'freed' if we try to reload out current scene right here
 	# This leads to all resource getting 'shared' between current scene an it's reloaded version
@@ -195,4 +210,5 @@ func restart():
 	# Which is not what I expect from reloading a level :/
 	
 	# So we introduce an intermediate scene that allows Godot to mark all previous resources as free and clean them up
+	scene_to_restart = scene_path
 	get_tree().change_scene("res://demo/showcase/dummy.tscn")

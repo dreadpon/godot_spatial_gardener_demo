@@ -36,6 +36,8 @@ script = ExtResource( 1 )
 walk_mode = SubResource( 2 )
 run_mode = SubResource( 3 )
 fall_mode = SubResource( 4 )
+props_config = {
+}
 fall_sfx_trigger_distance = 0.5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
