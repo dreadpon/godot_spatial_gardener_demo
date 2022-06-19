@@ -136,7 +136,7 @@ func update_loco_display(path_follows):
 		loco.train_display.set_status_val(status)
 		if status == "STOPPED":
 			loco.train_display.set_departure_visibility(true)
-			var time_string = FunLib.msec_to_time(ceil(departure_delay * 1000), false, FunLib.TimeTrimMode.KEEP_THREE)
+			var time_string = FunLib.msec_to_time(ceil(departure_delay * 1000.0), false, FunLib.TimeTrimMode.KEEP_THREE)
 			loco.train_display.set_departure_val(time_string)
 		else:
 			loco.train_display.set_departure_visibility(false)
