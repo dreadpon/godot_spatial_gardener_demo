@@ -56,11 +56,11 @@ scene=false
 [graphics]
 
 fullscreen=false
-lightning_quality=2.0
-dof_blur=true
+lightning_quality=1.0
+dof_blur=false
 vsync=true
-rendering_quality=2.0
-dof_blur_quality=2.0
+rendering_quality=1.0
+dof_blur_quality=1.0
 
 [input]
 
@@ -171,7 +171,7 @@ camera_right={
 
 [interface]
 
-show_hud=false
+show_hud=true
 
 [layer_names]
 

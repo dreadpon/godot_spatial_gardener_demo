@@ -32,7 +32,7 @@ var default_settings = {
 	},
 	"fullscreen": {
 		"section": "graphics", 
-		"val": true
+		"val": false
 	},
 	"dof_blur": {
 		"section": "graphics", 
