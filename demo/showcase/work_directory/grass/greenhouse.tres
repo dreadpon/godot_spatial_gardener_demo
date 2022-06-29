@@ -101,6 +101,7 @@ __meta__ = {
 "class": "Greenhouse_Plant"
 }
 mesh/mesh_LOD_variants = [ SubResource( 128847 ), SubResource( 128848 ) ]
+mesh/selected_for_edit_resource = SubResource( 128847 )
 mesh/mesh_LOD_max_distance = 10.0
 mesh/mesh_LOD_kill_distance = 50.0
 mesh/mesh_LOD_max_capacity = 100
@@ -301,4 +302,4 @@ __meta__ = {
 "class": "Greenhouse"
 }
 plant_types/greenhouse_plant_states = [ SubResource( 4 ), SubResource( 8 ), SubResource( 12 ), SubResource( 16 ), SubResource( 128838 ) ]
-plant_types/selected_for_edit_resource = SubResource( 4 )
+plant_types/selected_for_edit_resource = SubResource( 8 )
