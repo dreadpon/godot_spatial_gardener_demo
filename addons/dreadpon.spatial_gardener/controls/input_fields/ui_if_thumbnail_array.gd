@@ -134,7 +134,7 @@ func _remove_thumb(index:int):
 
 
 func on_requested_add():
-	var index = flex_grid.get_child_count() 
+	var index = flex_grid.get_child_count()
 	if add_create_inst_button:
 		index -= 1
 	_request_prop_action(null, "PA_ArrayInsert", {"index": index})
@@ -152,6 +152,10 @@ func on_requested_clear(thumb):
 
 func on_check(state, thumb):
 	emit_signal("requested_check", thumb.get_index(), state)
+
+
+func on_label_edit(label_text, thumb):
+	emit_signal("requested_label_edit", thumb.get_index(), label_text)
 
 
 func on_press(thumb):

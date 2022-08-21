@@ -33,6 +33,7 @@ const UI_IF_IntLineEdit = preload("../../controls/input_fields/ui_if_int_line_ed
 const UI_IF_ThumbnailArray = preload("../../controls/input_fields/ui_if_thumbnail_array.gd")
 const UI_IF_ApplyChanges = preload("../../controls/input_fields/ui_if_apply_changes.gd")
 const UI_IF_Button = preload("../../controls/input_fields/ui_if_button.gd")
+const UI_IF_PlainText = preload("../../controls/input_fields/ui_if_plain_text.gd")
 const UI_IF_Object = preload("../../controls/input_fields/ui_if_object.gd")
 const UI_IF_ThumbnailObject = preload("../../controls/input_fields/ui_if_thumbnail_object.gd")
 
@@ -41,6 +42,11 @@ var _undo_redo:UndoRedo = null setget set_undo_redo
 # Backups that can be restored when using non-destructive PA_PropEdit
 var prop_edit_backups:Dictionary = {}
 # Properties added here will be ignored when creating input fields
+# NOTE: this is meant to exclude properties from generating an input field AT ALL
+#		it's NOT a conditional check to show/hide fields
+#		it will be used once when generating a UI layout, but not to modify it
+# NOTE: for conditional checks see 'visibility_tracked_properties' in ui_input_filed.gd
+#		to hide properties from editor's inspector see _get_prop_dictionary()
 var input_field_blacklist:Array = []
 # All properties that are linked together for showing an element of an Array
 var res_edit_data:Array = []
@@ -52,6 +58,7 @@ var logger = null
 
 signal prop_action_executed(prop_action, final_val)
 signal req_change_interaction_feature(prop, index, feature, val)
+signal prop_list_changed(prop_names)
 
 
 
@@ -177,7 +184,7 @@ func prop_action_request_lifecycle(prop_action:PropAction, lifecycle_stage:int):
 
 
 # Can a given prop action create UndoRedo history?
-	# Most of the time we need this is when using a UI slider 
+	# Most of the time we need this is when using a UI slider
 	# To avoid commiting dozens of history actions while dragging
 func _can_prop_action_create_history(prop_action:PropAction):
 	var enable_undo_redo = FunLib.get_setting_safe("dreadpons_spatial_gardener/input_and_ui/greenhouse_ui_enable_undo_redo", true)
@@ -291,7 +298,7 @@ func on_prop_action_executed(prop_action:PropAction, final_val):
 #-------------------------------------------------------------------------------
 
 
-# Modify a property 
+# Modify a property
 # Mostly used to initialize a newly added array/dictionary value when setting array size from Engine Inspector
 # To be overridden and (usually) called inside a _set()
 func _modify_prop(prop:String, val):
@@ -299,10 +306,18 @@ func _modify_prop(prop:String, val):
 
 
 # Map property info to a dictionary for convinience
-# Allows easier management of hidden/shown properties based on user-defined conditions
 # To be overridden and (usually) called inside a _get_property_list()
 func _get_prop_dictionary() -> Dictionary:
 	return {}
+
+
+# Get property data from a dictionary and filter it
+# Allows easier management of hidden/shown properties based on arbitrary conditions in a subclass
+# To be overridden and (usually) called inside a _get_property_list() 
+# 	With a dictionary created by _get_prop_dictionary()
+# Return the same prop_dict passed to it (for convenience in function calls)
+func _filter_prop_dictionary(prop_dict: Dictionary) -> Dictionary:
+	return prop_dict
 
 
 func _set(property, val):
@@ -311,6 +326,24 @@ func _set(property, val):
 
 func _get(property):
 	pass
+
+
+# Default functionality for _get_property_list():
+# Get all {prop_name: prop_data_dictionary} defined by _get_prop_dictionary()
+# Filter them (optionally rejecting some of them based on arbitrary conditions)
+# Return a prop_dict values array
+func _get_property_list():
+	var prop_dict = _get_prop_dictionary()
+	_filter_prop_dictionary(prop_dict)
+	return prop_dict.values()
+
+
+# A wrapper around built-in property_list_changed_notify()
+# To support a custom signal we can bind manually
+func _emit_property_list_changed_notify():
+	property_list_changed_notify()
+	emit_signal('prop_list_changed', _filter_prop_dictionary(_get_prop_dictionary()))
+
 
 
 
@@ -338,9 +371,11 @@ func create_input_fields(_base_control:Control, _resource_previewer, whitelist:A
 		if input_field:
 			input_field.name = prop
 			input_field.set_tooltip(get_prop_tooltip(prop))
+			input_field.on_prop_list_changed(_filter_prop_dictionary(_get_prop_dictionary()))
 			
 			input_field.connect("prop_action_requested", self, "request_prop_action")
 			self.connect("prop_action_executed", input_field, "on_prop_action_executed")
+			self.connect("prop_list_changed", input_field, "on_prop_list_changed")
 			input_field.connect("ready", self, "on_if_ready", [input_field])
 			
 			if input_field is UI_IF_ThumbnailArray:
@@ -375,7 +410,7 @@ func on_if_ready(input_field:UI_InputField):
 func on_if_thumbnail_array_press(pressed_index:int, input_field:Control):
 	var res_edit = find_res_edit_by_array_prop(input_field.prop_name)
 	if res_edit:
-		var array_val = get(res_edit.array_prop) 
+		var array_val = get(res_edit.array_prop)
 		var new_res_val = array_val[pressed_index]
 		_res_edit_select(res_edit.array_prop, [new_res_val], true)
 
@@ -469,8 +504,8 @@ func _handle_res_edit_prop_action_lifecycle(prop_action:PropAction, lifecycle_st
 func _res_edit_select(array_prop:String, new_res_array:Array, create_history:bool = false):
 	var res_edit = find_res_edit_by_array_prop(array_prop)
 	if res_edit:
-		var array_val = get(res_edit.array_prop) 
-		var res_val = get(res_edit.res_prop) 
+		var array_val = get(res_edit.array_prop)
+		var res_val = get(res_edit.res_prop)
 		var new_res_val = new_res_array[0]
 		if res_val == new_res_val:
 			new_res_val = null

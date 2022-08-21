@@ -9,18 +9,24 @@ extends "stroke_handler.gd"
 # Add members to an octree according to the target density
 
 
-func _init(_brush:Toolshed_Brush, _plant_states:Array, _octree_managers:Array, _space_state:PhysicsDirectSpaceState, _collision_mask:int).(
-	_brush, _plant_states, _octree_managers, _space_state, _collision_mask):
+func _init(_brush:Toolshed_Brush, _plant_states:Array, _octree_managers:Array, _space_state:PhysicsDirectSpaceState, _camera: Camera, _collision_mask:int).(
+	_brush, _plant_states, _octree_managers, _space_state, _camera, _collision_mask):
 	
 	set_meta("class", "SH_Paint")
 
 
-func make_stroke_update_changes(brush_data:Dictionary, plant:Greenhouse_Plant, plant_index:int, 
-	octree_manager:MMIOctreeManager, brush_placement_area:BrushPlacementArea, container_transform:Transform, painting_changes:PaintingChanges, node):
+func should_abort_early(brush_data:Dictionary):
+	if brush.behavior_overlap_mode == Toolshed_Brush.OverlapMode.PROJECTION: return true
+	if brush.behavior_strength <= 0.0: return true
+	return false
+
+
+func volume_get_stroke_update_changes(brush_data:Dictionary, plant:Greenhouse_Plant, plant_index:int, octree_manager:MMIOctreeManager, 
+	brush_placement_area:BrushPlacementArea, container_transform:Transform, painting_changes:PaintingChanges):
 	
 	# We create a grid, detect overlaps and get a list of raycast positions that aren't occupied
 	brush_placement_area.init_grid_data(plant.density_per_units, brush.behavior_strength)
-	# Previously we expanded the search area by 1 unit to eliminate placing instances right outside our area as it moves 
+	# Previously we expanded the search area by 1 unit to eliminate placing instances right outside our area as it moves
 	# (since these would seem onoccupied to the placement logic)
 	# But I turned on placement amount limiter and it looks surprisingly fine
 	# And as a result doesn't cause a bug where small brushes with small density place plants *too* rarely (because of that search expansion)

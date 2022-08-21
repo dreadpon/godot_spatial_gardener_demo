@@ -8,7 +8,7 @@ extends Spatial
 # To show the correct LOD variant when moving closer/further to plants
 #-------------------------------------------------------------------------------
 
-# It's worth considering to split this object into mutliple: 
+# It's worth considering to split this object into mutliple:
 	# Octree management
 	# Updating positions of individual plants (through painting)
 	# Threaded updates to LODs (if possible)
@@ -202,11 +202,18 @@ func on_LOD_variant_prop_changed_spawned_spatial(plant_index:int, mesh_index:int
 	octree_manager.reset_member_spatials()
 
 
+# Make sure LODs in OctreeNodes correspond to their active_LOD_index
+# This is the preffered way to 'refresh' MMIs inside OctreeNodes
+func set_LODs_to_active_index(plant_index:int):
+	var octree_manager:MMIOctreeManager = octree_managers[plant_index]
+	octree_manager.set_LODs_to_active_index()
+
+
 # Initialize an OctreeManager for a given plant
 func add_plant_octree_manager(plant_state, plant_index:int):
 	var octree_manager:MMIOctreeManager = MMIOctreeManager.new()
 	octree_manager.init_octree(
-		plant_state.plant.mesh_LOD_max_capacity, plant_state.plant.mesh_LOD_min_size, 
+		plant_state.plant.mesh_LOD_max_capacity, plant_state.plant.mesh_LOD_min_size,
 		Vector3.ZERO, MMI_container, plant_state.plant.mesh_LOD_min_size)
 	octree_manager.LOD_max_distance = plant_state.plant.mesh_LOD_max_distance
 	octree_manager.LOD_kill_distance = plant_state.plant.mesh_LOD_kill_distance
@@ -284,18 +291,19 @@ func set_gardening_collision_mask(_gardening_collision_mask):
 # Create PaintingChanges and a StrokeHandler for this specific brush stroke
 func on_stroke_started(brush:Toolshed_Brush, plant_states:Array):
 	var space_state := get_world().direct_space_state
+	var camera = get_camera()
 	active_painting_changes = PaintingChanges.new()
 	match brush.behavior_brush_type:
 		brush.BrushType.PAINT:
-			active_stroke_handler = SH_Paint.new(brush, plant_states, octree_managers, space_state, gardening_collision_mask)
+			active_stroke_handler = SH_Paint.new(brush, plant_states, octree_managers, space_state, camera, gardening_collision_mask)
 		brush.BrushType.ERASE:
-			active_stroke_handler = SH_Erase.new(brush, plant_states, octree_managers, space_state, gardening_collision_mask)
+			active_stroke_handler = SH_Erase.new(brush, plant_states, octree_managers, space_state, camera, gardening_collision_mask)
 		brush.BrushType.SINGLE:
-			active_stroke_handler = SH_Single.new(brush, plant_states, octree_managers, space_state, gardening_collision_mask)
+			active_stroke_handler = SH_Single.new(brush, plant_states, octree_managers, space_state, camera, gardening_collision_mask)
 		brush.BrushType.REAPPLY:
-			active_stroke_handler = SH_Reapply.new(brush, plant_states, octree_managers, space_state, gardening_collision_mask)
+			active_stroke_handler = SH_Reapply.new(brush, plant_states, octree_managers, space_state, camera, gardening_collision_mask)
 		_:
-			active_stroke_handler = StrokeHandler.new(brush, plant_states, octree_managers, space_state, gardening_collision_mask)
+			active_stroke_handler = StrokeHandler.new(brush, plant_states, octree_managers, space_state, camera, gardening_collision_mask)
 	
 	debug_print_lifecycle("Stroke %s started" % [active_stroke_handler.get_meta("class")])
 
@@ -310,7 +318,7 @@ func on_stroke_updated(brush_data:Dictionary):
 	var msec_start = FunLib.get_msec()
 	
 #	mutex_placement.lock()
-	var changes = active_stroke_handler.get_stroke_update_changes(brush_data, global_transform, self.get_parent().get_parent())
+	var changes = active_stroke_handler.get_stroke_update_changes(brush_data, global_transform)
 	apply_stroke_update_changes(changes)
 #	mutex_placement.unlock()
 	active_painting_changes.append_changes(changes)
@@ -355,6 +363,7 @@ func _action_apply_changes(changes):
 #-------------------------------------------------------------------------------
 
 
+# Replace LOD_Variants inside of a shared array owned by this OctreeManager
 func refresh_octree_shared_LOD_variants(plant_index:int, LOD_variants:Array):
 	if octree_managers.size() > plant_index:
 		octree_managers[plant_index].set_LOD_variants(LOD_variants)
@@ -473,7 +482,7 @@ func _unhandled_input(event):
 # In-game just gets an active viewport's camera
 func get_camera():
 	if is_instance_valid(active_camera_override):
-		return active_camera_override 
+		return active_camera_override
 	else:
 		active_camera_override = null
 		return get_viewport().get_camera()
@@ -561,7 +570,7 @@ func request_debug_redraw():
 		requested_indexes.append(octree_managers.find(octree_manager))
 	
 	if !requested_indexes.empty():
-		emit_signal("req_debug_redraw", octree_managers, requested_indexes)
+		emit_signal("req_debug_redraw", octree_managers)
 	debug_redraw_requested_managers = []
 
 

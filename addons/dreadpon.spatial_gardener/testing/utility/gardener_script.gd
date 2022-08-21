@@ -13,7 +13,7 @@ const PRESET_STROKE_LENGTH_JITTER = [1, 3, 1, 5, 2, 10]
 
 
 
-static func mk_script(paint_body_data:PaintBodyData, coverage_mode:int = CoverageMode.COVER, 
+static func mk_script(paint_body_data:PaintBodyData, coverage_mode:int = CoverageMode.COVER,
 	brush_size_range:Vector2 = Vector2.ZERO, stroke_length_list:Array = []):
 	
 	var script := []
@@ -57,7 +57,7 @@ static func mk_script_actions_center(script:Array, paint_body_data:PaintBodyData
 		PainterAction.new(PainterAction.PainterActionType.END_STROKE))
 
 
-static func mk_script_actions_cover(script:Array, paint_body_data:PaintBodyData, brush_size_range:Vector2, 
+static func mk_script_actions_cover(script:Array, paint_body_data:PaintBodyData, brush_size_range:Vector2,
 	distance_multiplier:float, stroke_length_list:Array):
 	
 	var brush_size_avg := (brush_size_range.x + brush_size_range.y) * 0.5
@@ -111,7 +111,7 @@ static func execute_painter_action(painter:Painter, action:PainterAction):
 		PainterAction.PainterActionType.END_STROKE:
 			painter.stop_brush_stroke()
 		PainterAction.PainterActionType.SET_SIZE:
-			painter.emit_signal("changed_active_brush_size", action.action_value, false)
+			painter.emit_signal('changed_active_brush_prop', 'shape/shape_volume_size', action.action_value, false)
 
 
 static func simulate_painter_move(painter:Painter, paint_body_data:PaintBodyData, fractional_coords:Vector2):
@@ -121,7 +121,8 @@ static func simulate_painter_move(painter:Painter, paint_body_data:PaintBodyData
 	
 	var start = coord_origin + paint_body_data.basis.y * 100.0
 	var end = coord_origin - paint_body_data.basis.y * 100.0
-	painter.raycast_brush_data(painter.paint_brush_node.get_world().direct_space_state, start, end)
+	painter.update_active_brush_data({'start': start, 'end': end})
+	painter.pending_movement_update = true
 
 
 
