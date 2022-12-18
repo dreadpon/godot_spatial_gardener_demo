@@ -29,6 +29,7 @@ __meta__ = {
 }
 mesh = ExtResource( 10 )
 spawned_spatial = ExtResource( 19 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=189178]
 resource_name = "Greenhouse_LODVariant"
@@ -38,6 +39,7 @@ __meta__ = {
 }
 mesh = ExtResource( 15 )
 spawned_spatial = ExtResource( 19 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=189179]
 resource_name = "Greenhouse_LODVariant"
@@ -47,6 +49,7 @@ __meta__ = {
 }
 mesh = ExtResource( 5 )
 spawned_spatial = ExtResource( 19 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=21]
 resource_name = "Greenhouse_Plant"
@@ -65,10 +68,14 @@ density/density_per_units = 100.0
 scale/scale_scaling_type = 0
 scale/scale_range = [ Vector3( 0.8, 0.8, 0.8 ), Vector3( 1.2, 1.2, 1.2 ) ]
 up_vector/up_vector_primary_type = 2
+up_vector/up_vector_primary = Vector3( 0, 0, 0 )
 up_vector/up_vector_secondary_type = 4
+up_vector/up_vector_secondary = Vector3( 0, 0, 0 )
 up_vector/up_vector_blending = 0.2
 fwd_vector/fwd_vector_primary_type = 0
+fwd_vector/fwd_vector_primary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_secondary_type = 0
+fwd_vector/fwd_vector_secondary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_blending = 0.0
 offset/offset_y_range = [ 0.0, 0.0 ]
 offset/offset_jitter_fraction = 0.6
@@ -76,6 +83,8 @@ rotation/rotation_random_y = 180.0
 rotation/rotation_random_x = 0.0
 rotation/rotation_random_z = 0.0
 slope/slope_allowed_range = [ 0.0, 180.0 ]
+import_export/export_button = false
+import_export/export_button = false
 
 [sub_resource type="Resource" id=5]
 resource_name = "Greenhouse_PlantState"
@@ -84,6 +93,7 @@ __meta__ = {
 "class": "Greenhouse_PlantState"
 }
 plant/plant_brush_active = false
+plant/plant_label = ""
 plant/plant = SubResource( 21 )
 
 [sub_resource type="Resource" id=189180]
@@ -94,6 +104,7 @@ __meta__ = {
 }
 mesh = ExtResource( 14 )
 spawned_spatial = ExtResource( 18 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=29]
 resource_name = "Greenhouse_LODVariant"
@@ -103,6 +114,7 @@ __meta__ = {
 }
 mesh = ExtResource( 11 )
 spawned_spatial = ExtResource( 18 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=30]
 resource_name = "Greenhouse_LODVariant"
@@ -112,6 +124,7 @@ __meta__ = {
 }
 mesh = ExtResource( 13 )
 spawned_spatial = ExtResource( 18 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=22]
 resource_name = "Greenhouse_Plant"
@@ -130,10 +143,14 @@ density/density_per_units = 100.0
 scale/scale_scaling_type = 0
 scale/scale_range = [ Vector3( 0.8, 0.8, 0.8 ), Vector3( 1.2, 1.2, 1.2 ) ]
 up_vector/up_vector_primary_type = 2
+up_vector/up_vector_primary = Vector3( 0, 0, 0 )
 up_vector/up_vector_secondary_type = 4
+up_vector/up_vector_secondary = Vector3( 0, 0, 0 )
 up_vector/up_vector_blending = 0.2
 fwd_vector/fwd_vector_primary_type = 0
+fwd_vector/fwd_vector_primary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_secondary_type = 0
+fwd_vector/fwd_vector_secondary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_blending = 0.0
 offset/offset_y_range = [ 0.0, 0.0 ]
 offset/offset_jitter_fraction = 0.6
@@ -141,6 +158,8 @@ rotation/rotation_random_y = 180.0
 rotation/rotation_random_x = 0.0
 rotation/rotation_random_z = 0.0
 slope/slope_allowed_range = [ 0.0, 180.0 ]
+import_export/export_button = false
+import_export/export_button = false
 
 [sub_resource type="Resource" id=10]
 resource_name = "Greenhouse_PlantState"
@@ -149,6 +168,7 @@ __meta__ = {
 "class": "Greenhouse_PlantState"
 }
 plant/plant_brush_active = true
+plant/plant_label = ""
 plant/plant = SubResource( 22 )
 
 [sub_resource type="Resource" id=31]
@@ -159,6 +179,7 @@ __meta__ = {
 }
 mesh = ExtResource( 9 )
 spawned_spatial = ExtResource( 20 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=32]
 resource_name = "Greenhouse_LODVariant"
@@ -168,6 +189,7 @@ __meta__ = {
 }
 mesh = ExtResource( 8 )
 spawned_spatial = ExtResource( 20 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=33]
 resource_name = "Greenhouse_LODVariant"
@@ -177,6 +199,7 @@ __meta__ = {
 }
 mesh = ExtResource( 6 )
 spawned_spatial = ExtResource( 20 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=23]
 resource_name = "Greenhouse_Plant"
@@ -195,10 +218,14 @@ density/density_per_units = 100.0
 scale/scale_scaling_type = 0
 scale/scale_range = [ Vector3( 0.8, 0.8, 0.8 ), Vector3( 1.2, 1.2, 1.2 ) ]
 up_vector/up_vector_primary_type = 2
+up_vector/up_vector_primary = Vector3( 0, 0, 0 )
 up_vector/up_vector_secondary_type = 4
+up_vector/up_vector_secondary = Vector3( 0, 0, 0 )
 up_vector/up_vector_blending = 0.2
 fwd_vector/fwd_vector_primary_type = 0
+fwd_vector/fwd_vector_primary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_secondary_type = 0
+fwd_vector/fwd_vector_secondary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_blending = 0.0
 offset/offset_y_range = [ 0.0, 0.0 ]
 offset/offset_jitter_fraction = 0.6
@@ -206,6 +233,8 @@ rotation/rotation_random_y = 180.0
 rotation/rotation_random_x = 0.0
 rotation/rotation_random_z = 0.0
 slope/slope_allowed_range = [ 0.0, 180.0 ]
+import_export/export_button = false
+import_export/export_button = false
 
 [sub_resource type="Resource" id=15]
 resource_name = "Greenhouse_PlantState"
@@ -214,6 +243,7 @@ __meta__ = {
 "class": "Greenhouse_PlantState"
 }
 plant/plant_brush_active = false
+plant/plant_label = ""
 plant/plant = SubResource( 23 )
 
 [sub_resource type="Resource" id=34]
@@ -224,6 +254,7 @@ __meta__ = {
 }
 mesh = ExtResource( 16 )
 spawned_spatial = ExtResource( 17 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=35]
 resource_name = "Greenhouse_LODVariant"
@@ -233,6 +264,7 @@ __meta__ = {
 }
 mesh = ExtResource( 7 )
 spawned_spatial = ExtResource( 17 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=36]
 resource_name = "Greenhouse_LODVariant"
@@ -242,6 +274,7 @@ __meta__ = {
 }
 mesh = ExtResource( 12 )
 spawned_spatial = ExtResource( 17 )
+cast_shadow = 1
 
 [sub_resource type="Resource" id=24]
 resource_name = "Greenhouse_Plant"
@@ -260,10 +293,14 @@ density/density_per_units = 100.0
 scale/scale_scaling_type = 0
 scale/scale_range = [ Vector3( 0.8, 0.8, 0.8 ), Vector3( 1.2, 1.2, 1.2 ) ]
 up_vector/up_vector_primary_type = 2
+up_vector/up_vector_primary = Vector3( 0, 0, 0 )
 up_vector/up_vector_secondary_type = 4
+up_vector/up_vector_secondary = Vector3( 0, 0, 0 )
 up_vector/up_vector_blending = 0.2
 fwd_vector/fwd_vector_primary_type = 0
+fwd_vector/fwd_vector_primary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_secondary_type = 0
+fwd_vector/fwd_vector_secondary = Vector3( 0, 0, 0 )
 fwd_vector/fwd_vector_blending = 0.0
 offset/offset_y_range = [ 0.0, 0.0 ]
 offset/offset_jitter_fraction = 0.6
@@ -271,6 +308,8 @@ rotation/rotation_random_y = 180.0
 rotation/rotation_random_x = 0.0
 rotation/rotation_random_z = 0.0
 slope/slope_allowed_range = [ 0.0, 180.0 ]
+import_export/export_button = false
+import_export/export_button = false
 
 [sub_resource type="Resource" id=20]
 resource_name = "Greenhouse_PlantState"
@@ -279,6 +318,7 @@ __meta__ = {
 "class": "Greenhouse_PlantState"
 }
 plant/plant_brush_active = false
+plant/plant_label = ""
 plant/plant = SubResource( 24 )
 
 [resource]

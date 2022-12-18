@@ -62,7 +62,7 @@ scene=false
 fullscreen=true
 lightning_quality=1.0
 dof_blur=false
-vsync=false
+vsync=true
 rendering_quality=2.0
 dof_blur_quality=1.0
 
