@@ -1,4 +1,4 @@
-tool
+@tool
 extends "ui_input_field.gd"
 
 
@@ -18,27 +18,35 @@ var value_input:LineEdit = null
 #-------------------------------------------------------------------------------
 
 
-func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}).(__init_val, __labelText, __prop_name, settings):
+func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}):
+	super(__init_val, __labelText, __prop_name, settings)
 	set_meta("class", "UI_IF_IntLineEdit")
 	
 	value_input = LineEdit.new()
 	value_input.name = "value_input"
 	value_input.size_flags_horizontal = SIZE_EXPAND_FILL
-	value_input.size_flags_stretch_ratio = 0.5
-	value_input.rect_min_size.x = 25.0
+#	value_input.size_flags_stretch_ratio = 0.5
+	value_input.custom_minimum_size.x = 25.0
 	value_input.size_flags_vertical = SIZE_SHRINK_CENTER
-	value_input.connect("focus_entered", self, "select_line_edit", [value_input, true])
-	value_input.connect("focus_exited", self, "select_line_edit", [value_input, false])
+	value_input.focus_entered.connect(select_line_edit.bind(value_input, true))
+	value_input.focus_exited.connect(select_line_edit.bind(value_input, false))
 	# focus_exited is our main signal to commit the value in LineEdit
 	# release_focus() is expected to be called when pressing enter and only then we commit the value
-	value_input.connect("focus_exited", self, "focus_lost", [value_input])
-	value_input.connect("gui_input", self, "on_node_received_input", [value_input])
-	ThemeAdapter.assign_node_type(value_input, 'IF_LineEdit')
+	value_input.focus_exited.connect(focus_lost.bind(value_input))
+	value_input.gui_input.connect(on_node_received_input.bind(value_input))
+	value_input.theme_type_variation = "IF_LineEdit"
+	
+	container_box.add_child(value_input)
 
 
-func _ready():
-	value_container.add_child(value_input)
-	_init_ui()
+#func _ready():
+#	super()
+
+
+func _cleanup():
+	super()
+	if is_instance_valid(value_input):
+		value_input.queue_free()
 
 
 
@@ -49,25 +57,26 @@ func _ready():
 
 
 func _update_ui_to_prop_action(prop_action:PropAction, final_val):
-	if prop_action is PA_PropSet || prop_action is PA_PropEdit:
+	if is_instance_of(prop_action, PA_PropSet) || is_instance_of(prop_action, PA_PropEdit):
 		_update_ui_to_val(final_val)
 
 
 func _update_ui_to_val(val):
 	val = _string_to_val(val)
-	value_input.text = String(val)
-	._update_ui_to_val(val)
+	value_input.text = str(val)
+	super._update_ui_to_val(val)
 
 
 func _string_to_val(string) -> int:
 	if string is String:
-		if string.is_valid_integer():
+		if string.is_valid_int():
 			return string.to_int()
 		else:
 			logger.warn("String cannot be converted to int!")
 	elif string is int:
 		return string
 	else:
+#		print(string)
 		logger.warn("Passed variable is not a string!")
 	return 0
 

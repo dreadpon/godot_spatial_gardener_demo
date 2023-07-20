@@ -1,0 +1,7 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "plant_leaf_light"
+albedo_color = Color( 0.462745, 0.713726, 0.176471, 1 )
+metallic_specular = 0.15
+roughness = 0.6

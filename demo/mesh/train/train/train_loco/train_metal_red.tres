@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b4cv8vq51hm8w"]
+
+[resource]
+resource_name = "train_metal_red"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.588222, 0.229082, 0.220069, 1)
+metallic = 0.8
+roughness = 0.5

@@ -1,0 +1,12 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "island_grass"
+flags_ensure_correct_normals = true
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_color = Color( 0.309804, 0.694118, 0.298039, 1 )
+metallic_specular = 0.2
+roughness = 0.8
+backlight_enabled = true
+backlight = Color( 0.309804, 0.694118, 0.298039, 1 )

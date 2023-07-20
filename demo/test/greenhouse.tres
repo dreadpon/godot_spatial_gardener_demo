@@ -1,12 +1,12 @@
-[gd_resource type="Resource" load_steps=13 format=2]
+[gd_resource type="Resource" load_steps=13 format=3]
 
-[ext_resource path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant_state.gd" type="Script" id=1]
-[ext_resource path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd" type="Script" id=2]
-[ext_resource path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_LOD_variant.gd" type="Script" id=3]
-[ext_resource path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" type="Script" id=4]
-[ext_resource path="res://demo/mesh/plants/plants_tree_pine_lod0.mesh" type="ArrayMesh" id=5]
-[ext_resource path="res://demo/mesh/plants/plants_tree_pine_lod2.mesh" type="ArrayMesh" id=6]
-[ext_resource path="res://demo/mesh/plants/plants_tree_pine_lod1.mesh" type="ArrayMesh" id=7]
+[ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant_state.gd" id="1"]
+[ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd" id="2"]
+[ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_LOD_variant.gd" id="3"]
+[ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" id="4"]
+[ext_resource type="ArrayMesh" path="res://demo/mesh/plants/plants_tree_pine_lod0.tres" id="5"]
+[ext_resource type="ArrayMesh" path="res://demo/mesh/plants/plants_tree_pine_lod2.tres" id="6"]
+[ext_resource type="ArrayMesh" path="res://demo/mesh/plants/plants_tree_pine_lod1.tres" id="7"]
 
 
 [sub_resource type="Resource" id=1]

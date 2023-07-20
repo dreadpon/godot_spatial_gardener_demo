@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bnhvcy4v8djkf"]
+
+[node name="train_loco" type="Node3D"]
+
+[node name="root" type="Node3D" parent="."]
+
+[node name="wheel_3" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.30337e-06, 0, 1.30337e-06, 1, 0, 0.664511, 1.26026)
+
+[node name="wheel_4" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.30337e-06, 0, 1.30337e-06, 1, 0, 0.664511, 4.71731)
+
+[node name="wheel_2" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 1.02025, -1.86895)
+
+[node name="wheel_1" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 1.02025, -4.52985)
+
+[node name="piston_root_lt" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 1.63301, 1.02025, 1.98399)
+
+[node name="piston_align_lt" type="Node3D" parent="root/piston_root_lt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15587, 0)
+
+[node name="piston_wheel_lt" type="Node3D" parent="root/piston_root_lt/piston_align_lt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88096, 0)
+
+[node name="piston_root_rt" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, -1.63301, 1.02025, 1.98399)
+
+[node name="piston_align_rt" type="Node3D" parent="root/piston_root_rt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15587, 0)
+
+[node name="piston_wheel_rt" type="Node3D" parent="root/piston_root_rt/piston_align_rt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.88096, 0)
+
+[node name="smoke_2" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65701e-05, 5.72823, 4.35226)
+
+[node name="smoke_1" type="Node3D" parent="root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.65701e-05, 5.72823, 4.35226)

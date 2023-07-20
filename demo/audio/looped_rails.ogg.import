@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/looped_rails.ogg-a8c29eded9c2e1d8514556d757cc1539.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3v205ummamqr"
+path="res://.godot/imported/looped_rails.ogg-a8c29eded9c2e1d8514556d757cc1539.oggvorbisstr"
 
 [deps]
 
 source_file="res://demo/audio/looped_rails.ogg"
-dest_files=[ "res://.import/looped_rails.ogg-a8c29eded9c2e1d8514556d757cc1539.oggstr" ]
+dest_files=["res://.godot/imported/looped_rails.ogg-a8c29eded9c2e1d8514556d757cc1539.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

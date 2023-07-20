@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5nslotykbx8t"]
+
+[resource]
+resource_name = "building_stone_dark"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.429778, 0.464599, 0.513323, 1)
+metallic_specular = 0.2
+roughness = 0.8
+grow_amount = 0.883

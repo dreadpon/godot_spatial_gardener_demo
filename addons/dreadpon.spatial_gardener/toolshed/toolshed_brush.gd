@@ -1,4 +1,4 @@
-tool
+@tool
 extends "../utility/input_field_resource/input_field_resource.gd"
 
 
@@ -31,11 +31,15 @@ var behavior_no_settings_text: String = 'This brush has no additional settings'
 #-------------------------------------------------------------------------------
 
 
-func _init(__behavior_brush_type:int = BrushType.PAINT, __behavior_strength:float = 1.0, __shape_volume_size:float = 1.0, __shape_projection_size:float = 1.0, __behavior_passthrough: bool = false, __behavior_overlap_mode: int = OverlapMode.VOLUME).():
+func _init(__behavior_brush_type:int = BrushType.PAINT, __behavior_strength:float = 1.0, __shape_volume_size:float = 1.0,
+	__shape_projection_size:float = 1.0, __behavior_passthrough: bool = false, __behavior_overlap_mode: int = OverlapMode.VOLUME):
+	
+	input_field_blacklist = ['behavior/behavior_brush_type']
+	
+	super()
 	set_meta("class", "Toolshed_Brush")
 	resource_name = "Toolshed_Brush"
 	
-	input_field_blacklist = ['behavior/behavior_brush_type']
 	behavior_brush_type = __behavior_brush_type
 	behavior_strength = __behavior_strength
 	shape_volume_size = __shape_volume_size
@@ -43,8 +47,7 @@ func _init(__behavior_brush_type:int = BrushType.PAINT, __behavior_strength:floa
 	behavior_passthrough = __behavior_passthrough
 	behavior_overlap_mode = __behavior_overlap_mode
 
-
-func _create_input_field(_base_control:Control, _resource_previewer, prop:String):
+func _create_input_field(_base_control:Control, _resource_previewer, prop:String) -> UI_InputField:
 	var input_field:UI_InputField = null
 	
 	match prop:
@@ -52,19 +55,13 @@ func _create_input_field(_base_control:Control, _resource_previewer, prop:String
 			var max_value = FunLib.get_setting_safe("dreadpons_spatial_gardener/input_and_ui/brush_volume_size_slider_max_value", 100.0)
 			var settings := {"min": 0.0, "max": max_value,  "step": 0.01,  "allow_greater": true,  "allow_lesser": false,}
 			input_field = UI_IF_RealSlider.new(shape_volume_size, "Volume Size", prop, settings)
-#			input_field.add_tracked_property("behavior/behavior_overlap_mode", OverlapMode.VOLUME, behavior_overlap_mode)
-#			input_field.set_visibility_is_tracked(true)
 		"shape/shape_projection_size":
 			var max_value = FunLib.get_setting_safe("dreadpons_spatial_gardener/input_and_ui/brush_projection_size_slider_max_value", 1000.0)
 			var settings := {"min": 1.0, "max": max_value,  "step": 1.0,  "allow_greater": true,  "allow_lesser": false,}
 			input_field = UI_IF_RealSlider.new(shape_projection_size, "Projection Size", prop, settings)
-#			input_field.add_tracked_property("behavior/behavior_overlap_mode", OverlapMode.PROJECTION, behavior_overlap_mode)
-#			input_field.set_visibility_is_tracked(true)
 		"behavior/behavior_strength":
 			var settings := {"min": 0.0, "max": 1.0,  "step": 0.01,  "allow_greater": false,  "allow_lesser": false,}
 			input_field = UI_IF_RealSlider.new(behavior_strength, "Strength", prop, settings)
-#			input_field.add_tracked_property("behavior/behavior_overlap_mode", OverlapMode.VOLUME, behavior_overlap_mode)
-#			input_field.set_visibility_is_tracked(true)
 		"behavior/behavior_passthrough":
 			input_field = UI_IF_Bool.new(behavior_passthrough, "Passthrough", prop)
 		"behavior/behavior_overlap_mode":
@@ -198,7 +195,7 @@ func _filter_prop_dictionary(prop_dict: Dictionary) -> Dictionary:
 					])
 	
 	for prop in props_to_hide:
-		prop_dict[prop].usage = PROPERTY_USAGE_NOEDITOR
+		prop_dict[prop].usage = PROPERTY_USAGE_NO_EDITOR
 	
 	return prop_dict
 
@@ -214,21 +211,21 @@ func _get_prop_dictionary():
 		},
 		"shape/shape_volume_size" : {
 			"name": "shape/shape_volume_size",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.0,100.0,0.01,or_greater"
 		},
 		"shape/shape_projection_size" : {
 			"name": "shape/shape_projection_size",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "1.0,1000.0,1.0,or_greater"
 		},
 		"behavior/behavior_strength" : {
 			"name": "behavior/behavior_strength",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.0,1.0,0.01"

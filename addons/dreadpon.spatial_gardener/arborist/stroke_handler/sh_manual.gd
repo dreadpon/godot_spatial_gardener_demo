@@ -1,4 +1,4 @@
-tool
+@tool
 extends "stroke_handler.gd"
 
 
@@ -9,14 +9,18 @@ extends "stroke_handler.gd"
 # Meant to be used from code to add or remove instances
 
 
-func _init().(
-	null, [], [], null, null, -1):
+func _init():
+	super(null, [], [], null, null, -1)
 	
 	set_meta("class", "SH_Manual")
 
 
-func add_instance(placement: Vector3, surface_normal: Vector3, transform: Transform, plant_index: int, painting_changes: PaintingChanges):
+func add_instance(placement: Vector3, surface_normal: Vector3, transform: Transform3D, plant_index: int, painting_changes: PaintingChanges):
 	var placeform:Array = Placeform.mk(placement, surface_normal, transform)
+	painting_changes.add_change(PaintingChanges.ChangeType.APPEND, plant_index, placeform, placeform) 
+
+
+func add_instance_placeform(placeform: Array, plant_index: int, painting_changes: PaintingChanges):
 	painting_changes.add_change(PaintingChanges.ChangeType.APPEND, plant_index, placeform, placeform) 
 
 

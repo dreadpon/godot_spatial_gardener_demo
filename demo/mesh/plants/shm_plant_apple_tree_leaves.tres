@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://te6j4c3045rj"]
+
+[ext_resource type="Shader" path="res://demo/mesh/plants/sh_double_wind_opaque.gdshader" id="1"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1")
+shader_parameter/albedo = Color(0.27451, 0.545098, 0.352941, 1)
+shader_parameter/specular = 0.15
+shader_parameter/metallic = 0.0
+shader_parameter/roughness = 0.6
+shader_parameter/backlight = Color(0, 0, 0, 1)
+shader_parameter/sway1_speed = 0.5
+shader_parameter/sway1_strength = Vector3(1, 0.1, 1)
+shader_parameter/sway1_phase_len = 0.0
+shader_parameter/sway1_time_offset_tile_size = 10.0
+shader_parameter/sway2_speed = 10.0
+shader_parameter/sway2_strength = Vector3(0.02, 0.02, 0.02)
+shader_parameter/sway2_phase_len = 8.0
+shader_parameter/sway2_time_offset_tile_size = -1.0

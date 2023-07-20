@@ -1,4 +1,4 @@
-tool
+@tool
 extends "ui_input_field.gd"
 
 
@@ -26,7 +26,7 @@ var element_display_size:int = 100
 var _base_control:Control = null
 var _resource_previewer = null
 
-var file_dialog:FileDialog = null
+var file_dialog:ConfirmationDialog = null
 
 
 signal requested_press
@@ -42,27 +42,38 @@ signal requested_edit_input_fields
 #-------------------------------------------------------------------------------
 
 
-func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}).(__init_val, __labelText, __prop_name, settings):
+func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}):
+	super(__init_val, __labelText, __prop_name, settings)
 	set_meta("class", "UI_IF_ThumbnailArray")
 	
-	_base_control = settings._base_control
 	accepted_classes = settings.accepted_classes
 	element_interaction_flags = settings.element_interaction_flags
-	_resource_previewer = settings._resource_previewer
 	element_display_size = settings.element_display_size
-	file_dialog = FileDialog.new()
-	file_dialog.mode = FileDialog.MODE_OPEN_FILE
+
+	if Engine.is_editor_hint():
+		# https://github.com/godotengine/godot/issues/73525
+		file_dialog = (EditorFileDialog as Variant).new()
+	else:
+		file_dialog = FileDialog.new()
+	file_dialog.file_mode = file_dialog.FILE_MODE_OPEN_FILE
 	add_file_dialog_filter()
 	file_dialog.current_dir = "res://"
 	file_dialog.current_path = "res://"
-	file_dialog.connect("popup_hide", self, "file_dialog_hidden")
+	file_dialog.close_requested.connect(file_dialog_hidden)
 	
-	value_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	value_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	value_container.alignment = BoxContainer.ALIGN_BEGIN
+#	value_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
+#	value_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+#	value_container.alignment = BoxContainer.ALIGNMENT_BEGIN
+
+
+func prepare_input_field(__init_val, __base_control:Control, __resource_previewer):
+	super(__init_val, __base_control, __resource_previewer)
+	_base_control = __base_control
+	_resource_previewer = __resource_previewer
 
 
 func _enter_tree():
+	super()
 	if _base_control:
 		_base_control.add_child(file_dialog)
 
@@ -71,6 +82,13 @@ func _exit_tree():
 	if _base_control:
 		if _base_control.get_children().has(file_dialog):
 			_base_control.remove_child(file_dialog)
+			file_dialog.queue_free()
+
+
+func _cleanup():
+	super()
+	if is_instance_valid(file_dialog):
+		file_dialog.queue_free()
 
 
 # Add filters for all accepted classes
@@ -107,7 +125,7 @@ func set_thumb_interaction_feature_with_data(interaction_flag:int, val, data:Dic
 
 # Shorthand for setting action thumbnail features
 func set_thumb_interaction_feature(thumb, interaction_flag:int, val):
-	if thumb && !(thumb is UI_ActionThumbnailCreateInst_GD):
+	if thumb && !is_instance_of(thumb, UI_ActionThumbnailCreateInst_GD):
 		thumb.set_features_val_to_flag(interaction_flag, val)
 
 
@@ -120,24 +138,24 @@ func set_thumb_interaction_feature(thumb, interaction_flag:int, val):
 
 # Generate a regular action thumbnail
 func _generate_thumbnail():
-	var thumb := UI_ActionThumbnail.instance()
+	var thumb := UI_ActionThumbnail.instantiate()
 	thumb.init(element_display_size, int(float(element_display_size) * 0.24), element_interaction_flags)
-	thumb.connect("requested_delete", self, "on_requested_delete", [thumb])
-	thumb.connect("requested_clear", self, "on_requested_clear", [thumb])
-	thumb.connect("requested_set_dialog", self, "on_set_dialog", [thumb])
-	thumb.connect("requested_set_drag", self, "on_set_drag", [thumb])
-	thumb.connect("requested_press", self, "on_press", [thumb])
-	thumb.connect("requested_check", self, "on_check", [thumb])
-	thumb.connect("requested_label_edit", self, "on_label_edit", [thumb])
+	thumb.requested_delete.connect(on_requested_delete.bind(thumb))
+	thumb.requested_clear.connect(on_requested_clear.bind(thumb))
+	thumb.requested_set_dialog.connect(on_set_dialog.bind(thumb))
+	thumb.requested_set_drag.connect(on_set_drag.bind(thumb))
+	thumb.requested_press.connect(on_press.bind(thumb))
+	thumb.requested_check.connect(on_check.bind(thumb))
+	thumb.requested_label_edit.connect(on_label_edit.bind(thumb))
 	
 	return thumb
 
 
 # Generate an action thumbnail that creates new action thumbnails
 func _generate_thumbnail_create_inst():
-	var thumb := UI_ActionThumbnailCreateInst.instance()
+	var thumb := UI_ActionThumbnailCreateInst.instantiate()
 	thumb.init(element_display_size, float(element_display_size) * 0.5, PRESET_NEW)
-	thumb.connect("requested_press", self, "on_requested_add")
+	thumb.requested_press.connect(on_requested_add)
 	
 	return thumb
 
@@ -167,7 +185,7 @@ func on_requested_clear(thumb):
 # Action thumbnail callback
 func on_set_dialog(thumb):
 	file_dialog.popup_centered_ratio(0.5)
-	file_dialog.connect("file_selected", self, "on_file_selected", [thumb])
+	file_dialog.file_selected.connect(on_file_selected.bind(thumb))
 
 
 # Action thumbnail callback
@@ -198,8 +216,8 @@ func on_press(thumb):
 
 
 func file_dialog_hidden():
-	if file_dialog.is_connected("file_selected", self, "on_file_selected"):
-		file_dialog.disconnect("file_selected", self, "on_file_selected")
+	if file_dialog.file_selected.is_connected(on_file_selected):
+		file_dialog.file_selected.disconnect(on_file_selected)
 
 
 # Load and try to assign a choosen resource
@@ -233,13 +251,16 @@ func set_res_for_thumbnail(res:Resource, thumb):
 
 
 # Queue a resource for preview generation in a resource previewer
-func _queue_thumbnail(res:Resource, thumb):
-	if !is_inside_tree(): return
+func _queue_thumbnail(res:Resource, thumb: Node):
+	if !is_node_ready() || !is_instance_valid(thumb): return
+#	print("_queue_thumbnail")
 	var resource_path = _get_resource_path_for_resource(res)
 	if resource_path == "":
 		thumb.set_thumbnail(null)
 		if res:
 			thumb.set_alt_text(res.resource_name)
+		else:
+			thumb.set_alt_text("None")
 	else:
 		_resource_previewer.queue_resource_preview(resource_path, self, "try_assign_to_thumbnail", 
 			{'thumb': thumb, 'thumb_res': res})
@@ -262,8 +283,8 @@ func _get_resource_path_for_resource(resource:Resource):
 
 
 # Callback to assign a thumbnail after it was generated
-func try_assign_to_thumbnail(path:String, preview:Texture, thumbnail_preview:Texture, userdata: Dictionary):
-	if !is_inside_tree(): return
+func try_assign_to_thumbnail(path:String, preview:Texture2D, thumbnail_preview:Texture2D, userdata: Dictionary):
+	if !is_node_ready(): return
 	if preview:
 		userdata.thumb.set_thumbnail(preview)
 	else:

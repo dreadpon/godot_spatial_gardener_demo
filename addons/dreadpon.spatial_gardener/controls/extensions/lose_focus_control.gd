@@ -1,4 +1,4 @@
-tool
+@tool
 extends LineEdit
 
 
@@ -6,8 +6,8 @@ extends LineEdit
 # Release focus from a child node when pressing enter
 func _gui_input(event):
 	if has_focus():
-		if event is InputEventKey && !event.pressed:
-			if event.scancode == KEY_ENTER || event.scancode == KEY_ESCAPE:
+		if is_instance_of(event, InputEventKey) && !event.pressed:
+			if event.keycode == KEY_ENTER || event.keycode == KEY_ESCAPE:
 				release_focus()
-				if self is LineEdit:
-					caret_position = 0
+				if is_instance_of(self, LineEdit):
+					caret_column = 0

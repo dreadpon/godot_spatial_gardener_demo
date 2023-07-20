@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bmvvag71vs5li"]
+
+[resource]
+resource_name = "building_stone_light"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.50801, 0.550947, 0.573323, 1)
+metallic_specular = 0.2
+roughness = 0.8

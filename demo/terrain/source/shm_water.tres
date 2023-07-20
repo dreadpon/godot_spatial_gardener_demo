@@ -1,16 +1,16 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://demo/mesh/plants/sh_single_wind_opaque.shader" type="Shader" id=1]
+[ext_resource path="res://demo/mesh/plants/sh_single_wind_opaque.gdshader" type="Shader" id=1]
 
 
 [resource]
 shader = ExtResource( 1 )
-shader_param/albedo = Color( 0.215686, 0.807843, 0.772549, 1 )
-shader_param/specular = 1.0
-shader_param/metallic = 0.0
-shader_param/roughness = 0.0
-shader_param/transmission = Color( 0.215686, 0.807843, 0.772549, 1 )
-shader_param/sway1_speed = 2.0
-shader_param/sway1_strength = Vector3( 0.002, 0.002, 0.002 )
-shader_param/sway1_phase_len = 128.0
-shader_param/sway1_time_offset_tile_size = 100.0
+shader_parameterseter/albedo = Color( 0.215686, 0.807843, 0.772549, 1 )
+shader_parameterseter/specular = 1.0
+shader_parameterseter/metallic = 0.0
+shader_parameterseter/roughness = 0.0
+shader_parameterseter/backlight = Color( 0.215686, 0.807843, 0.772549, 1 )
+shader_parameterseter/sway1_speed = 2.0
+shader_parameterseter/sway1_strength = Vector3( 0.002, 0.002, 0.002 )
+shader_parameterseter/sway1_phase_len = 128.0
+shader_parameterseter/sway1_time_offset_tile_size = 100.0

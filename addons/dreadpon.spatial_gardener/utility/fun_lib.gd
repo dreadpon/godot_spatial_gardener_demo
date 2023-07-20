@@ -1,4 +1,4 @@
-tool
+@tool
 
 
 #-------------------------------------------------------------------------------
@@ -19,23 +19,30 @@ enum TimeTrimMode {NONE, EXACT, EXTRA_ONE, KEEP_ONE, KEEP_TWO, KEEP_THREE}
 
 
 # Remove all children from node and free them
-static func clear_children(node):
+static func free_children(node):
 	if !is_instance_valid(node): return
 	for child in node.get_children().duplicate():
 		node.remove_child(child)
 		child.queue_free()
 
 
+# Remove all children from node
+static func remove_children(node):
+	if !is_instance_valid(node): return
+	for child in node.get_children().duplicate():
+		node.remove_child(child)
+
+
 # A shorthand for checking/connecting a signal
 # Kinda wish Godot had a built-in one
-static func ensure_signal(source:Object, _signal:String, target:Object, method:String, binds:Array = [], flags:int = 0):
-	if !source.is_connected(_signal, target, method):
-		source.connect(_signal, target, method, binds, flags)
+static func ensure_signal(_signal:Signal, callable: Callable, binds:Array = [], flags:int = 0):
+	if !_signal.is_connected(callable):
+		_signal.connect(callable.bindv(binds), flags)
 
 
-static func disconnect_all(obj: Object, signal_name: String):
-	for connection_data in obj.get_signal_connection_list(signal_name):
-		obj.disconnect(signal_name, connection_data.target, connection_data.method)
+static func disconnect_all(_signal: Signal):
+	for connection_data in _signal.get_connections():
+		connection_data["signal"].disconnect(connection_data.callable)
 
 
 
@@ -65,15 +72,52 @@ static func make_hint_string(array:Array):
 	return string
 
 
-static func str_to_vec3(string: String) -> Vector3:
-	var split = string.trim_prefix('(').trim_suffix(')').split(', ')
-	return Vector3(split[0], split[1], split[2])
+static func vec3_to_str(val: Vector3) -> String:
+	return "%f, %f, %f" % [val.x, val.y, val.z]
 
 
-static func str_to_transform(string: String) -> Transform:
-	string = string.replace(' - ', ', ')
-	var split = string.split(', ')
-	return Transform(Vector3(split[0], split[3], split[6]), Vector3(split[1], split[4], split[7]), Vector3(split[2], split[5], split[8]), Vector3(split[9], split[10], split[11]))
+static func transform3d_to_str(val: Transform3D) -> String:
+	return "%f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f, %f" % [
+		val.basis.x.x, val.basis.x.y, val.basis.x.z,
+		val.basis.y.x, val.basis.y.y, val.basis.y.z,
+		val.basis.z.x, val.basis.z.y, val.basis.z.z,
+		val.origin.x, val.origin.y, val.origin.z
+		]
+
+
+static func str_to_vec3(string: String, str_version: int) -> Vector3:
+	match str_version:
+		0:
+			var split = string.trim_prefix('(').trim_suffix(')').split_floats(', ')
+			return Vector3(split[0], split[1], split[2])
+		1:
+			var split = string.split_floats(', ')
+			return Vector3(split[0], split[1], split[2])
+		_:
+			push_error("Unsupported str version: %d" % [str_version])
+			return Vector3.ZERO
+
+
+static func str_to_transform3d(string: String, str_version: int) -> Transform3D:
+	match str_version:
+		0:
+			string = string.replace(' - ', ', ')
+			var split = string.split_floats(', ')
+			return Transform3D(
+				Vector3(split[0], split[3], split[6]), 
+				Vector3(split[1], split[4], split[7]), 
+				Vector3(split[2], split[5], split[8]), 
+				Vector3(split[9], split[10], split[11]))
+		1:
+			var split = string.split_floats(', ')
+			return Transform3D(
+				Vector3(split[0], split[3], split[6]), 
+				Vector3(split[1], split[4], split[7]), 
+				Vector3(split[2], split[5], split[8]), 
+				Vector3(split[9], split[10], split[11]))
+		_:
+			push_error("Unsupported str version: %d" % [str_version])
+			return Transform3D()
 
 
 
@@ -127,7 +171,7 @@ static func vector_tri_lerp(from:Vector3, to:Vector3, weight:Vector3):
 
 
 static func get_msec():
-	return OS.get_ticks_msec()
+	return Time.get_ticks_msec()
 
 
 static func msec_to_time(msec:int = -1, include_msec:bool = true, trim_mode:int = TimeTrimMode.NONE):
@@ -141,23 +185,23 @@ static func msec_to_time(msec:int = -1, include_msec:bool = true, trim_mode:int 
 			match trim_mode:
 				TimeTrimMode.EXACT:
 					if time_units[i] <= 0:
-						time_units.remove(i)
+						time_units.remove_at(i)
 					else:
 						break
 				TimeTrimMode.EXTRA_ONE:
 					if  time_units[i] > 0:
 						break
 					if i + 1 < time_units.size() && time_units[i + 1] <= 0:
-						time_units.remove(i + 1)
+						time_units.remove_at(i + 1)
 				TimeTrimMode.KEEP_ONE:
 					if i >= 1:
-						time_units.remove(i)
+						time_units.remove_at(i)
 				TimeTrimMode.KEEP_TWO:
 					if i >= 2:
-						time_units.remove(i)
+						time_units.remove_at(i)
 				TimeTrimMode.KEEP_THREE:
 					if i >= 3:
-						time_units.remove(i)
+						time_units.remove_at(i)
 			
 	
 	
@@ -176,10 +220,7 @@ static func msec_to_time(msec:int = -1, include_msec:bool = true, trim_mode:int 
 
 
 static func print_system_time(suffix:String = ""):
-	var time = OS.get_time()
-	var msecond = OS.get_ticks_msec() % 1000
-	var time_formatted = String(time.hour) +":"+String(time.minute)+":"+String(time.second)+":"+String(msecond)
-	print(time_formatted + " " + suffix)
+	print("[%s] : %s" % [Time.get_time_string_from_system(), suffix])
 
 
 
@@ -191,7 +232,7 @@ static func print_system_time(suffix:String = ""):
 
 static func get_obj_class_string(obj:Object) -> String:
 	if obj == null: return ""
-	assert(obj is Object)
+	assert(is_instance_of(obj, Object))
 	if obj.has_meta("class"):
 		return obj.get_meta("class")
 	elif obj.get_script():
@@ -203,7 +244,7 @@ static func get_obj_class_string(obj:Object) -> String:
 static func are_same_class(one:Object, two:Object) -> bool:
 	if one == null: return false
 	if two == null: return false
-	assert(one is Object && two is Object)
+	assert(is_instance_of(one, Object) && is_instance_of(two, Object))
 	
 #	print("1 %s, 2 %s" % [one.get_class(), two.get_class()])
 	
@@ -220,13 +261,13 @@ static func are_same_class(one:Object, two:Object) -> bool:
 
 static func obj_is_script(obj:Object, script:Script) -> bool:
 	if obj == null: return false
-	assert(obj is Object)
+	assert(is_instance_of(obj, Object))
 	return obj.get_script() && obj.get_script() == script
 
 
 static func obj_is_class_string(obj:Object, class_string:String) -> bool:
 	if obj == null: return false
-	assert(obj is Object)
+	assert(is_instance_of(obj, Object))
 	
 	if obj.get_class() == class_string:
 		return true
@@ -260,11 +301,13 @@ static func save_res(res:Resource, dir:String, res_name:String):
 	assert(res)
 	var logger = Logger.get_for_string("FunLib")
 	var full_path = combine_dir_and_file(dir, res_name)
-	
+	if !is_dir_valid(dir): 
+		logger.warn("Unable to save '%s', directory is invalid!" % [full_path])
+		return 
 	# Abort explicit saving if our resource and an existing one are the same instance
 	# Since it will be saved on 'Ctrl+S' implicitly by the editor
 	# And allows reverting resource by exiting the editor
-	var loaded_res = load_res(dir, res_name, null, false)
+	var loaded_res = load_res(dir, res_name, false, true)
 	if res == loaded_res:
 		return
 	
@@ -275,43 +318,48 @@ static func save_res(res:Resource, dir:String, res_name:String):
 	# Taking over path and subpaths is still required
 	# Still keeping FLAG_CHANGE_PATH in case we want to save to a different location
 	res.take_over_path(full_path)
-	var err = ResourceSaver.save(full_path, res, ResourceSaver.FLAG_CHANGE_PATH | ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS)
+	var err = ResourceSaver.save(res, full_path, ResourceSaver.FLAG_CHANGE_PATH | ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS)
 	if err != OK:
 		logger.error("Could not save '%s', error %s!" % [full_path, Globals.get_err_message(err)])
 
 
 # Passing 'true' as 'no_cache' is important to bypass this cache
 # We use it by default, but want to allow loading a cache to check if resource exists at path
-static func load_res(dir:String, res_name:String, default_res:Resource = null, no_cache: bool = true) -> Resource:
+static func load_res(dir:String, res_name:String, no_cache: bool = true, silent: bool = false) -> Resource:
 	var full_path = combine_dir_and_file(dir, res_name)
 	var res = null
 	var logger = Logger.get_for_string("FunLib")
 	
 	if ResourceLoader.exists(full_path):
-		res = ResourceLoader.load(full_path, "", no_cache)
-	elif is_instance_valid(default_res):
-		res = default_res.duplicate(true)
-		logger.info("Path '%s', doesn't exist. Using default resource." % [full_path])
+		res = ResourceLoader.load(full_path, "", ResourceLoader.CacheMode.CACHE_MODE_REPLACE if no_cache else ResourceLoader.CacheMode.CACHE_MODE_REUSE)
 	else:
-		logger.warn("Path '%s', doesn't exist. No default resource exists either!" % [full_path])
+		if !silent: logger.warn("Path '%s', doesn't exist!" % [full_path])
 	
 	if !res:
 		if !is_dir_valid(dir) || res_name == "":
-			logger.warn("Could not load '%s', error %s!" % [full_path, Globals.get_err_message(ERR_FILE_BAD_PATH)])
+			if !silent: logger.warn("Could not load '%s', error %s!" % [full_path, Globals.get_err_message(ERR_FILE_BAD_PATH)])
 		else:
-			logger.warn("Could not load '%s'!" % [full_path])
-	
+			if !silent: logger.warn("Could not load '%s'!" % [full_path])
 	return res
 
 
+static func remove_res(dir:String, res_name:String):
+	var full_path = combine_dir_and_file(dir, res_name)
+	var abs_path = ProjectSettings.globalize_path(full_path)
+	var err = DirAccess.remove_absolute(abs_path)
+	var logger = Logger.get_for_string("FunLib")
+	if err != OK:
+		logger.error("Could not remove '%s', error %s!" % [abs_path, Globals.get_err_message(err)])
+
+
 static func combine_dir_and_file(dir_path: String, file_name: String):
-	if !dir_path.ends_with("/"):
+	if !dir_path.is_empty() && !dir_path.ends_with("/"):
 		dir_path += "/"
 	return "%s%s" % [dir_path, file_name]
 
 
 static func is_dir_valid(dir):
-	return dir != "" && dir != "/" && Directory.new().dir_exists(dir)
+	return !dir.is_empty() && dir != "/" && DirAccess.dir_exists_absolute(dir)
 
 
 
@@ -322,11 +370,9 @@ static func is_dir_valid(dir):
 
 
 static func remove_dir_recursive(path, keep_first:bool = false) -> bool:
-	var dir = Directory.new()
-	
-	var error = dir.open(path)
-	if error == OK:
-		dir.list_dir_begin(true)
+	var dir = DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
@@ -350,13 +396,12 @@ static func iterate_files(dir_path: String, deep: bool, obj: Object, method_name
 	if !obj.has_method(method_name): 
 		assert('%s does not have a method named "%s"!' % [str(obj), method_name])
 		return
-	var dir = Directory.new()
 	
-	var error = dir.open(dir_path)
+	var dir = DirAccess.open(dir_path)
 	if dir_path.ends_with('/'):
 		dir_path = dir_path.trim_suffix('/')
-	if error == OK:
-		dir.list_dir_begin(true)
+	if dir:
+		dir.list_dir_begin()
 		var full_path = ''
 		var file_name = dir.get_next()
 		while file_name != '':

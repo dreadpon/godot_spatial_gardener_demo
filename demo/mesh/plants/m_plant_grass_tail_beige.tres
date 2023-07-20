@@ -1,0 +1,9 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "plant_grass_tail_beige"
+params_cull_mode = 2
+albedo_color = Color( 0.870588, 0.819608, 0.541176, 1 )
+metallic_specular = 0.3
+backlight_enabled = true
+backlight = Color( 0.870588, 0.819608, 0.541176, 1 )

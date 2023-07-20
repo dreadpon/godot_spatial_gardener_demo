@@ -1,4 +1,4 @@
-tool
+@tool
 extends "stroke_handler.gd"
 
 
@@ -6,7 +6,7 @@ extends "stroke_handler.gd"
 # Handle a reapply transforms brush stroke
 #-------------------------------------------------------------------------------
 
-# Get overlapping placements and generate a new Transform for each of them
+# Get overlapping placements and generate a new Transform3D for each of them
 
 
 # We keep references to placements we already reapplied as to not continously regenerate them
@@ -15,19 +15,19 @@ var reapplied_octree_members:Array
 
 
 
-func _init(_brush:Toolshed_Brush, _plant_states:Array, _octree_managers:Array, _space_state:PhysicsDirectSpaceState, _camera: Camera, _collision_mask:int).(
-	_brush, _plant_states, _octree_managers, _space_state, _camera, _collision_mask):
+func _init(_brush:Toolshed_Brush, _plant_states:Array, _octree_managers:Array, _space_state:PhysicsDirectSpaceState3D, _camera: Camera3D, _collision_mask:int):
+	super(_brush, _plant_states, _octree_managers, _space_state, _camera, _collision_mask)
 	
 	set_meta("class", "SH_Reapply")
 	reapplied_octree_members = []
 
 
 func volume_get_stroke_update_changes(brush_data:Dictionary, plant:Greenhouse_Plant, plant_index:int, octree_manager:MMIOctreeManager, 
-	brush_placement_area:BrushPlacementArea, container_transform:Transform, painting_changes:PaintingChanges):
+	brush_placement_area:BrushPlacementArea, container_transform:Transform3D, painting_changes:PaintingChanges):
 	
 	# We detect overlaps first
 	brush_placement_area.init_placement_overlaps(octree_manager)
-	# For each overlap we generate a new Transform and add it to the PaintingChange
+	# For each overlap we generate a new Transform3D and add it to the PaintingChange
 	create_painting_changes(brush_placement_area.overlapped_member_data, plant, plant_index, octree_manager, painting_changes)
 
 

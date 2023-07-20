@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://1w2nwj5xx65f"]
+
+[resource]
+resource_name = "train_wood_gold"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.905883, 0.682353, 0.227451, 1)
+metallic = 0.3
+roughness = 0.8

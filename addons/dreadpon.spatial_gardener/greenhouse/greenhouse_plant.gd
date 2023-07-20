@@ -1,4 +1,4 @@
-tool
+@tool
 extends "../utility/input_field_resource/input_field_resource.gd"
 
 
@@ -85,24 +85,28 @@ var rotation_random_z:float = 0.0
 # "Sloped" in relation to the chosen primary up vector
 var slope_allowed_range:Array = [0.0, 180.0]
 
-# A dummy variable to export plant instance transforms
-var import_export_import_button:bool = false
-# A dummy variable to import plant instance transforms
-var import_export_export_button:bool = false
+# A dummy variable to export plant data
+var import_export_import_plant_data_button:bool = false
+# A dummy variable to import plant data
+var import_export_export_plant_data_button:bool = false
+# A dummy variable to export greenhouse data
+var import_export_import_greenhouse_data_button:bool = false
+# A dummy variable to import greenhouse data
+var import_export_export_greenhouse_data_button:bool = false
 
 
 var total_instances_in_gardener:int = 0
-var _base_control = null
-var _resource_previewer = null
 var select_container = null
 var settings_container = null
 
 
+signal prop_action_executed_on_LOD_variant(prop_action, final_val, LOD_variant)
 signal req_octree_reconfigure
 signal req_octree_recenter
-signal req_import_transforms
-signal req_export_transforms
-signal prop_action_executed_on_LOD_variant(prop_action, final_val, LOD_variant)
+signal req_import_plant_data
+signal req_export_plant_data
+signal req_import_greenhouse_data
+signal req_export_greenhouse_data
 
 
 
@@ -112,20 +116,19 @@ signal prop_action_executed_on_LOD_variant(prop_action, final_val, LOD_variant)
 #-------------------------------------------------------------------------------
 
 
-func _init().():
+func _init():
+	input_field_blacklist = ["mesh/mesh_LOD_max_capacity", "mesh/mesh_LOD_min_size"]
+	
+	super()
 	set_meta("class", "Greenhouse_Plant")
 	resource_name = "Greenhouse_Plant"
 	
-	input_field_blacklist = ["mesh/mesh_LOD_max_capacity", "mesh/mesh_LOD_min_size"]
 	_add_prop_dependency("mesh/mesh_LOD_kill_distance", ["mesh/mesh_LOD_max_distance"])
 	_add_prop_dependency("scale/scale_range", ["scale/scale_scaling_type"])
 	_add_res_edit_source_array("mesh/mesh_LOD_variants", "mesh/selected_for_edit_resource")
 
 
-func _create_input_field(__base_control:Control, __resource_previewer, prop:String) -> UI_InputField:
-	_base_control = __base_control
-	_resource_previewer = __resource_previewer
-	
+func _create_input_field(_base_control:Control, _resource_previewer, prop:String) -> UI_InputField:
 	var input_field:UI_InputField = null
 	match prop:
 		"mesh/mesh_LOD_variants":
@@ -133,15 +136,16 @@ func _create_input_field(__base_control:Control, __resource_previewer, prop:Stri
 			accepted_classes.append_array(Globals.MESH_CLASSES)
 			var settings := {
 				"add_create_inst_button": true,
-				"_base_control": _base_control,
 				"accepted_classes": accepted_classes,
 				"element_display_size": 75 * FunLib.get_setting_safe("dreadpons_spatial_gardener/input_and_ui/greenhouse_thumbnail_scale", 1.0),
 				"element_interaction_flags": UI_IF_ThumbnailArray.PRESET_LOD_VARIANT,
-				"_resource_previewer": _resource_previewer,
 				}
 			input_field = UI_IF_ThumbnailArray.new(mesh_LOD_variants, "LOD Variants", prop, settings)
 		"mesh/selected_for_edit_resource":
-			var settings := {"_base_control": _base_control, "_resource_previewer": _resource_previewer, "label_visibility": false, "tab": 1}
+			var settings := {
+				"label_visibility": false, 
+				"tab": 1
+				}
 			input_field = UI_IF_Object.new(selected_for_edit_resource, "LOD Variant", prop, settings)
 		"mesh/mesh_LOD_max_distance":
 			var max_value = FunLib.get_setting_safe("dreadpons_spatial_gardener/input_and_ui/plant_max_distance_slider_max_value", 1000.0)
@@ -160,15 +164,18 @@ func _create_input_field(__base_control:Control, __resource_previewer, prop:Stri
 			input_field = UI_IF_RealSlider.new(mesh_LOD_min_size, "Min node size", prop, settings)
 		"octree/octree_reconfigure_button":
 			var bound_input_fields:Array = create_input_fields(
-				_base_control, _resource_previewer, ["mesh/mesh_LOD_max_capacity", "mesh/mesh_LOD_min_size"])
-			var settings := {"button_text": "Configure Octree", "_base_control": _base_control, "bound_input_fields": bound_input_fields}
+				_base_control, _resource_previewer, ["mesh/mesh_LOD_max_capacity", "mesh/mesh_LOD_min_size"]).values()
+			var settings := {
+				"button_text": "Configure Octree", 
+				"bound_input_fields": bound_input_fields
+				}
 			input_field = UI_IF_ApplyChanges.new(octree_reconfigure_button, "Octree Configuration", prop, settings)
-			input_field.connect("applied_changes", self, "on_dialog_if_applied_changes", [input_field])
-			input_field.connect("cancelled_changes", self, "on_dialog_if_cancelled_changes", [input_field])
+			input_field.applied_changes.connect(on_dialog_if_applied_changes.bind(input_field))
+			input_field.canceled_changes.connect(on_dialog_if_canceled_changes.bind(input_field))
 		"octree/octree_recenter_button":
 			var settings := {"button_text": "Recenter Octree"}
 			input_field = UI_IF_Button.new(octree_recenter_button, "Octree Centring", prop, settings)
-			input_field.connect("pressed", self, "on_if_button", [input_field])
+			input_field.pressed.connect(on_if_button.bind(input_field))
 		#======================================================
 		"density/density_per_units":
 			var max_value = FunLib.get_setting_safe("dreadpons_spatial_gardener/input_and_ui/plant_density_slider_max_value", 2000.0)
@@ -199,8 +206,6 @@ func _create_input_field(__base_control:Control, __resource_previewer, prop:Stri
 				"representation_type": UI_IF_MultiRange.RepresentationType.VECTOR,
 				}
 			input_field = UI_IF_MultiRange.new(up_vector_primary, "Up-Vector Primary", prop, settings)
-#			input_field.add_tracked_property("up_vector/up_vector_primary_type", DirectionVectorType.CUSTOM, up_vector_primary_type)
-#			input_field.set_visibility_is_tracked(true)
 		"up_vector/up_vector_secondary_type":
 			var settings := {"enum_list": FunLib.capitalize_string_array(DirectionVectorType.keys())}
 			input_field = UI_IF_Enum.new(up_vector_secondary_type, "Secondary Up-Vector", prop, settings)
@@ -211,8 +216,6 @@ func _create_input_field(__base_control:Control, __resource_previewer, prop:Stri
 				"representation_type": UI_IF_MultiRange.RepresentationType.VECTOR,
 				}
 			input_field = UI_IF_MultiRange.new(up_vector_secondary, "Up-Vector Secondary", prop, settings)
-#			input_field.add_tracked_property("up_vector/up_vector_secondary_type", DirectionVectorType.CUSTOM, up_vector_secondary_type)
-#			input_field.set_visibility_is_tracked(true)
 		"up_vector/up_vector_blending":
 			var settings := {"min": 0.0, "max": 1.0,  "step": 0.01,  "allow_greater": false,  "allow_lesser": false,}
 			input_field = UI_IF_RealSlider.new(up_vector_blending, "Up-Vector Blending", prop, settings)
@@ -227,8 +230,6 @@ func _create_input_field(__base_control:Control, __resource_previewer, prop:Stri
 				"representation_type": UI_IF_MultiRange.RepresentationType.VECTOR,
 				}
 			input_field = UI_IF_MultiRange.new(fwd_vector_primary, "Forward-Vector Primary", prop, settings)
-#			input_field.add_tracked_property("fwd_vector/fwd_vector_primary_type", DirectionVectorType.CUSTOM, fwd_vector_primary_type)
-#			input_field.set_visibility_is_tracked(true)
 		"fwd_vector/fwd_vector_secondary_type":
 			var settings := {"enum_list": FunLib.capitalize_string_array(DirectionVectorType.keys())}
 			input_field = UI_IF_Enum.new(fwd_vector_secondary_type, "Secondary Forward-Vector", prop, settings)
@@ -239,8 +240,6 @@ func _create_input_field(__base_control:Control, __resource_previewer, prop:Stri
 				"representation_type": UI_IF_MultiRange.RepresentationType.VECTOR,
 				}
 			input_field = UI_IF_MultiRange.new(fwd_vector_secondary, "Forward-Vector Secondary", prop, settings)
-#			input_field.add_tracked_property("fwd_vector/fwd_vector_secondary_type", DirectionVectorType.CUSTOM, fwd_vector_secondary_type)
-#			input_field.set_visibility_is_tracked(true)
 		"fwd_vector/fwd_vector_blending":
 			var settings := {"min": 0.0, "max": 1.0,  "step": 0.01,  "allow_greater": false,  "allow_lesser": false,}
 			input_field = UI_IF_RealSlider.new(fwd_vector_blending, "Forward-Vector Blending", prop, settings)
@@ -274,14 +273,22 @@ func _create_input_field(__base_control:Control, __resource_previewer, prop:Stri
 				}
 			input_field = UI_IF_MultiRange.new(slope_allowed_range, "Allowed Slope Range", prop, settings)
 		#======================================================
-		"import_export/import_button":
+		"import_export/import_plant_data_button":
 			var settings := {"button_text": "Import"}
-			input_field = UI_IF_Button.new(import_export_import_button, "Import Transforms", prop, settings)
-			input_field.connect("pressed", self, "on_if_button", [input_field])
-		"import_export/export_button":
+			input_field = UI_IF_Button.new(import_export_import_plant_data_button, "Import Plant Data", prop, settings)
+			input_field.pressed.connect(on_if_button.bind(input_field))
+		"import_export/export_plant_data_button":
 			var settings := {"button_text": "Export"}
-			input_field = UI_IF_Button.new(import_export_export_button, "Export Transforms", prop, settings)
-			input_field.connect("pressed", self, "on_if_button", [input_field])
+			input_field = UI_IF_Button.new(import_export_export_plant_data_button, "Export Plant Data", prop, settings)
+			input_field.pressed.connect(on_if_button.bind(input_field))
+		"import_export/import_greenhouse_data_button":
+			var settings := {"button_text": "Import"}
+			input_field = UI_IF_Button.new(import_export_import_greenhouse_data_button, "Import Greenhouse Data", prop, settings)
+			input_field.pressed.connect(on_if_button.bind(input_field))
+		"import_export/export_greenhouse_data_button":
+			var settings := {"button_text": "Export"}
+			input_field = UI_IF_Button.new(import_export_export_greenhouse_data_button, "Export Greenhouse Data", prop, settings)
+			input_field.pressed.connect(on_if_button.bind(input_field))
 	
 	return input_field
 
@@ -298,7 +305,7 @@ func on_changed_LOD_variant():
 
 
 func reconfigure_octree():
-	emit_signal("req_octree_reconfigure")
+	req_octree_reconfigure.emit()
 
 
 
@@ -314,9 +321,10 @@ func reconfigure_octree():
 func on_prop_action_executed_on_LOD_variant(prop_action, final_val, LOD_variant):
 	var index = mesh_LOD_variants.find(LOD_variant)
 	var update_thumbnail = prop_action.prop == "mesh"
+	
 	if update_thumbnail:
-		emit_signal("prop_action_executed", PA_ArraySet.new("mesh/mesh_LOD_variants", LOD_variant, index), mesh_LOD_variants)
-	emit_signal("prop_action_executed_on_LOD_variant", prop_action, final_val, LOD_variant)
+		prop_action_executed.emit(PA_ArraySet.new("mesh/mesh_LOD_variants", LOD_variant, index), mesh_LOD_variants)
+	prop_action_executed_on_LOD_variant.emit(prop_action, final_val, LOD_variant)
 
 
 
@@ -330,16 +338,16 @@ func on_prop_action_executed_on_LOD_variant(prop_action, final_val, LOD_variant)
 func on_dialog_if_applied_changes(initial_values:Array, final_values:Array, input_field:UI_InputField):
 	match input_field.prop_name:
 		"octree/octree_reconfigure_button":
-			_undo_redo.create_action("Reconfigure Octree")
-			_undo_redo.add_do_method(input_field, "set_values", final_values)
-			_undo_redo.add_do_method(self, "reconfigure_octree")
-			_undo_redo.add_undo_method(input_field, "set_values", initial_values)
-			_undo_redo.add_undo_method(self, "reconfigure_octree")
-			_undo_redo.commit_action()
+			UndoRedoInterface.create_action(_undo_redo, "Reconfigure Octree", 0, false, self)
+			UndoRedoInterface.add_do_method(_undo_redo, input_field.set_values.bind(final_values))
+			UndoRedoInterface.add_do_method(_undo_redo, self.reconfigure_octree)
+			UndoRedoInterface.add_undo_method(_undo_redo, input_field.set_values.bind(initial_values))
+			UndoRedoInterface.add_undo_method(_undo_redo, self.reconfigure_octree)
+			UndoRedoInterface.commit_action(_undo_redo, true)
 
 
-# Handle changes cancelled by input field dialog
-func on_dialog_if_cancelled_changes(input_field:UI_InputField):
+# Handle changes canceled by input field dialog
+func on_dialog_if_canceled_changes(input_field:UI_InputField):
 	pass
 
 
@@ -347,11 +355,15 @@ func on_dialog_if_cancelled_changes(input_field:UI_InputField):
 func on_if_button(input_field:UI_InputField):
 	match input_field.prop_name:
 		"octree/octree_recenter_button":
-			emit_signal("req_octree_recenter")
-		"import_export/import_button":
-			emit_signal("req_import_transforms")
-		"import_export/export_button":
-			emit_signal("req_export_transforms")
+			req_octree_recenter.emit()
+		"import_export/import_plant_data_button":
+			req_import_plant_data.emit()
+		"import_export/export_plant_data_button":
+			req_export_plant_data.emit()
+		"import_export/import_greenhouse_data_button":
+			req_import_greenhouse_data.emit()
+		"import_export/export_greenhouse_data_button":
+			req_export_greenhouse_data.emit()
 
 
 
@@ -366,11 +378,11 @@ func _modify_prop(prop:String, val):
 		"mesh/mesh_LOD_variants":
 			# TODO retain Greenhouse_LODVariant if it already exists when drag-and-dropping a .mesh or a .tscn resource
 			for i in range(0, val.size()):
-				if !(val[i] is Greenhouse_LODVariant):
+				if !is_instance_of(val[i], Greenhouse_LODVariant):
 					val[i] = Greenhouse_LODVariant.new()
 				
-				FunLib.ensure_signal(val[i], "changed", self, "on_changed_LOD_variant")
-				FunLib.ensure_signal(val[i], "prop_action_executed", self, "on_prop_action_executed_on_LOD_variant", [val[i]])
+				FunLib.ensure_signal(val[i].changed, on_changed_LOD_variant)
+				FunLib.ensure_signal(val[i].prop_action_executed, on_prop_action_executed_on_LOD_variant, [val[i]])
 				
 				if val[i]._undo_redo != _undo_redo:
 					val[i].set_undo_redo(_undo_redo)
@@ -412,10 +424,10 @@ func _modify_prop(prop:String, val):
 func request_prop_action(prop_action:PropAction):
 	match prop_action.prop:
 		"mesh/mesh_LOD_variants":
-			if prop_action is PA_ArraySet:
+			if is_instance_of(prop_action, PA_ArraySet):
 				
 				var new_prop_action = null
-				if prop_action.val is PackedScene:
+				if is_instance_of(prop_action.val, PackedScene):
 					new_prop_action = PA_PropSet.new("spawned_spatial", prop_action.val)
 				else:
 					for mesh_class in Globals.MESH_CLASSES:
@@ -437,8 +449,8 @@ func request_prop_action(prop_action:PropAction):
 #-------------------------------------------------------------------------------
 
 
-func set_undo_redo(val:UndoRedo):
-	.set_undo_redo(val)
+func set_undo_redo(val):
+	super.set_undo_redo(val)
 	for LOD_variant in mesh_LOD_variants:
 		LOD_variant.set_undo_redo(_undo_redo)
 
@@ -515,10 +527,14 @@ func _set(prop, val):
 		"slope/slope_allowed_range":
 			slope_allowed_range = val
 		
-		"import_export/import_button":
-			import_export_import_button = val
-		"import_export/export_button":
-			import_export_export_button = val
+		"import_export/import_plant_data_button":
+			import_export_import_plant_data_button = val
+		"import_export/export_plant_data_button":
+			import_export_export_plant_data_button = val
+		"import_export/import_greenhouse_data_button":
+			import_export_import_greenhouse_data_button = val
+		"import_export/export_greenhouse_data_button":
+			import_export_export_greenhouse_data_button = val
 		_:
 			return_val = false
 	
@@ -591,10 +607,14 @@ func _get(property):
 		"slope/slope_allowed_range":
 			return slope_allowed_range
 		
-		"import_export/import_button":
-			return import_export_import_button
-		"import_export/export_button":
-			return import_export_export_button
+		"import_export/import_plant_data_button":
+			return import_export_import_plant_data_button
+		"import_export/export_plant_data_button":
+			return import_export_export_plant_data_button
+		"import_export/import_greenhouse_data_button":
+			return import_export_import_greenhouse_data_button
+		"import_export/export_greenhouse_data_button":
+			return import_export_export_greenhouse_data_button
 	
 	return null
 
@@ -617,7 +637,7 @@ func _filter_prop_dictionary(prop_dict: Dictionary) -> Dictionary:
 		props_to_hide.append("fwd_vector/fwd_vector_blending")
 	
 	for prop in props_to_hide:
-		prop_dict[prop].usage = PROPERTY_USAGE_NOEDITOR
+		prop_dict[prop].usage = PROPERTY_USAGE_NO_EDITOR
 	
 	return prop_dict
 
@@ -641,14 +661,14 @@ func _get_prop_dictionary():
 		"mesh/mesh_LOD_max_distance":
 		{
 			"name": "mesh/mesh_LOD_max_distance",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_NONE
 		},
 		"mesh/mesh_LOD_kill_distance":
 		{
 			"name": "mesh/mesh_LOD_kill_distance",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_NONE
 		},
@@ -662,7 +682,7 @@ func _get_prop_dictionary():
 		"mesh/mesh_LOD_min_size":
 		{
 			"name": "mesh/mesh_LOD_min_size",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_NONE
 		},
@@ -684,7 +704,7 @@ func _get_prop_dictionary():
 		"density/density_per_units":
 		{
 			"name": "density/density_per_units",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_NONE
 		},
@@ -738,7 +758,7 @@ func _get_prop_dictionary():
 		"up_vector/up_vector_blending":
 		{
 			"name": "up_vector/up_vector_blending",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.0,1.0"
@@ -777,7 +797,7 @@ func _get_prop_dictionary():
 		"fwd_vector/fwd_vector_blending":
 		{
 			"name": "fwd_vector/fwd_vector_blending",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.0,1.0"
@@ -793,7 +813,7 @@ func _get_prop_dictionary():
 		"offset/offset_jitter_fraction":
 		{
 			"name": "offset/offset_jitter_fraction",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_NONE
 		},
@@ -801,7 +821,7 @@ func _get_prop_dictionary():
 		"rotation/rotation_random_y":
 		{
 			"name": "rotation/rotation_random_y",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.0,180.0"
@@ -809,7 +829,7 @@ func _get_prop_dictionary():
 		"rotation/rotation_random_x":
 		{
 			"name": "rotation/rotation_random_x",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.0,180.0"
@@ -817,7 +837,7 @@ func _get_prop_dictionary():
 		"rotation/rotation_random_z":
 		{
 			"name": "rotation/rotation_random_z",
-			"type": TYPE_REAL,
+			"type": TYPE_FLOAT,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_RANGE,
 			"hint_string": "0.0,180.0"
@@ -831,16 +851,30 @@ func _get_prop_dictionary():
 			"hint": PROPERTY_HINT_NONE
 		},
 		#======================================================
-		"import_export/import_button":
+		"import_export/import_plant_data_button":
 		{
-			"name": "import_export/export_button",
+			"name": "import_export/import_plant_data_button",
 			"type": TYPE_BOOL,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_NONE
 		},
-		"import_export/export_button":
+		"import_export/export_plant_data_button":
 		{
-			"name": "import_export/export_button",
+			"name": "import_export/export_plant_data_button",
+			"type": TYPE_BOOL,
+			"usage": PROPERTY_USAGE_DEFAULT,
+			"hint": PROPERTY_HINT_NONE
+		},
+		"import_export/import_greenhouse_data_button":
+		{
+			"name": "import_export/import_greenhouse_data_button",
+			"type": TYPE_BOOL,
+			"usage": PROPERTY_USAGE_DEFAULT,
+			"hint": PROPERTY_HINT_NONE
+		},
+		"import_export/export_greenhouse_data_button":
+		{
+			"name": "import_export/export_greenhouse_data_button",
 			"type": TYPE_BOOL,
 			"usage": PROPERTY_USAGE_DEFAULT,
 			"hint": PROPERTY_HINT_NONE
@@ -868,7 +902,7 @@ func get_prop_tooltip(prop:String) -> String:
 			return "The distance after which the lowest-detailed LOD (last one in the array) is chosen\n" \
 				+ "LODs in-between are spread evenly across this distance\n"
 		"mesh/mesh_LOD_kill_distance":
-			return "The distance after which the mesh and it's Spawned Spatial are removed entirely\n" \
+			return "The distance after which the mesh and it's Spawned Node3D are removed entirely\n" \
 				+ "Used to save perfomance by rejecting small objects like grass or rocks at big distances\n" \
 				+ "A default value of '-1' disables this behavior (the object will be active forever)"
 		"mesh/mesh_LOD_max_capacity":
@@ -959,17 +993,34 @@ func get_prop_tooltip(prop:String) -> String:
 				+ "If you wish to align your plant to Surface Normal and use the slope\n" \
 				+ "Set Primary Up Vector to World Y, secondary to Normal and just blend all the way to the secondary vector (blend = 1.0)" 
 		
-		"import_export/import_button":
-			return "The button to import instance transforms for the current plant inside a current Gardener\n" \
-				+ "To then import them to a different scene\n" \
-				+ "Or when switching between plugin versions (whenever necessary)\n" \
+		"import_export/import_plant_data_button":
+			return "The button to import plant settings and transforms\n" \
+				+ "For the current plant inside a current Gardener\n" \
 				+ "Instances are ADDED to the existing ones; to replace you'll need to manually erase the old instances first\n" \
 				+ "\n" \
 				+ "NOTE: import recreates your octree nodes anew and they won't be the same\n" \
 				+ "(but they were killed already by an export operation to begin with)\n" \
 				+ "Most of the time this can be ignored since you likely Rebuild/Recenter your octrees on a regular basis anyway"
-		"import_export/export_button":
-			return "The button to export all instance transforms of current plant inside a current Gardener\n" \
+		"import_export/export_plant_data_button":
+			return "The button to export plant settings and transforms\n" \
+				+ "Of current plant inside a current Gardener\n" \
+				+ "To import them to a different scene\n" \
+				+ "Or when switching between plugin versions (whenever necessary)\n" \
+				+ "\n" \
+				+ "NOTE: export kills whatever octree nodes you have\n" \
+				+ "(and import recreates them anew but they won't be the same)\n" \
+				+ "Most of the time this can be ignored since you likely Rebuild/Recenter your octrees on a regular basis anyway"
+		"import_export/import_greenhouse_data_button":
+			return "The button to import all greenhouse plant settings and transforms\n" \
+				+ "Inside a current Gardener\n" \
+				+ "Instances are ADDED to the existing ones; to replace you'll need to manually erase the old instances first\n" \
+				+ "\n" \
+				+ "NOTE: import recreates your octree nodes anew and they won't be the same\n" \
+				+ "(but they were killed already by an export operation to begin with)\n" \
+				+ "Most of the time this can be ignored since you likely Rebuild/Recenter your octrees on a regular basis anyway"
+		"import_export/export_greenhouse_data_button":
+			return "The button to export all greenhouse plant settings and transforms\n" \
+				+ "Inside a current Gardener\n" \
 				+ "To import them to a different scene\n" \
 				+ "Or when switching between plugin versions (whenever necessary)\n" \
 				+ "\n" \

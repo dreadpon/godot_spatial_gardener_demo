@@ -1,0 +1,8 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "plant_daisy_white"
+params_cull_mode = 2
+metallic_specular = 0.15
+backlight_enabled = true
+backlight = Color( 1, 1, 1, 1 )

@@ -1,4 +1,4 @@
-tool
+@tool
 
 
 #-------------------------------------------------------------------------------
@@ -13,19 +13,17 @@ tool
 
 
 # A Base Logger type
-class Base:
+class Base extends RefCounted:
 	var _context := ""
 	var _log_filepath := ''
 	
 	func _init(__context:String, __log_filepath:String = ''):
 		_context = __context
 		_log_filepath = __log_filepath
-		if !_log_filepath.empty():
-			var dir = Directory.new()
-			dir.make_dir_recursive(_log_filepath.get_base_dir())
-			if !dir.file_exists(_log_filepath):
-				var file = File.new()
-				file.open(_log_filepath, File.WRITE)
+		if !_log_filepath.is_empty():
+			DirAccess.make_dir_recursive_absolute(_log_filepath.get_base_dir())
+			if !FileAccess.file_exists(_log_filepath):
+				var file = FileAccess.open(_log_filepath, FileAccess.WRITE)
 				file.close()
 	
 #	func debug(msg:String):
@@ -39,15 +37,15 @@ class Base:
 	func warn(msg):
 		msg = "{0}: {1}".format([_context, str(msg)])
 		push_warning(msg)
-		msg = 'WARNING: ' + msg
-		print(msg)
+#		msg = 'WARNING: ' + msg
+#		print(msg)
 		log_to_file(msg)
 	
 	func error(msg):
 		msg = "{0}: {1}".format([_context, str(msg)])
 		push_error(msg)
-		msg = 'ERROR: ' + msg
-		printerr(msg)
+#		msg = 'ERROR: ' + msg
+#		printerr(msg)
 		log_to_file(msg)
 	
 	func assert_error(msg):
@@ -58,11 +56,10 @@ class Base:
 		log_to_file(msg)
 	
 	# We need to route that through a logger manager of some kind, 
-	# So we won't have to reopen File each time
+	# So we won't have to reopen FileAccess each time
 	func log_to_file(msg: String):
-		if _log_filepath.empty(): return
-		var file = File.new()
-		file.open(_log_filepath, File.READ_WRITE)
+		if _log_filepath.is_empty(): return
+		var file = FileAccess.open(_log_filepath, FileAccess.READ_WRITE)
 		file.seek_end()
 		file.store_line(msg)
 		file.close()
@@ -72,8 +69,8 @@ class Base:
 # A Verbose Logger type
 # Meant to display verbose debug messages
 #class Verbose extends Base:
-#	func _init(__context:String).(__context):
-#		pass
+#	func _init(__context:String):
+#		super(__context)
 #
 #	func debug(msg:String):
 #		print("DEBUG: {0}: {1}".format([_context, msg]))
@@ -84,7 +81,7 @@ class Base:
 # As opposed to original, for now we don't have separate "Verbose" logging
 # Instead we use ProjectSettings to toggle frequently used logging domains
 static func get_for(owner:Object, name:String = "", log_filepath: String = '') -> Base:
-	# Note: don't store the owner. If it's a Reference, it could create a cycle
+	# Note: don't store the owner. If it's a RefCounted, it could create a cycle
 	var context = owner.get_script().resource_path.get_file()
 	if name != "":
 		context += " (%s)" % [name]

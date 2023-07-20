@@ -40,6 +40,11 @@ func _process(delta):
 	cached_geometry = []
 
 
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		clear_cached_geometry()
+
+
 # Manual clear for active geometry
 func clear_cached_geometry():
 	var removed_active_geometry := []
@@ -55,18 +60,18 @@ func clear_cached_geometry():
 
 # Draw a polygonal 3D line
 # And set it on a timer
-func draw_line(start:Vector3, end:Vector3, color:Color, node_context:Spatial, width:float = 0.1, lifetime := 0.0):
-	var geom = static_draw_line(start, end, color, node_context, width)
+func draw_line(start:Vector3, end:Vector3, color:Color, node_context:Node3D, width:float = 0.1, lifetime := 0.0):
+	var geom = static_draw_line(start,end,color,node_context)
 	cached_geometry.append({"geometry": geom, "lifetime": lifetime})
 
 
 # Draw a polygonal 3D line
 # Origin represents line's start position, not it's center
-static func static_draw_line(start:Vector3, end:Vector3, color:Color, node_context:Spatial, width:float = 0.1) -> ImmediateGeometry:
+static func static_draw_line(start:Vector3, end:Vector3, color:Color, node_context:Node3D, width:float = 0.1) -> MeshInstance3D:
 	if node_context == null: return null
 	
-	var geom = ImmediateGeometry.new()
-	node_context.add_child(geom)
+	var geom = ImmediateMesh.new()
+	var mesh_inst := MeshInstance3D.new()
 	
 	var half_width = width * 0.5
 	var length = (end - start).length()
@@ -81,7 +86,7 @@ static func static_draw_line(start:Vector3, end:Vector3, color:Color, node_conte
 	geom.global_transform.origin = start
 	geom.global_transform.basis = Basis(x_axis, y_axis, z_axis).orthonormalized()
 	
-	var points := PoolVector3Array()
+	var points := PackedVector3Array()
 	points.append_array([
 		Vector3(-half_width, half_width, 0),
 		Vector3(half_width, half_width, 0),
@@ -145,40 +150,44 @@ static func static_draw_line(start:Vector3, end:Vector3, color:Color, node_conte
 	
 	geom.end()
 	
-	geom.material_override = SpatialMaterial.new()
+	geom.material_override = StandardMaterial3D.new()
 	geom.material_override.flags_unshaded = true
 	geom.material_override.albedo_color = color
 	
-	return geom
+	mesh_inst.mesh = geom
+	node_context.add_child(mesh_inst)
+	
+	return mesh_inst
 
 
 # Draw a line cube
 # And set it on a timer
-func draw_cube(pos:Vector3, extents:Vector3, rotation:Quat, color:Color, node_context:Spatial, lifetime := 0.0):
-	var geom = static_draw_cube(pos, extents, rotation, color, node_context)
+func draw_cube(pos:Vector3, size:Vector3, rotation:Quaternion, color:Color, node_context:Node3D, lifetime := 0.0):
+	var geom = static_draw_cube(pos, size, rotation, color, node_context)
 	cached_geometry.append({"geometry": geom, "lifetime": lifetime})
 
 
 # Draw a line cube
-static func static_draw_cube(pos:Vector3, extents:Vector3, rotation:Quat, color:Color, node_context:Spatial):
+static func static_draw_cube(pos:Vector3, size:Vector3, rotation:Quaternion, color:Color, node_context:Node3D):
 	if node_context == null: return
 	
-	var mesh_instance = MeshInstance.new()
+	var mesh_instance = MeshInstance3D.new()
 	mesh_instance.transform.basis = Basis(rotation)
 	mesh_instance.transform.origin = pos
 	node_context.add_child(mesh_instance)
 	
-	mesh_instance.mesh = generate_cube(extents, color)
-	mesh_instance.cast_shadow = GeometryInstance.SHADOW_CASTING_SETTING_OFF
+	mesh_instance.mesh = generate_cube(size, color)
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	
 	return mesh_instance
 
 
 # Generate a line cube's ArrayMesh
-static func generate_cube(extents:Vector3, color:Color):
+static func generate_cube(size:Vector3, color:Color):
 	var mesh := ArrayMesh.new()
-	
-	var points := PoolVector3Array()
+	var extents = size * 0.5
+
+	var points := PackedVector3Array()
 	points.append_array([
 		Vector3(-extents.x, -extents.y, -extents.z),
 		Vector3(-extents.x, -extents.y, extents.z),
@@ -191,7 +200,7 @@ static func generate_cube(extents:Vector3, color:Color):
 		Vector3(extents.x, extents.y, -extents.z),
 	])
 	
-	var vertices := PoolVector3Array()
+	var vertices := PackedVector3Array()
 	vertices.append_array([
 		points[0], points[1],
 		points[1], points[2],
@@ -207,7 +216,7 @@ static func generate_cube(extents:Vector3, color:Color):
 		points[3], points[7],
 	])
 	
-	var colors := PoolColorArray()
+	var colors := PackedColorArray()
 	for i in range(0, 24):
 		colors.append(color)
 	
@@ -217,7 +226,7 @@ static func generate_cube(extents:Vector3, color:Color):
 	arrays[ArrayMesh.ARRAY_COLOR] = colors
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, arrays)
 	
-	var material := SpatialMaterial.new()
+	var material := StandardMaterial3D.new()
 	material.flags_unshaded = true
 	material.vertex_color_use_as_albedo = true
 	mesh.surface_set_material(0, material)
@@ -227,17 +236,17 @@ static func generate_cube(extents:Vector3, color:Color):
 
 # Draw a line plane
 # And set it on a timer
-func draw_plane(pos:Vector3, extents:float, normal:Vector3, color:Color, node_context:Spatial, normal_length: float = 1.0, up_vector: Vector3 = Vector3.UP, lifetime := 0.0):
-	var geom = static_draw_plane(pos, extents, normal, color, node_context)
+func draw_plane(pos:Vector3, size:float, normal:Vector3, color:Color, node_context:Node3D, normal_length: float = 1.0, up_vector: Vector3 = Vector3.UP, lifetime := 0.0):
+	var geom = static_draw_plane(pos, size, normal, color, node_context)
 	cached_geometry.append({"geometry": geom, "lifetime": lifetime})
 
 
 # Draw a line cube
-static func static_draw_plane(pos:Vector3, extents:float, normal:Vector3, color:Color, node_context:Spatial, normal_length: float = 1.0, up_vector: Vector3 = Vector3.UP):
+static func static_draw_plane(pos:Vector3, size:float, normal:Vector3, color:Color, node_context:Node3D, normal_length: float = 1.0, up_vector: Vector3 = Vector3.UP):
 	if node_context == null: return
 	
 	normal = normal.normalized()
-	var mesh_instance = MeshInstance.new()
+	var mesh_instance = MeshInstance3D.new()
 	var basis = Basis()
 	basis.z = normal
 	basis.x = normal.cross(up_vector)
@@ -247,35 +256,36 @@ static func static_draw_plane(pos:Vector3, extents:float, normal:Vector3, color:
 	mesh_instance.transform.origin = pos
 	node_context.add_child(mesh_instance)
 	
-	mesh_instance.mesh = generate_plane(extents, color, normal_length)
-	mesh_instance.cast_shadow = GeometryInstance.SHADOW_CASTING_SETTING_OFF
+	mesh_instance.mesh = generate_plane(size, color, normal_length)
+	mesh_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	
 	return mesh_instance
 
 
 # Generate a line cube's ArrayMesh
-static func generate_plane(extents:float, color:Color, normal_length: float):
+static func generate_plane(size:float, color:Color, normal_length: float):
 	var mesh := ArrayMesh.new()
+	var extent = size * 0.5
 	
-	var points := PoolVector3Array()
+	var points := PackedVector3Array()
 	points.append_array([
-		Vector3(-extents, -extents, 0),
-		Vector3(-extents, extents, 0),
-		Vector3(extents, extents, 0),
-		Vector3(extents, -extents, 0),
+		Vector3(-extent, -extent, 0),
+		Vector3(-extent, extent, 0),
+		Vector3(extent, extent, 0),
+		Vector3(extent, -extent, 0),
 		Vector3(0, 0, 0),
 		Vector3(0, 0, normal_length),
-		Vector3(-extents, -extents, 0),
-		Vector3(-extents, -extents, normal_length),
-		Vector3(-extents, extents, 0),
-		Vector3(-extents, extents, normal_length),
-		Vector3(extents, extents, 0),
-		Vector3(extents, extents, normal_length),
-		Vector3(extents, -extents, 0),
-		Vector3(extents, -extents, normal_length),
+		Vector3(-extent, -extent, 0),
+		Vector3(-extent, -extent, normal_length),
+		Vector3(-extent, extent, 0),
+		Vector3(-extent, extent, normal_length),
+		Vector3(extent, extent, 0),
+		Vector3(extent, extent, normal_length),
+		Vector3(extent, -extent, 0),
+		Vector3(extent, -extent, normal_length),
 	])
 	
-	var vertices := PoolVector3Array()
+	var vertices := PackedVector3Array()
 	vertices.append_array([
 		points[0], points[1],
 		points[1], points[2],
@@ -292,7 +302,7 @@ static func generate_plane(extents:float, color:Color, normal_length: float):
 		points[12], points[13],
 	])
 	
-	var colors := PoolColorArray()
+	var colors := PackedColorArray()
 	for i in range(0, vertices.size()):
 		colors.append(color)
 	
@@ -302,7 +312,7 @@ static func generate_plane(extents:float, color:Color, normal_length: float):
 	arrays[ArrayMesh.ARRAY_COLOR] = colors
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_LINES, arrays)
 	
-	var material := SpatialMaterial.new()
+	var material := StandardMaterial3D.new()
 	material.flags_unshaded = true
 	material.vertex_color_use_as_albedo = true
 	mesh.surface_set_material(0, material)

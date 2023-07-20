@@ -1,4 +1,4 @@
-tool
+@tool
 extends "ui_input_field.gd"
 
 
@@ -30,7 +30,8 @@ var representation_type:int = RepresentationType.VECTOR
 var value_count:int = 3
 
 var is_range:bool = false
-var vertical_container:VBoxContainer = null
+#var vertical_container:VBoxContainer = null
+var field_container:GridContainer = null
 var field_editable_controls:Array = []
 
 # Internal (actual) value format:
@@ -48,42 +49,50 @@ var field_editable_controls:Array = []
 #-------------------------------------------------------------------------------
 
 
-func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}).(__init_val, __labelText, __prop_name, settings):
+func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}):
+	super(__init_val, __labelText, __prop_name, settings)
 	set_meta("class", "UI_IF_RealSlider")
 	
 	is_range = settings.is_range
 	value_count = settings.value_count
 	representation_type = settings.representation_type
 	
-	vertical_container = VBoxContainer.new()
-	vertical_container.name = "vertical_container"
-	vertical_container.add_constant_override("separation", 0)
-	vertical_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+#	var value_panel = PanelContainer.new()
+#	value_panel.name = "value_panel"
+#	value_panel.theme_type_variation = "MultiRangeValuePanel"
+#	value_panel.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	
+	field_container = GridContainer.new()
+	field_container.name = "field_container"
+	field_container.add_theme_constant_override("h_separation", 0)
+	field_container.add_theme_constant_override("v_separation", 2)
+	field_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	field_container.columns = 4 if is_range else 2
+	
+#	vertical_container = VBoxContainer.new()
+#	vertical_container.name = "vertical_container"
+#	vertical_container.add_theme_constant_override("separation", 2)
+#	vertical_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	
 	for range_index in range(0, 2 if is_range else 1):
 		field_editable_controls.append([])
 	
 	for value_index in range(0, value_count):
-		var value_range_panel = PanelContainer.new()
-		value_range_panel.name = "value_range_panel_-_%s" % [str(value_index)]
-		
-		var value_range_row = HBoxContainer.new()
-		value_range_row.name = "value_range_row_-_%s" % [str(value_index)]
-		value_range_row.add_constant_override("separation", 0)
+#		var value_range_row = HBoxContainer.new()
+#		value_range_row.name = "value_range_row_-_%s" % [str(value_index)]
+#		value_range_row.add_theme_constant_override("separation", 0)
 		
 		var prop_label := Label.new()
 		prop_label.name = "prop_label_-_%s" % [str(value_index)]
 		prop_label.text = prop_label_text[representation_type][value_index]
-		prop_label.valign = Label.VALIGN_CENTER
+		prop_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 		prop_label.size_flags_vertical = Control.SIZE_FILL
-		prop_label.add_color_override("font_color", Color(prop_label_text_colors[value_index]))
+		prop_label.custom_minimum_size = Vector2i(20, 0)
 		
-		vertical_container.add_child(value_range_panel)
-		value_range_panel.add_child(value_range_row)
-		value_range_row.add_child(prop_label)
+		field_container.add_child(prop_label)
 		
-		ThemeAdapter.assign_node_type(value_range_panel, "MultiRangeValuePanel")
-		ThemeAdapter.assign_node_type(prop_label, "MultiRangePropLabel")
+		prop_label.theme_type_variation = "MultiRangePropLabel"
+		prop_label.add_theme_color_override("font_color", Color(prop_label_text_colors[value_index]))
 		
 		for range_index in range(0, 2 if is_range else 1):
 			var value_input = LineEdit.new()
@@ -91,30 +100,43 @@ func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", set
 			value_input.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 			value_input.size_flags_vertical = Control.SIZE_FILL
 			
-			value_input.connect("focus_entered", self, "select_line_edit", [value_input, true])
-			value_input.connect("focus_exited", self, "select_line_edit", [value_input, false])
-			value_input.connect("focus_exited", self, "focus_lost", [value_input, range_index, value_index])
-			value_input.connect("gui_input", self, "on_node_received_input", [value_input])
+			value_input.focus_entered.connect(select_line_edit.bind(value_input, true))
+			value_input.focus_exited.connect(select_line_edit.bind(value_input, false))
+			value_input.focus_exited.connect(focus_lost.bind(value_input, range_index, value_index))
+			value_input.gui_input.connect(on_node_received_input.bind(value_input))
 			
 			field_editable_controls[range_index].append(value_input)
-			value_range_row.add_child(value_input)
-			ThemeAdapter.assign_node_type(value_input, "MultiRangeValue")
+			field_container.add_child(value_input)
+			value_input.theme_type_variation = "MultiRangeValue"
 			
 			if is_range && range_index == 0:
 				var dash_label := Label.new()
 				dash_label.name = "dash_label_-_%s" % [str(value_index)]
 				dash_label.text = "–"
-				dash_label.valign = Label.VALIGN_CENTER
+				dash_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 				dash_label.size_flags_vertical = Control.SIZE_FILL
-				dash_label.add_color_override("font_color", Color(prop_label_text_colors[value_index]))
+				dash_label.custom_minimum_size = Vector2i(20, 0)
 				
-				value_range_row.add_child(dash_label)
-				ThemeAdapter.assign_node_type(dash_label, "MultiRangeDashLabel")
+				field_container.add_child(dash_label)
+				
+				dash_label.theme_type_variation = "MultiRangeDashLabel"
+				dash_label.add_theme_color_override("font_color", Color(prop_label_text_colors[value_index]))
+	
+#	value_panel.add_child(vertical_container)
+	container_box.add_child(field_container)
 
 
-func _ready():
-	value_container.add_child(vertical_container)
-	_init_ui()
+#func _ready():
+#	super()
+
+
+func _cleanup():
+	super()
+	if is_instance_valid(field_container):
+		field_container.queue_free()
+	for node in field_editable_controls:
+		if is_instance_valid(node):
+			node.queue_free()
 
 
 
@@ -125,7 +147,7 @@ func _ready():
 
 
 func _update_ui_to_prop_action(prop_action:PropAction, final_val):
-	if prop_action is PA_PropSet || prop_action is PA_PropEdit:
+	if is_instance_of(prop_action, PA_PropSet) || is_instance_of(prop_action, PA_PropEdit):
 		_update_ui_to_val(final_val)
 
 
@@ -135,9 +157,9 @@ func _update_ui_to_val(val):
 	for range_index in range(0, val.size()):
 		for value_index in range(0, val[range_index].size()):
 			var value_val = val[range_index][value_index]
-			field_editable_controls[range_index][value_index].text = String(float(str("%.3f" % value_val)))
+			field_editable_controls[range_index][value_index].text = str(float(str("%.3f" % value_val)))
 	
-	._update_ui_to_val(val.duplicate())
+	super._update_ui_to_val(val.duplicate())
 
 
 func _string_to_val(string) -> float:
@@ -149,6 +171,7 @@ func _string_to_val(string) -> float:
 	elif string is float:
 		return string
 	else:
+#		print(string)
 		logger.warn("Passed variable is not a string!")
 	return 0.0
 
@@ -204,7 +227,7 @@ func _represented_to_actual(input):
 	var range_array := []
 	
 	if input is Array:
-		range_array = input.slice(0, 1)
+		range_array = input.slice(0, 2)
 	else:
 		range_array.append(input)
 	
@@ -220,19 +243,19 @@ func _represented_to_actual(input):
 				if representation_type == RepresentationType.VECTOR && value_array is Vector2:
 					output_value_array = [value_array.x, value_array.y]
 				elif representation_type == RepresentationType.VALUE && value_array is Array:
-					output_value_array = value_array.slice(0, 1)
+					output_value_array = value_array.slice(0, 2)
 				elif value_array is Array: # this enables correct output_array when passing array-based currentVal as an input
-					output_value_array = value_array.slice(0, 1)
+					output_value_array = value_array.slice(0, 2) 
 			3:
 				if representation_type == RepresentationType.VECTOR && value_array is Vector3:
 					output_value_array = [value_array.x, value_array.y, value_array.z]
 				elif representation_type == RepresentationType.VALUE && value_array is Array:
-					output_value_array = value_array.slice(0, 2)
+					output_value_array = value_array.slice(0, 3) 
 				elif value_array is Array: # this enables correct output_array when passing array-based currentVal as an input
-					output_value_array = value_array.slice(0, 2)
+					output_value_array = value_array.slice(0, 3) 
 			4:
 				if value_array is Array:
-					output_value_array = value_array.slice(0, 3)
+					output_value_array = value_array.slice(0, 4) 
 		
 		output_array.append(output_value_array)
 	
@@ -251,15 +274,15 @@ func _actual_to_represented(range_array:Array):
 				if representation_type == RepresentationType.VECTOR:
 					output_value = Vector2(value_array[0], value_array[1])
 				elif representation_type == RepresentationType.VALUE:
-					output_value = value_array.slice(0, 1)
+					output_value = value_array.slice(0, 1 + 1) 
 			3:
 				if representation_type == RepresentationType.VECTOR:
 					output_value = Vector3(value_array[0], value_array[1], value_array[2])
 				elif representation_type == RepresentationType.VALUE:
-					output_value = value_array.slice(0, 2)
+					output_value = value_array.slice(0, 2 + 1) 
 			4:
 				if value_array is Array:
-					output_value = value_array.slice(0, 3)
+					output_value = value_array.slice(0, 3 + 1) 
 		
 		output_array.append(output_value)
 	

@@ -1,4 +1,4 @@
-tool
+@tool
 extends "ui_input_field.gd"
 
 
@@ -19,7 +19,8 @@ var value_input:LineEdit = null
 #-------------------------------------------------------------------------------
 
 
-func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}).(__init_val, __labelText, __prop_name, settings):
+func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", settings:Dictionary = {}):
+	super(__init_val, __labelText, __prop_name, settings)
 	set_meta("class", "UI_IF_RealSlider")
 	
 	real_slider = HSlider.new()
@@ -31,28 +32,38 @@ func _init(__init_val, __labelText:String = "NONE", __prop_name:String = "", set
 	real_slider.allow_greater = settings.allow_greater
 	real_slider.allow_lesser = settings.allow_lesser
 	real_slider.size_flags_vertical = SIZE_SHRINK_CENTER
-	real_slider.connect("value_changed", self, "_convert_and_request", ["PA_PropEdit"])
-	real_slider.connect("drag_ended", self, "_slider_drag_ended", ["PA_PropSet"])
+	real_slider.value_changed.connect(_convert_and_request.bind("PA_PropEdit"))
+	real_slider.drag_ended.connect(_slider_drag_ended.bind("PA_PropSet"))
 	
 	value_input = LineEdit.new()
 	value_input.name = "value_input"
 	value_input.size_flags_horizontal = SIZE_EXPAND_FILL
-	value_input.size_flags_stretch_ratio = 0.5
-	value_input.rect_min_size.x = 25.0
+	value_input.custom_minimum_size.x = 25.0
 	value_input.size_flags_vertical = SIZE_SHRINK_CENTER
-	value_input.connect("focus_entered", self, "select_line_edit", [value_input, true])
-	value_input.connect("focus_exited", self, "select_line_edit", [value_input, false])
+	value_input.focus_entered.connect(select_line_edit.bind(value_input, true))
+	value_input.focus_exited.connect(select_line_edit.bind(value_input, false))
 	# focus_exited is our main signal to commit the value in LineEdit
 	# release_focus() is expected to be called when pressing enter and only then we commit the value
-	value_input.connect("focus_exited", self, "focus_lost", [value_input])
-	value_input.connect("gui_input", self, "on_node_received_input", [value_input])
-	ThemeAdapter.assign_node_type(value_input, 'IF_LineEdit')
+	value_input.focus_exited.connect(focus_lost.bind(value_input))
+	value_input.gui_input.connect(on_node_received_input.bind(value_input))
+	value_input.theme_type_variation = "IF_LineEdit"
+	
+	real_slider.size_flags_stretch_ratio = 0.67
+	value_input.size_flags_stretch_ratio = 0.33
+	container_box.add_child(real_slider)
+	container_box.add_child(value_input)
 
 
-func _ready():
-	value_container.add_child(real_slider)
-	value_container.add_child(value_input)
-	_init_ui()
+#func _ready():
+#	super()
+
+
+func _cleanup():
+	super()
+	if is_instance_valid(real_slider):
+		real_slider.queue_free()
+	if is_instance_valid(value_input):
+		value_input.queue_free()
 
 
 
@@ -63,7 +74,7 @@ func _ready():
 
 
 func _update_ui_to_prop_action(prop_action:PropAction, final_val):
-	if prop_action is PA_PropSet || prop_action is PA_PropEdit:
+	if is_instance_of(prop_action, PA_PropSet) || is_instance_of(prop_action, PA_PropEdit):
 		_update_ui_to_val(final_val)
 
 
@@ -71,17 +82,17 @@ func _update_ui_to_val(val):
 	val = _string_to_val(val)
 	# So uhm... the signal is emitted when setting value through a variable too
 	# And I only want to emit it on UI interaction, so disconnect and then reconnect the signal
-	real_slider.disconnect("value_changed", self, "_convert_and_request")
+	real_slider.value_changed.disconnect(_convert_and_request)
 	real_slider.value = val
-	real_slider.connect("value_changed", self, "_convert_and_request", ["PA_PropEdit"])
+	real_slider.value_changed.connect(_convert_and_request.bind("PA_PropEdit"))
 	
-	value_input.text = String(float(str("%.3f" % val)))
+	value_input.text = str(float(str("%.3f" % val)))
 	
-	._update_ui_to_val(val)
+	super._update_ui_to_val(val)
 
 
 func _slider_drag_ended(value_changed: bool, prop_action_class:String):
-	_convert_and_request(String(real_slider.value), prop_action_class)
+	_convert_and_request(str(real_slider.value), prop_action_class)
 
 
 func _convert_and_request(val, prop_action_class:String):
@@ -97,6 +108,7 @@ func _string_to_val(string) -> float:
 	elif string is float:
 		return string
 	else:
+#		print(string)
 		logger.warn("Passed variable is not a string!")
 	return 0.0
 

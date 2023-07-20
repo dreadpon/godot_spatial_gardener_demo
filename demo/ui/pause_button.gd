@@ -1,7 +1,7 @@
 extends Button
 
 
-export(NodePath) var pause_menu_PTH:String = ""
+@export var pause_menu_PTH: NodePath = ""
 var pause_menu:Control = null
 
 

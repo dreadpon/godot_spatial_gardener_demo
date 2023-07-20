@@ -68,12 +68,11 @@ func _ready():
 
 
 func create_save_directories():
-	var dir := Directory.new()
 	var path_settings = get_path_settings()
 	var full_path = get_config_file_path()
 	
-	if !dir.dir_exists(path_settings):
-		dir.make_dir_recursive(path_settings)
+	if !DirAccess.dir_exists_absolute(path_settings):
+		DirAccess.make_dir_recursive_absolute(path_settings)
 
 
 func load_all_settings():
@@ -109,11 +108,11 @@ func set_setting(setting_id:String, val, write_to_file:bool):
 		"sound":
 			AudioServer.set_bus_mute(0, !val) 
 		"sound_volume":
-			AudioServer.set_bus_volume_db(0, linear2db(val))
+			AudioServer.set_bus_volume_db(0, linear_to_db(val))
 		"fullscreen":
-			OS.window_fullscreen = val
+			get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (val) else Window.MODE_WINDOWED
 		"vsync":
-			OS.vsync_enabled = val
+			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if (val) else DisplayServer.VSYNC_DISABLED)
 		"rendering_quality":
 			set_rendering_quality(int(round(val)))
 	
@@ -169,8 +168,8 @@ func set_rendering_quality(stage:int):
 			config.set_value("rendering", "quality/filters/use_debanding", false)
 			config.set_value("rendering", "quality/directional_shadow/size", 2048)
 			config.set_value("rendering", "quality/directional_shadow/size.mobile", 512)
-			config.set_value("rendering", "rendering/quality/shadow_atlas/size", 2048)
-			config.set_value("rendering", "rendering/quality/shadow_atlas/size.mobile", 512)
+			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size", 2048)
+			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size.mobile", 512)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 1)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 0)
 		
@@ -181,8 +180,8 @@ func set_rendering_quality(stage:int):
 			config.set_value("rendering", "quality/filters/use_debanding", false)
 			config.set_value("rendering", "quality/directional_shadow/size", 4096)
 			config.set_value("rendering", "quality/directional_shadow/size.mobile", 1024)
-			config.set_value("rendering", "rendering/quality/shadow_atlas/size", 4096)
-			config.set_value("rendering", "rendering/quality/shadow_atlas/size.mobile", 1024)
+			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size", 4096)
+			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size.mobile", 1024)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 2)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 1)
 		
@@ -193,8 +192,8 @@ func set_rendering_quality(stage:int):
 			config.set_value("rendering", "quality/filters/use_debanding", true)
 			config.set_value("rendering", "quality/directional_shadow/size.mobile", 2048)
 			config.set_value("rendering", "quality/directional_shadow/size", 8192)
-			config.set_value("rendering", "rendering/quality/shadow_atlas/size", 8192)
-			config.set_value("rendering", "rendering/quality/shadow_atlas/size.mobile", 2048)
+			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size", 8192)
+			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size.mobile", 2048)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 2)
 			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 1)
 	
@@ -211,4 +210,4 @@ func restart(scene_path:String):
 	
 	# So we introduce an intermediate scene that allows Godot to mark all previous resources as free and clean them up
 	scene_to_restart = scene_path
-	get_tree().change_scene("res://demo/showcase/dummy.tscn")
+	get_tree().change_scene_to_file("res://demo/showcase/dummy.tscn")

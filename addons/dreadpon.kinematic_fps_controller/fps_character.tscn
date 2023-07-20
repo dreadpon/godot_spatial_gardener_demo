@@ -27,11 +27,11 @@ acceleration = 8.0
 decceleration = 8.0
 dampening = 10.0
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape3D" id=1]
 radius = 0.5
 height = 1.5
 
-[node name="FPSCharacter" type="KinematicBody"]
+[node name="FPSCharacter" type="CharacterBody3D"]
 script = ExtResource( 1 )
 walk_mode = SubResource( 2 )
 run_mode = SubResource( 3 )
@@ -40,19 +40,19 @@ props_config = {
 }
 fall_sfx_trigger_distance = 0.5
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
 shape = SubResource( 1 )
 
-[node name="CameraAxis" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.941491, 0 )
+[node name="CameraAxis" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.941491, 0 )
 
-[node name="Camera" type="Camera" parent="CameraAxis"]
+[node name="Camera3D" type="Camera3D" parent="CameraAxis"]
 far = 1000.0
 
 [node name="ActionAudio" type="AudioStreamPlayer" parent="."]
 volume_db = -4.0
 bus = "sfx"
 
-[node name="Feet" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0 )
+[node name="Feet" type="Node3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0 )

@@ -1,0 +1,533 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://m1u7dsyvnuoc"
+path="res://.godot/imported/plants.glb-d1128fb20a7236e63d453557b0478f3b.scn"
+
+[deps]
+
+source_file="res://demo/mesh/plants/plants.glb"
+dest_files=["res://.godot/imported/plants.glb-d1128fb20a7236e63d453557b0478f3b.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=false
+meshes/create_shadow_meshes=false
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"m_plant_apples": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_apples.tres"
+},
+"m_plant_carrot_orange": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_carrot_orange.tres"
+},
+"m_plant_daisy_white": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_daisy_white.tres"
+},
+"m_plant_daisy_yellow": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_daisy_yellow.tres"
+},
+"m_plant_daisys_stem": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_daisys_stem.tres"
+},
+"m_plant_grass": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_grass.tres"
+},
+"m_plant_grass_tail_beige": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_grass_tail_beige.tres"
+},
+"m_plant_leaf_dark": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_leaf_dark.tres"
+},
+"m_plant_leaf_darker": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_leaf_darker.tres"
+},
+"m_plant_leaf_light": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_leaf_light.tres"
+},
+"m_plant_leaf_lighter": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_leaf_lighter.tres"
+},
+"m_plant_wheat": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_wheat.tres"
+},
+"m_plant_wood_dark": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_wood_dark.tres"
+},
+"m_plant_wood_light": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_plant_wood_light.tres"
+},
+"m_rocks_rock": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/m_rocks_rock.tres"
+},
+"shm_plant_apple_tree_leaves": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_plant_apple_tree_leaves.tres"
+},
+"shm_wind_plant_apples": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_apples.tres"
+},
+"shm_wind_plant_bush": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_bush.tres"
+},
+"shm_wind_plant_bush_1": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_bush_1.tres"
+},
+"shm_wind_plant_carrot_tail": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_carrot_tail.tres"
+},
+"shm_wind_plant_daisys_stem": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_daisys_stem.tres"
+},
+"shm_wind_plant_daisys_white": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_daisys_white.tres"
+},
+"shm_wind_plant_daisys_yellow": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_daisys_yellow.tres"
+},
+"shm_wind_plant_grass": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_grass.tres"
+},
+"shm_wind_plant_grass_tail_beige": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_grass_tail_beige.tres"
+},
+"shm_wind_plant_grass_tail_stem": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_grass_tail_stem.tres"
+},
+"shm_wind_plant_leaf_dark": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_leaf_dark.tres"
+},
+"shm_wind_plant_leaf_darker": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_leaf_darker.tres"
+},
+"shm_wind_plant_leaf_light": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_leaf_light.tres"
+},
+"shm_wind_plant_liana": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_liana.tres"
+},
+"shm_wind_plant_moss": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_moss.tres"
+},
+"shm_wind_plant_wheat": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_wheat.tres"
+},
+"shm_wind_plant_wood_dark": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_wood_dark.tres"
+},
+"shm_wind_plant_wood_light": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/plants/shm_wind_plant_wood_light.tres"
+}
+},
+"meshes": {
+"plants_apple_tree_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_apple_tree_lod0.tres"
+},
+"plants_apple_tree_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_apple_tree_lod1.tres"
+},
+"plants_apple_tree_lod2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_apple_tree_lod2.tres"
+},
+"plants_bush_1_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_bush_1_lod0.tres"
+},
+"plants_bush_1_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_bush_1_lod1.tres"
+},
+"plants_bush_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_bush_lod0.tres"
+},
+"plants_bush_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_bush_lod1.tres"
+},
+"plants_carrot_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_carrot_lod0.tres"
+},
+"plants_carrot_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_carrot_lod1.tres"
+},
+"plants_curved_tree_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_curved_tree_lod0.tres"
+},
+"plants_curved_tree_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_curved_tree_lod1.tres"
+},
+"plants_curved_tree_lod2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_curved_tree_lod2.tres"
+},
+"plants_daisys_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_daisys_lod0.tres"
+},
+"plants_daisys_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_daisys_lod1.tres"
+},
+"plants_grass_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_grass_lod0.tres"
+},
+"plants_grass_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_grass_lod1.tres"
+},
+"plants_grass_lod2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_grass_lod2.tres"
+},
+"plants_grass_tail_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_grass_tail_lod0.tres"
+},
+"plants_grass_tail_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_grass_tail_lod1.tres"
+},
+"plants_liana_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_liana_lod0.tres"
+},
+"plants_liana_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_liana_lod1.tres"
+},
+"plants_moss_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_moss_lod0.tres"
+},
+"plants_moss_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_moss_lod1.tres"
+},
+"plants_rock_1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_rock_1.tres"
+},
+"plants_rock_2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_rock_2.tres"
+},
+"plants_rock_3": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_rock_3.tres"
+},
+"plants_rock_4": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_rock_4.tres"
+},
+"plants_rock_pillar_1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_rock_pillar_1.tres"
+},
+"plants_tree_generic_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_tree_generic_lod0.tres"
+},
+"plants_tree_generic_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_tree_generic_lod1.tres"
+},
+"plants_tree_generic_lod2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_tree_generic_lod2.tres"
+},
+"plants_tree_pine_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_tree_pine_lod0.tres"
+},
+"plants_tree_pine_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_tree_pine_lod1.tres"
+},
+"plants_tree_pine_lod2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_tree_pine_lod2.tres"
+},
+"plants_wheat_lod0": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_wheat_lod0.tres"
+},
+"plants_wheat_lod1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/plants/plants_wheat_lod1.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

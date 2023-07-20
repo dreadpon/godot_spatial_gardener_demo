@@ -1,0 +1,6 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "rocks_rock"
+albedo_color = Color( 0.482353, 0.482353, 0.482353, 1 )
+roughness = 0.8

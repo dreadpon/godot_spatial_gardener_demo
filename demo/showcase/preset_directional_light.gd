@@ -1,10 +1,10 @@
-extends DirectionalLight
+extends DirectionalLight3D
 
 
 
 
 func _ready():
-	ShowcaseSettings.connect("updated_setting", self, "on_updated_setting")
+	ShowcaseSettings.connect("updated_setting", Callable(self, "on_updated_setting"))
 	set_preset(ShowcaseSettings.get_setting_val("rendering_quality"))
 
 
@@ -18,19 +18,19 @@ func set_preset(preset_float:float):
 	match preset:
 		
 		0:
-			directional_shadow_mode = DirectionalLight.SHADOW_ORTHOGONAL
+			directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL
 			directional_shadow_max_distance = 150.0
-			directional_shadow_normal_bias = 4.0
+			shadow_normal_bias = 4.0
 			shadow_bias = 4.0
 		
 		1:
-			directional_shadow_mode = DirectionalLight.SHADOW_PARALLEL_2_SPLITS
+			directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
 			directional_shadow_max_distance = 300.0
-			directional_shadow_normal_bias = 2.0
+			shadow_normal_bias = 2.0
 			shadow_bias = 0.5
 		
 		2:
-			directional_shadow_mode = DirectionalLight.SHADOW_PARALLEL_4_SPLITS
+			directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
 			directional_shadow_max_distance = 300.0
-			directional_shadow_normal_bias = 1.5
+			shadow_normal_bias = 1.5
 			shadow_bias = 0.5

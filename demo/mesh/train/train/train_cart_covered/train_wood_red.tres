@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dui6sb3oiijbg"]
+
+[resource]
+resource_name = "train_wood_red"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.523581, 0.17572, 0.155788, 1)
+roughness = 0.8

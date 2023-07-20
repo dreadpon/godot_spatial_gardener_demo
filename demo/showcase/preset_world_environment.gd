@@ -4,7 +4,7 @@ extends WorldEnvironment
 
 
 func _ready():
-	ShowcaseSettings.connect("updated_setting", self, "on_updated_setting")
+	ShowcaseSettings.connect("updated_setting", on_updated_setting)
 	on_updated_setting("dof_blur", "graphics", ShowcaseSettings.get_setting_val("dof_blur"))
 	on_updated_setting("dof_blur_quality", "graphics", ShowcaseSettings.get_setting_val("dof_blur_quality"))
 

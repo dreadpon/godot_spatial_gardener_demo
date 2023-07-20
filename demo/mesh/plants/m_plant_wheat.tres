@@ -1,0 +1,8 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "plant_wheat"
+albedo_color = Color( 0.701961, 0.631373, 0.368627, 1 )
+metallic_specular = 0.15
+backlight_enabled = true
+backlight = Color( 0.701961, 0.631373, 0.368627, 1 )

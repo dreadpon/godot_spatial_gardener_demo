@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b12vu286gr7wx"]
+
+[node name="train_cart_covered" type="Node3D"]
+
+[node name="root2" type="Node3D" parent="."]
+
+[node name="wheel_22" type="Node3D" parent="root2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664512, 1.20654)
+
+[node name="wheel_12" type="Node3D" parent="root2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664512, 3.64611)
+
+[node name="wheel_32" type="Node3D" parent="root2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664512, -1.23031)
+
+[node name="wheel_42" type="Node3D" parent="root2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.664512, -3.62231)

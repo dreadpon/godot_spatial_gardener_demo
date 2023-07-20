@@ -1,12 +1,12 @@
 extends Control
 
 
-onready var speed_name := $CenterContainer/HBoxContainer/Names/SpeedName
-onready var speed_val := $CenterContainer/HBoxContainer/Vals/SpeedVal
-onready var status_name := $CenterContainer/HBoxContainer/Names/StatusName
-onready var status_val := $CenterContainer/HBoxContainer/Vals/StatusVal
-onready var departure_name := $CenterContainer/HBoxContainer/Names/DepartureName
-onready var departure_val := $CenterContainer/HBoxContainer/Vals/DepartureVal
+@onready var speed_name := $CenterContainer/HBoxContainer/Names/SpeedName
+@onready var speed_val := $CenterContainer/HBoxContainer/Vals/SpeedVal
+@onready var status_name := $CenterContainer/HBoxContainer/Names/StatusName
+@onready var status_val := $CenterContainer/HBoxContainer/Vals/StatusVal
+@onready var departure_name := $CenterContainer/HBoxContainer/Names/DepartureName
+@onready var departure_val := $CenterContainer/HBoxContainer/Vals/DepartureVal
 
 
 func set_speed_val(val:String):

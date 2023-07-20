@@ -1,0 +1,9 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "building_roof_tiles"
+vertex_color_use_as_albedo = true
+params_cull_mode = 2
+albedo_color = Color( 0.148352, 0.382424, 0.419987, 1 )
+metallic_specular = 0.2
+roughness = 0.8

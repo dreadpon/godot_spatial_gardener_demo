@@ -1,4 +1,4 @@
-tool
+@tool
 extends "../utility/input_field_resource/input_field_resource.gd"
 
 
@@ -9,7 +9,6 @@ extends "../utility/input_field_resource/input_field_resource.gd"
 
 
 const Toolshed_Brush = preload("toolshed_brush.gd")
-const ThemeAdapter = preload("../controls/theme_adapter.gd")
 const ui_category_brushes_SCN = preload("../controls/side_panel/ui_category_brushes.tscn")
 const ui_section_brush_SCN = preload("../controls/side_panel/ui_section_brush.tscn")
 
@@ -33,11 +32,14 @@ signal prop_action_executed_on_brush(prop_action, final_val, brush)
 #-------------------------------------------------------------------------------
 
 
-func _init(__brushes:Array = []).():
+func _init(__brushes:Array = []):
+	super()
 	set_meta("class", "Toolshed")
 	resource_name = "Toolshed"
 	
 	brushes = __brushes
+	if brushes.size() > 0:
+		active_brush = brushes[0]
 	_add_prop_dependency("brush/active_brush", ["brush/brushes"])
 
 
@@ -47,26 +49,30 @@ func create_ui(__base_control:Control, __resource_previewer):
 	_base_control = __base_control
 	_resource_previewer = __resource_previewer
 	
-	ui_category_brushes_nd = ui_category_brushes_SCN.instance()
-	tab_container_brushes_nd = ui_category_brushes_nd.find_node('TabContainer_Brushes')
-	panel_container_category_nd = ui_category_brushes_nd.find_node('PanelContainer_Category')
+	if is_instance_valid(ui_category_brushes_nd):
+		ui_category_brushes_nd.queue_free()
 	
-	ThemeAdapter.assign_node_type(panel_container_category_nd, 'PropertyCategory')
+	ui_category_brushes_nd = ui_category_brushes_SCN.instantiate()
+	tab_container_brushes_nd = ui_category_brushes_nd.find_child('TabContainer_Brushes')
+	panel_container_category_nd = ui_category_brushes_nd.find_child('Label_Category')
+	
+	ui_category_brushes_nd.theme_type_variation = "InspectorPanelContainer"
+	panel_container_category_nd.theme_type_variation = "PropertyCategory"
 	
 	for brush in brushes:
-		var section_brush = ui_section_brush_SCN.instance()
-		var vbox_container_properties = section_brush.find_node('VBoxContainer_Properties')
+		var section_brush = ui_section_brush_SCN.instantiate()
+		var vbox_container_properties = section_brush.find_child('VBoxContainer_Properties')
 		section_brush.name = FunLib.capitalize_string_array(brush.BrushType.keys())[brush.behavior_brush_type]
 		tab_container_brushes_nd.add_child(section_brush)
 		
-		for input_field in brush.create_input_fields(_base_control, _resource_previewer):
+		for input_field in brush.create_input_fields(_base_control, _resource_previewer).values():
 			vbox_container_properties.add_child(input_field)
 		
-		ThemeAdapter.assign_node_type(section_brush, 'InspectorPanelContainer')
+		section_brush.theme_type_variation = "InspectorPanelContainer"
 	
 	if brushes.size() > 0:
 		tab_container_brushes_nd.current_tab = brushes.find(active_brush)
-	tab_container_brushes_nd.connect("tab_changed", self, "on_active_brush_tab_changed")
+	tab_container_brushes_nd.tab_changed.connect(on_active_brush_tab_changed)
 	
 	return ui_category_brushes_nd
 
@@ -88,9 +94,9 @@ func forwarded_input(camera, event):
 	
 	var index_tab = -1
 	
-	if event is InputEventKey && !event.pressed:
+	if is_instance_of(event, InputEventKey) && !event.pressed:
 		var index_map := [KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9, KEY_0]
-		index_tab = index_map.find(event.scancode)
+		index_tab = index_map.find(event.keycode)
 		
 		if index_tab >= 0 && index_tab < brushes.size():
 			handled = true
@@ -110,12 +116,12 @@ func on_active_brush_tab_changed(active_tab):
 
 
 func on_prop_action_executed(prop_action:PropAction, final_val):
-	if prop_action is PA_PropSet:
+	if is_instance_of(prop_action, PA_PropSet):
 		if prop_action.prop == "brush/active_brush":
 			if tab_container_brushes_nd:
-				tab_container_brushes_nd.disconnect("tab_changed", self, "on_active_brush_tab_changed")
+				tab_container_brushes_nd.tab_changed.disconnect(on_active_brush_tab_changed)
 				tab_container_brushes_nd.current_tab = brushes.find(final_val)
-				tab_container_brushes_nd.connect("tab_changed", self, "on_active_brush_tab_changed")
+				tab_container_brushes_nd.tab_changed.connect(on_active_brush_tab_changed)
 
 
 
@@ -130,7 +136,7 @@ func on_changed_brush():
 
 
 func on_prop_action_executed_on_brush(prop_action:PropAction, final_val, brush):
-	emit_signal("prop_action_executed_on_brush", prop_action, final_val, brush)
+	prop_action_executed_on_brush.emit(prop_action, final_val, brush)
 
 
 
@@ -140,8 +146,8 @@ func on_prop_action_executed_on_brush(prop_action:PropAction, final_val, brush):
 #-------------------------------------------------------------------------------
 
 
-func set_undo_redo(val:UndoRedo):
-	.set_undo_redo(val)
+func set_undo_redo(val):
+	super.set_undo_redo(val)
 	for brush in brushes:
 		brush.set_undo_redo(_undo_redo)
 
@@ -150,11 +156,11 @@ func _modify_prop(prop:String, val):
 	match prop:
 		"brush/brushes":
 			for i in range(0, val.size()):
-				if !(val[i] is Toolshed_Brush):
+				if !is_instance_of(val[i], Toolshed_Brush):
 					val[i] = Toolshed_Brush.new()
 				
-				FunLib.ensure_signal(val[i], "changed", self, "on_changed_brush")
-				FunLib.ensure_signal(val[i], "prop_action_executed", self, "on_prop_action_executed_on_brush", [val[i]])
+				FunLib.ensure_signal(val[i].changed, on_changed_brush)
+				FunLib.ensure_signal(val[i].prop_action_executed, on_prop_action_executed_on_brush, [val[i]])
 				
 				if val[i]._undo_redo != _undo_redo:
 					val[i].set_undo_redo(_undo_redo)
