@@ -27,8 +27,8 @@ func _physics_process(delta):
 	anim_player.speed_scale = get_playback_speed(animation_speed_world_basis)
 
 
-func get_playback_speed(basis:float):
-	return manual_velocity.length() / basis * animation_direction * animation_multiplier
+func get_playback_speed(base:float):
+	return manual_velocity.length() / base * animation_direction * animation_multiplier
 
 
 func _ready():

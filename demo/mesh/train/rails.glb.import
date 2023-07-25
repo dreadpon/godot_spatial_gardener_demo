@@ -1,0 +1,75 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cukwt1t00l0pj"
+path="res://.godot/imported/rails.glb-fc356679bf37737fbe0a1290b6cbbb35.scn"
+
+[deps]
+
+source_file="res://demo/mesh/train/rails.glb"
+dest_files=["res://.godot/imported/rails.glb-fc356679bf37737fbe0a1290b6cbbb35.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=false
+meshes/create_shadow_meshes=false
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"rail_metal": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/train/rail_metal.tres"
+},
+"rail_wood": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/mesh/train/rail_wood.tres"
+}
+},
+"meshes": {
+"rails_rail_path": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/train/rails_rail_path.tres"
+},
+"rails_rail_path_collision": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/train/rails_rail_path_collision.tres"
+},
+"rails_rail_sleepers": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/mesh/train/rails_rail_sleepers.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

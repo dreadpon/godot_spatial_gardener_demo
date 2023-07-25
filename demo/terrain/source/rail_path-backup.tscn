@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://qypiyb0kofm0"]
-
-[node name="rail_path-backup" type="Node3D"]
-transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -11.874, -60.282, -79.9918)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://t5dg8rpmyqqe"]
+
+[ext_resource type="ArrayMesh" uid="uid://bblcr2udenfg6" path="res://demo/mesh/train/rails_rail_path.tres" id="1_s6045"]
+
+[node name="rail_path" type="MeshInstance3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = ExtResource("1_s6045")

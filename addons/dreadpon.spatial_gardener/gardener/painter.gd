@@ -9,7 +9,7 @@ extends RefCounted
 
 
 const FunLib = preload("../utility/fun_lib.gd")
-const DebugDraw = preload("../utility/debug_draw.gd")
+const DponDebugDraw = preload("../utility/debug_draw.gd")
 const Toolshed_Brush = preload("../toolshed/toolshed_brush.gd")
 const Globals = preload("../utility/globals.gd")
 
@@ -448,7 +448,7 @@ func update_all_props_to_active_brush(brush: Toolshed_Brush):
 # Update helper variables and visuals
 func set_active_brush_size(val):
 	active_brush_size = val
-	paint_brush_node.material_override.set_shader_parameterseter("proximity_multiplier", active_brush_size * 0.5)
+	paint_brush_node.material_override.set_shader_parameter("proximity_multiplier", active_brush_size * 0.5)
 	queue_call_when_camera('set_brush_diameter', [active_brush_size])
 
 

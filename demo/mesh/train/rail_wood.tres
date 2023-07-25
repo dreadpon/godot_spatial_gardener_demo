@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://5stku1jvv363"]
+
+[resource]
+resource_name = "rail_wood"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.427451, 0.290196, 0.168627, 1)
+roughness = 0.5

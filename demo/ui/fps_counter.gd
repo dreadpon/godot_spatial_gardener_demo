@@ -2,7 +2,7 @@ extends PanelContainer
 
 
 func _ready():
-	ShowcaseSettings.connect("updated_setting", on_updated_setting))
+	ShowcaseSettings.connect("updated_setting", on_updated_setting)
 	on_updated_setting("show_hud", "interface", ShowcaseSettings.get_setting_val("show_hud"))
 
 

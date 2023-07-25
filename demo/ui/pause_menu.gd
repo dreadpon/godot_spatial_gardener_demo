@@ -6,16 +6,16 @@ extends Control
 @onready var button_settings := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonSettings
 @onready var button_quit := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/ButtonQuit
 
-@onready var check_button_show_hud := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonShowHUD
-@onready var check_button_sound := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonSound
-@onready var slider_sound_volume := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderSoundVolume
-@onready var check_button_fullscreen := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonFullscreen
-@onready var slider_rendering_quality := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderRenderingQuality
-@onready var check_button_dof_blur := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonDOFBlur
-@onready var slider_dof_blur_quality := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderDOFBlurQuality
-@onready var check_button_vsync := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonVSync
-@onready var slider_mouse_sensitivity := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderMouseSensitivity
-@onready var slider_controller_sensitivity := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderControllerSensitivity
+@onready var check_button_show_hud := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonShowHUD
+@onready var check_button_sound := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonSound
+@onready var slider_sound_volume := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderSoundVolume
+@onready var check_button_fullscreen := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonFullscreen
+@onready var slider_rendering_quality := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderRenderingQuality
+@onready var check_button_dof_blur := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonDOFBlur
+@onready var slider_dof_blur_quality := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderDOFBlurQuality
+@onready var check_button_vsync := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonVSync
+@onready var slider_mouse_sensitivity := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderMouseSensitivity
+@onready var slider_controller_sensitivity := $CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderControllerSensitivity
 
 @onready var window_tab_container := $CenterContainer/VBoxContainer/WindowTabContainer
 
@@ -53,10 +53,12 @@ func toggle_pause_menu():
 		visible = true
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		get_tree().paused = true
+		RenderingServer.global_shader_parameter_set("time_scale", 0.0)
 	else:
 		visible = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		get_tree().paused = false
+		RenderingServer.global_shader_parameter_set("time_scale", 1.0)
 
 
 func show_tab(index:int):
@@ -93,4 +95,5 @@ func set_needs_reboot(val):
 
 func restart():
 	resume()
-	ShowcaseSettings.restart(get_tree().current_scene.filename)
+	ShowcaseSettings.restart(get_tree().current_scene.scene_file_path
+)

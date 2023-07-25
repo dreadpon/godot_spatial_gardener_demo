@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://drh203aw855xn"]
+
+[ext_resource type="ArrayMesh" uid="uid://lbywbahr2gns" path="res://demo/mesh/train/rails_rail_sleepers.tres" id="1_lm0aa"]
+
+[node name="rail_sleepers" type="MeshInstance3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = ExtResource("1_lm0aa")

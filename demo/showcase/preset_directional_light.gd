@@ -14,23 +14,24 @@ func on_updated_setting(setting_id:String, section:String, val):
 
 
 func set_preset(preset_float:float):
+	if Engine.is_editor_hint(): return
 	var preset := int(round(preset_float))
 	match preset:
 		
 		0:
 			directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL
 			directional_shadow_max_distance = 150.0
-			shadow_normal_bias = 4.0
-			shadow_bias = 4.0
+			shadow_normal_bias = 2.0
+			shadow_bias = 0.1
 		
 		1:
 			directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
 			directional_shadow_max_distance = 300.0
-			shadow_normal_bias = 2.0
-			shadow_bias = 0.5
+			shadow_normal_bias = 1.5
+			shadow_bias = 0.075
 		
 		2:
 			directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
 			directional_shadow_max_distance = 300.0
-			shadow_normal_bias = 1.5
-			shadow_bias = 0.5
+			shadow_normal_bias = 1.0
+			shadow_bias = 0.05

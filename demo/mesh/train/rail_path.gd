@@ -1,57 +1,59 @@
-tool
-extends Path
+@tool
+extends Path3D
 
 
-const DebugDraw = preload("res://addons/dreadpon.spatial_gardener/utility/debug_draw.gd")
 const FunLib = preload("res://addons/dreadpon.spatial_gardener/utility/fun_lib.gd")
 const TrainStop = preload("train/train_stop.gd")
 
 
-export var redraw:bool = false setget set_redraw
-export var spacings:Array = []
-export(Array, Resource) var stops:Array = [] setget set_stops
-export var direction:float = 1.0
-export var max_speed:float = 30.0
-export var max_acceleration:float = 10.0
-export var move_in_editor:bool = false
-export var fixed_baked_up_vectors:PoolVector3Array
-export var speed:float = 0.0
-export var acceleration:float = 0.0
+#@export var redraw:bool = false : set = set_redraw
+@export var spacings:Array = []
+@export var stops:Array[Resource] = [] : set = set_stops
+@export var direction:float = 1.0
+@export var max_speed:float = 30.0
+@export var max_acceleration:float = 10.0
+@export var move_in_editor:bool = false
+@export var fixed_baked_up_vectors:PackedVector3Array
+@export var fixed_baked_fwd_vectors:PackedVector3Array
+@export var speed:float = 0.0
+@export var acceleration:float = 0.0
 
 
 
 
-func _ready():
-	fix_up_vectors()
+#func _ready():
+#	fix_up_vectors()
 
 
-func set_redraw(val):
-	redraw = false
-	if val && self.is_inside_tree():
-		fix_up_vectors()
+#func set_redraw(val):
+#	redraw = false
+#	if val && self.is_inside_tree():
+#		fix_up_vectors()
 
 
-func fix_up_vectors():
-	var baked_points = curve.get_baked_points()
-	var baked_tilts = curve.get_baked_tilts()
-	var baked_up_vectors = curve.get_baked_up_vectors()
-	fixed_baked_up_vectors = PoolVector3Array()
-	
-	for i in range(0, baked_points.size()):
-		var fwd_vec:Vector3
-		if i < baked_points.size() - 1:
-			fwd_vec = (baked_points[i + 1] - baked_points[i]).normalized()
-		else:
-			fwd_vec = (baked_points[i] - baked_points[i - 1]).normalized()
-		
-		var world_up_vec:Vector3 = fwd_vec.cross(Vector3.UP.cross(fwd_vec))
-		var tilted_world_up_vec:Vector3 = world_up_vec.rotated(fwd_vec, baked_tilts[i])
-		
-		fixed_baked_up_vectors.append(tilted_world_up_vec)
+#func fix_up_vectors():
+#	var baked_points = curve.get_baked_points()
+#	var baked_tilts = curve.get_baked_tilts()
+#	var baked_up_vectors = curve.get_baked_up_vectors()
+#	fixed_baked_fwd_vectors = PackedVector3Array()
+#	fixed_baked_up_vectors = PackedVector3Array()
+#
+#	for i in range(0, baked_points.size()):
+#		var fwd_vec:Vector3
+#		if i < baked_points.size() - 1:
+#			fwd_vec = (baked_points[i + 1] - baked_points[i]).normalized()
+#		else:
+#			fwd_vec = (baked_points[i] - baked_points[i - 1]).normalized()
+#
+#		var world_up_vec:Vector3 = fwd_vec.cross(Vector3.UP.cross(fwd_vec))
+#		var tilted_world_up_vec:Vector3 = world_up_vec.rotated(fwd_vec, baked_tilts[i]).normalized()
+#
+#		fixed_baked_fwd_vectors.append(fwd_vec)
+#		fixed_baked_up_vectors.append(tilted_world_up_vec)
 
 
 func _physics_process(delta):
-	if Engine.editor_hint && !move_in_editor: return
+	if Engine.is_editor_hint() && !move_in_editor: return
 	move(delta)
 
 
@@ -61,36 +63,36 @@ func move(delta:float):
 	var path_follow_spacing = spacings.duplicate()
 	
 	for child in get_children():
-		if !(child is PathFollow): continue
+		if !(child is PathFollow3D): continue
 		path_follows.append(child)
-	if path_follows.empty(): return
+	if path_follows.is_empty(): return
 	
 	if direction < 0.0:
-		path_follows.invert()
-		path_follow_spacing.invert()
+		path_follows.reverse()
+		path_follow_spacing.reverse()
 	
 	speed = clamp(speed + acceleration * delta, 0.0, max_speed)
-	var last_pos = path_follows[0].offset
+	var last_pos = path_follows[0].progress
 	var movement := speed * delta * direction
 	
 	for i in range(0, path_follows.size()):
-		var path_follow:PathFollow = path_follows[i]
+		var path_follow:PathFollow3D = path_follows[i]
 		
 		if i == 0:
-			path_follow.offset = path_follow.offset + movement
+			path_follow.progress = path_follow.progress + movement
 		else:
 			var spacing = path_follow_spacing[i - 1] + path_follow_spacing[i]
 			spacing *= direction * -1.0
-			path_follow.offset = path_follows[i - 1].offset + spacing
+			path_follow.progress = path_follows[i - 1].progress + spacing
 	
-	process_stops(delta, last_pos, path_follows[0].offset)
+	process_stops(delta, last_pos, path_follows[0].progress)
 	
 	var baked_length = curve.get_baked_length()
-	if direction >= 0.0 && path_follows[0].offset >= baked_length - path_follow_spacing[0]:
+	if direction >= 0.0 && path_follows[0].progress >= baked_length - path_follow_spacing[0]:
 		direction = -1.0
 		set_emit_smoke(path_follows)
 		set_animation_direction(path_follows, direction)
-	elif direction < 0.0 && path_follows[0].offset <= 0.0 + path_follow_spacing[0]:
+	elif direction < 0.0 && path_follows[0].progress <= 0.0 + path_follow_spacing[0]:
 		direction = 1.0
 		set_emit_smoke(path_follows)
 		set_animation_direction(path_follows, direction)
@@ -106,8 +108,8 @@ func cleanup_spacings():
 
 
 func set_emit_smoke(path_follows):
-	var first_cart:Spatial = path_follows[0].get_child(0)
-	var last_cart:Spatial = path_follows[path_follows.size() - 1].get_child(0)
+	var first_cart:Node3D = path_follows[0].get_child(0)
+	var last_cart:Node3D = path_follows[path_follows.size() - 1].get_child(0)
 	if first_cart.has_method("set_emit_smoke"):
 		first_cart.set_emit_smoke(false)
 	if last_cart.has_method("set_emit_smoke"):

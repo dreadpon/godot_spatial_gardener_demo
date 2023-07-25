@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds8gv3fhg5x82"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7ctkrviv27u0" path="res://demo/mesh/train/rails_rail_path_collision.tres" id="1_prbc1"]
+
+[node name="rail_path_collision" type="MeshInstance3D"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, -11.874, -60.282, -79.9918)
+mesh = ExtResource("1_prbc1")

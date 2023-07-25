@@ -1,321 +1,276 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://d3kl50fpxey13"]
 
-[ext_resource path="res://demo/ui/pause_menu.gd" type="Script" id=1]
-[ext_resource path="res://demo/ui/menu_theme.tres" type="Theme" id=2]
-[ext_resource path="res://demo/ui/textures/button_regular_normal.png" type="Texture2D" id=3]
+[ext_resource type="Script" path="res://demo/ui/pause_menu.gd" id="1"]
+[ext_resource type="Theme" uid="uid://ddia8xes5woe0" path="res://demo/ui/menu_theme.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://etrdfcb4uos0" path="res://demo/ui/textures/button_regular_normal.png" id="3"]
 
-[sub_resource type="StyleBoxFlat" id=12]
-bg_color = Color( 1, 1, 1, 0.25098 )
+[sub_resource type="StyleBoxFlat" id="12"]
+bg_color = Color(1, 1, 1, 0.25098)
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id="3"]
 draw_center = false
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id="11"]
 content_margin_left = 140.0
+content_margin_top = 30.0
 content_margin_right = 140.0
-content_margin_top = 30.0
 content_margin_bottom = 30.0
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 256, 152 )
-offset_left = 128.0
-offset_right = 128.0
-offset_top = 32.0
-offset_bottom = 32.0
-modulate_color = Color( 0.9, 0.9, 0.9, 1 )
+texture = ExtResource("3")
+texture_margin_left = 128.0
+texture_margin_top = 32.0
+texture_margin_right = 128.0
+texture_margin_bottom = 32.0
+region_rect = Rect2(0, 0, 256, 152)
+modulate_color = Color(0.9, 0.9, 0.9, 1)
 
-[sub_resource type="StyleBoxTexture" id=13]
+[sub_resource type="StyleBoxTexture" id="13"]
 content_margin_left = 210.0
-content_margin_right = 210.0
 content_margin_top = 30.0
+content_margin_right = 210.0
 content_margin_bottom = 30.0
-texture = ExtResource( 3 )
-region_rect = Rect2( 0, 0, 256, 152 )
-offset_left = 128.0
-offset_right = 128.0
-offset_top = 32.0
-offset_bottom = 32.0
-modulate_color = Color( 1, 0, 0, 1 )
+texture = ExtResource("3")
+texture_margin_left = 128.0
+texture_margin_top = 32.0
+texture_margin_right = 128.0
+texture_margin_bottom = 32.0
+region_rect = Rect2(0, 0, 256, 152)
+modulate_color = Color(1, 0, 0, 1)
 
 [node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource( 2 )
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme = ExtResource("2")
+script = ExtResource("1")
 
 [node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_styles/panel = SubResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+theme_override_styles/panel = SubResource("12")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-offset_left = 757.0
-offset_top = 20.0
-offset_right = 1802.0
-offset_bottom = 1420.0
-custom_minimum_size = Vector2( 400, 0 )
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="PanelContainer" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
-offset_left = 176.0
-offset_right = 868.0
-offset_bottom = 271.0
-custom_minimum_size = Vector2( 0, 100 )
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer/PanelContainer"]
-offset_left = 240.0
-offset_top = 100.0
-offset_right = 452.0
-offset_bottom = 171.0
-pivot_offset = Vector2( 155, -125 )
+layout_mode = 2
 text = "PAUSED"
-align = 1
-valign = 1
 
 [node name="WindowTabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
-offset_top = 291.0
-offset_right = 1045.0
-offset_bottom = 1400.0
-theme_override_styles/tab_selected = SubResource( 3 )
-theme_override_styles/tab_disabled = SubResource( 3 )
-theme_override_styles/tab_unselected = SubResource( 3 )
-theme_override_styles/panel = SubResource( 3 )
+layout_mode = 2
+theme_override_styles/tab_selected = SubResource("3")
+theme_override_styles/tab_unselected = SubResource("3")
+theme_override_styles/tab_disabled = SubResource("3")
+theme_override_styles/panel = SubResource("3")
 tabs_visible = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
 theme_override_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer"]
-offset_right = 692.0
-offset_bottom = 317.0
+layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ButtonResume" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
-offset_left = 140.0
-offset_right = 551.0
-offset_bottom = 99.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../../ButtonQuit")
 focus_neighbor_bottom = NodePath("../ButtonSettings")
 focus_next = NodePath("../ButtonSettings")
 focus_previous = NodePath("../../ButtonQuit")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
 text = "RESUME"
 
 [node name="ButtonSettings" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
-offset_left = 124.0
-offset_top = 109.0
-offset_right = 567.0
-offset_bottom = 208.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../ButtonResume")
 focus_neighbor_bottom = NodePath("../../ButtonQuit")
 focus_next = NodePath("../../ButtonQuit")
 focus_previous = NodePath("../ButtonResume")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
 text = "SETTINGS"
 
 [node name="ButtonRestart" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer"]
-offset_left = 132.0
-offset_top = 218.0
-offset_right = 559.0
-offset_bottom = 317.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../../ButtonQuit")
 focus_neighbor_bottom = NodePath("../ButtonSettings")
 focus_next = NodePath("../ButtonSettings")
 focus_previous = NodePath("../../ButtonQuit")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
 text = "RESTART"
 
 [node name="ButtonQuit" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer"]
-offset_left = 166.0
-offset_top = 347.0
-offset_right = 525.0
-offset_bottom = 446.0
-custom_minimum_size = Vector2( 0, 50 )
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 4
 focus_neighbor_top = NodePath("../VBoxContainer/ButtonSettings")
 focus_neighbor_bottom = NodePath("../VBoxContainer/ButtonResume")
 focus_next = NodePath("../VBoxContainer/ButtonResume")
 focus_previous = NodePath("../VBoxContainer/ButtonSettings")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 4
 text = "QUIT"
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3"]
-offset_right = 1045.0
-offset_bottom = 990.0
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 900)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer"]
+layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer"]
-offset_right = 705.0
-offset_bottom = 990.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer"]
+layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/separation = 0
 
-[node name="Button11" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_right = 705.0
-offset_bottom = 99.0
-custom_minimum_size = Vector2( 0, 50 )
-tooltip_text = "Show/hide heads-up-display (FPS counter, etc.)"
-mouse_default_cursor_shape = 16
+[node name="Button11" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_colors/font_disabled_color = Color( 0, 0, 0, 1 )
-theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_hover_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_pressed_color = Color( 1, 1, 1, 1 )
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+tooltip_text = "Show/hide heads-up-display (FPS counter, etc.)"
+mouse_default_cursor_shape = 16
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "SHOW HUD"
 
-[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 99.0
-offset_right = 705.0
-offset_bottom = 198.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button4" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Enable/disable sound"
 focus_mode = 0
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_disabled_color = Color( 0, 0, 0, 1 )
-theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_hover_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_pressed_color = Color( 1, 1, 1, 1 )
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "SOUND"
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 198.0
-offset_right = 705.0
-offset_bottom = 297.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Set sound volume 
 0% - 100%"
 focus_mode = 0
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_disabled_color = Color( 0, 0, 0, 1 )
-theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_hover_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_pressed_color = Color( 1, 1, 1, 1 )
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "SOUND VOLUME"
 
-[node name="Button7" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 297.0
-offset_right = 705.0
-offset_bottom = 396.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button7" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Set game mode to fullscreen"
 focus_mode = 0
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "FULLSCREEN"
 
-[node name="Button5" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 396.0
-offset_right = 705.0
-offset_bottom = 495.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button5" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Set rendering quality (mainly shadows)
 Low - Med - High
 
 FPS impact: big"
 focus_mode = 0
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_colors/font_disabled_color = Color( 0, 0, 0, 1 )
-theme_override_colors/font_focus_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_hover_color = Color( 1, 1, 1, 1 )
-theme_override_colors/font_pressed_color = Color( 1, 1, 1, 1 )
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "RENDERING QUALITY"
 
-[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 495.0
-offset_right = 705.0
-offset_bottom = 594.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button3" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Enable/disable Depth of Field blur (blur faraway objects)
 
 FPS impact: big"
 focus_mode = 0
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "DOF BLUR"
 
-[node name="Button8" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 594.0
-offset_right = 705.0
-offset_bottom = 693.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button8" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Set Depth of Field blur quality
 Low - Med - High
 
 FPS impact: low (enabled/disabled matters more)"
 focus_mode = 0
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "DOF BLUR QUALITY"
 
-[node name="Button6" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 693.0
-offset_right = 705.0
-offset_bottom = 792.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button6" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Enable/disable Vertical Synchronization
 Enabling this helps prevent screen tearing and stabilizes FPS on higher-end machines
 But it locks FPS to that of the given monitor (typically 60 FPS)
@@ -323,257 +278,207 @@ But it locks FPS to that of the given monitor (typically 60 FPS)
 FPS impact: depends on the given monitor"
 focus_mode = 0
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "VSYNC"
 
-[node name="Button9" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 792.0
-offset_right = 705.0
-offset_bottom = 891.0
-custom_minimum_size = Vector2( 0, 50 )
+[node name="Button9" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 tooltip_text = "Set the speed for rotating camera using a mouse"
 mouse_default_cursor_shape = 16
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "MOUSE SENSITIVITY"
 
-[node name="Button10" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/VBoxContainer"]
-offset_top = 891.0
-offset_right = 705.0
-offset_bottom = 990.0
-custom_minimum_size = Vector2( 0, 50 )
-tooltip_text = "Set the speed for rotating camera using a controller/joypad"
-mouse_default_cursor_shape = 16
+[node name="Button10" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/hover = SubResource( 11 )
-theme_override_styles/pressed = SubResource( 11 )
+tooltip_text = "Set the speed for rotating camera using a controller/joypad"
+mouse_default_cursor_shape = 16
+theme_override_styles/hover = SubResource("11")
+theme_override_styles/pressed = SubResource("11")
 text = "CONTROLLER SENSITIVITY"
 
-[node name="GridContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer"]
-offset_left = 745.0
-offset_right = 1045.0
-offset_bottom = 990.0
-custom_minimum_size = Vector2( 300, 0 )
+[node name="GridContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
 size_flags_horizontal = 2
 theme_override_constants/separation = 0
 
-[node name="CheckButtonShowHUD" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 10.0
-offset_right = 150.0
-offset_bottom = 88.0
-focus_neighbor_top = NodePath("../../../ButtonReturn")
-focus_neighbor_bottom = NodePath("../SliderSoundVolume")
-focus_next = NodePath("../SliderSoundVolume")
-focus_previous = NodePath("../../../ButtonReturn")
-mouse_default_cursor_shape = 2
+[node name="CheckButtonShowHUD" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
-
-[node name="CheckButtonSound" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 109.0
-offset_right = 150.0
-offset_bottom = 187.0
-focus_neighbor_top = NodePath("../../../ButtonReturn")
+focus_neighbor_top = NodePath("../../../../ButtonReturn")
 focus_neighbor_bottom = NodePath("../SliderSoundVolume")
 focus_next = NodePath("../SliderSoundVolume")
-focus_previous = NodePath("../../../ButtonReturn")
+focus_previous = NodePath("../../../../ButtonReturn")
 mouse_default_cursor_shape = 2
+
+[node name="CheckButtonSound" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 6
+focus_neighbor_top = NodePath("../../../../ButtonReturn")
+focus_neighbor_bottom = NodePath("../SliderSoundVolume")
+focus_next = NodePath("../SliderSoundVolume")
+focus_previous = NodePath("../../../../ButtonReturn")
+mouse_default_cursor_shape = 2
 
-[node name="SliderSoundVolume" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 223.0
-offset_right = 300.0
-offset_bottom = 271.0
+[node name="SliderSoundVolume" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../CheckButtonSound")
 focus_neighbor_bottom = NodePath("../CheckButtonFullscreen")
 focus_next = NodePath("../CheckButtonFullscreen")
-focus_previous = NodePath("../../../ButtonReturn")
+focus_previous = NodePath("../../../../ButtonReturn")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
 max_value = 1.0
 step = 0.01
 scrollable = false
 ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="CheckButtonFullscreen" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 307.0
-offset_right = 150.0
-offset_bottom = 385.0
+[node name="CheckButtonFullscreen" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../SliderSoundVolume")
 focus_neighbor_bottom = NodePath("../SliderRenderingQuality")
 focus_next = NodePath("../SliderRenderingQuality")
 focus_previous = NodePath("../SliderSoundVolume")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 2
-size_flags_vertical = 6
 
-[node name="SliderRenderingQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 421.0
-offset_right = 300.0
-offset_bottom = 469.0
+[node name="SliderRenderingQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../CheckButtonFullscreen")
 focus_neighbor_bottom = NodePath("../CheckButtonDOFBlur")
 focus_next = NodePath("../CheckButtonDOFBlur")
 focus_previous = NodePath("../CheckButtonFullscreen")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
 max_value = 2.0
 scrollable = false
 ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="CheckButtonDOFBlur" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 505.0
-offset_right = 150.0
-offset_bottom = 583.0
-pivot_offset = Vector2( 127, 534 )
+[node name="CheckButtonDOFBlur" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../SliderRenderingQuality")
 focus_neighbor_bottom = NodePath("../SliderDOFBlurQuality")
 focus_next = NodePath("../SliderDOFBlurQuality")
 focus_previous = NodePath("../SliderRenderingQuality")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 2
-size_flags_vertical = 6
 
-[node name="SliderDOFBlurQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 619.0
-offset_right = 300.0
-offset_bottom = 667.0
+[node name="SliderDOFBlurQuality" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../CheckButtonDOFBlur")
 focus_neighbor_bottom = NodePath("../CheckButtonVSync")
 focus_next = NodePath("../CheckButtonVSync")
 focus_previous = NodePath("../CheckButtonDOFBlur")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
 max_value = 2.0
 scrollable = false
 ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="CheckButtonVSync" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 703.0
-offset_right = 150.0
-offset_bottom = 781.0
+[node name="CheckButtonVSync" type="CheckButton" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../SliderDOFBlurQuality")
 focus_neighbor_bottom = NodePath("../SliderMouseSensitivity")
 focus_next = NodePath("../SliderMouseSensitivity")
 focus_previous = NodePath("../SliderDOFBlurQuality")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 2
-size_flags_vertical = 6
 
-[node name="SliderMouseSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 817.0
-offset_right = 300.0
-offset_bottom = 865.0
+[node name="SliderMouseSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../CheckButtonVSync")
 focus_neighbor_bottom = NodePath("../SliderControllerSensitivity")
 focus_next = NodePath("../SliderControllerSensitivity")
 focus_previous = NodePath("../CheckButtonVSync")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
 max_value = 1.0
 step = 0.01
 scrollable = false
 ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="SliderControllerSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer"]
-offset_top = 916.0
-offset_right = 300.0
-offset_bottom = 964.0
+[node name="SliderControllerSensitivity" type="HSlider" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 focus_neighbor_top = NodePath("../SliderMouseSensitivity")
-focus_neighbor_bottom = NodePath("../../../ButtonReturn")
-focus_next = NodePath("../../../ButtonReturn")
+focus_neighbor_bottom = NodePath("../../../../ButtonReturn")
+focus_next = NodePath("../../../../ButtonReturn")
 focus_previous = NodePath("../SliderMouseSensitivity")
 mouse_default_cursor_shape = 2
-size_flags_horizontal = 3
-size_flags_vertical = 6
 max_value = 1.0
 step = 0.01
 scrollable = false
 ticks_on_borders = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ButtonReturn" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3"]
-offset_left = 320.0
-offset_top = 1010.0
-offset_right = 724.0
-offset_bottom = 1109.0
-custom_minimum_size = Vector2( 0, 50 )
-focus_neighbor_top = NodePath("../HBoxContainer/GridContainer/SliderControllerSensitivity")
-focus_neighbor_bottom = NodePath("../HBoxContainer/GridContainer/CheckButtonSound")
-focus_next = NodePath("../HBoxContainer/GridContainer/CheckButtonSound")
-focus_previous = NodePath("../HBoxContainer/GridContainer/SliderControllerSensitivity")
-mouse_default_cursor_shape = 2
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
 size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../ScrollContainer/HBoxContainer/GridContainer/SliderControllerSensitivity")
+focus_neighbor_bottom = NodePath("../ScrollContainer/HBoxContainer/GridContainer/CheckButtonSound")
+focus_next = NodePath("../ScrollContainer/HBoxContainer/GridContainer/CheckButtonSound")
+focus_previous = NodePath("../ScrollContainer/HBoxContainer/GridContainer/SliderControllerSensitivity")
+mouse_default_cursor_shape = 2
 text = "RETURN"
 
 [node name="Control" type="Control" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ButtonReturn"]
+anchors_preset = 0
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ButtonNeedsReboot" type="Button" parent="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ButtonReturn/Control"]
 visible = false
+layout_mode = 0
 offset_left = -64.0
 offset_top = -54.0
 offset_right = 957.001
 offset_bottom = 54.0
 size_flags_horizontal = 6
 size_flags_vertical = 3
-theme_override_colors/font_disabled_color = Color( 1, 0.235294, 0.235294, 1 )
-theme_override_colors/font_focus_color = Color( 1, 0.235294, 0.235294, 1 )
-theme_override_colors/font_color = Color( 1, 0.235294, 0.235294, 1 )
-theme_override_colors/font_hover_color = Color( 1, 0.235294, 0.235294, 1 )
-theme_override_colors/font_pressed_color = Color( 1, 0.235294, 0.235294, 1 )
-theme_override_styles/hover = SubResource( 13 )
-theme_override_styles/pressed = SubResource( 13 )
-theme_override_styles/disabled = SubResource( 13 )
-theme_override_styles/normal = SubResource( 13 )
+theme_override_colors/font_color = Color(1, 0.235294, 0.235294, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.235294, 0.235294, 1)
+theme_override_colors/font_hover_color = Color(1, 0.235294, 0.235294, 1)
+theme_override_colors/font_focus_color = Color(1, 0.235294, 0.235294, 1)
+theme_override_colors/font_disabled_color = Color(1, 0.235294, 0.235294, 1)
+theme_override_styles/normal = SubResource("13")
+theme_override_styles/hover = SubResource("13")
+theme_override_styles/pressed = SubResource("13")
+theme_override_styles/disabled = SubResource("13")
 text = "RESTART TO APPLY CHANGES!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonResume" to="." method="resume"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonSettings" to="." method="show_tab" binds= [ 1 ]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonSettings" to="." method="show_tab" binds= [1]]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/VBoxContainer/ButtonRestart" to="." method="restart"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer/ButtonQuit" to="." method="quit"]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonShowHUD" to="." method="set_setting" binds= [ "show_hud" ]]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonSound" to="." method="set_setting" binds= [ "sound" ]]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderSoundVolume" to="." method="set_setting" binds= [ "sound_volume" ]]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonFullscreen" to="." method="set_setting" binds= [ "fullscreen" ]]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderRenderingQuality" to="." method="set_setting" binds= [ "rendering_quality" ]]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonDOFBlur" to="." method="set_setting" binds= [ "dof_blur" ]]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderDOFBlurQuality" to="." method="set_setting" binds= [ "dof_blur_quality" ]]
-[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/CheckButtonVSync" to="." method="set_setting" binds= [ "vsync" ]]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderMouseSensitivity" to="." method="set_setting" binds= [ "mouse_sensitivity" ]]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/HBoxContainer/GridContainer/SliderControllerSensitivity" to="." method="set_setting" binds= [ "controller_sensitivity" ]]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ButtonReturn" to="." method="show_tab" binds= [ 0 ]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonShowHUD" to="." method="set_setting" binds= ["show_hud"]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonSound" to="." method="set_setting" binds= ["sound"]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderSoundVolume" to="." method="set_setting" binds= ["sound_volume"]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonFullscreen" to="." method="set_setting" binds= ["fullscreen"]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderRenderingQuality" to="." method="set_setting" binds= ["rendering_quality"]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonDOFBlur" to="." method="set_setting" binds= ["dof_blur"]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderDOFBlurQuality" to="." method="set_setting" binds= ["dof_blur_quality"]]
+[connection signal="toggled" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/CheckButtonVSync" to="." method="set_setting" binds= ["vsync"]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderMouseSensitivity" to="." method="set_setting" binds= ["mouse_sensitivity"]]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ScrollContainer/HBoxContainer/GridContainer/SliderControllerSensitivity" to="." method="set_setting" binds= ["controller_sensitivity"]]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/WindowTabContainer/VBoxContainer3/ButtonReturn" to="." method="show_tab" binds= [0]]

@@ -1,0 +1,219 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://dhgguh1mkeq5n"
+path="res://.godot/imported/buildings.glb-dc7adcef80141e7e2d6a0af9eb7e7323.scn"
+
+[deps]
+
+source_file="res://demo/terrain/source/buildings.glb"
+dest_files=["res://.godot/imported/buildings.glb-dc7adcef80141e7e2d6a0af9eb7e7323.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=false
+meshes/create_shadow_meshes=false
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"building_bell": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_bell.tres"
+},
+"building_metal": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_metal.tres"
+},
+"building_plaster": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_plaster.tres"
+},
+"building_roof_tiles": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_roof_tiles.tres"
+},
+"building_stone": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_stone.tres"
+},
+"building_stone_dark": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_stone_dark.tres"
+},
+"building_stone_light": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_stone_light.tres"
+},
+"building_vegetation": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_vegetation.tres"
+},
+"building_windows": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_windows.tres"
+},
+"building_wood": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_wood.tres"
+},
+"building_wood_dark": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_wood_dark.tres"
+},
+"building_wood_light": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_wood_light.tres"
+},
+"building_wood_side": {
+"use_external/enabled": true,
+"use_external/path": "res://demo/terrain/source/building_wood_side.tres"
+}
+},
+"meshes": {
+"buildings_bell_tower": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_bell_tower.tres"
+},
+"buildings_bell_tower_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_bell_tower_001.tres"
+},
+"buildings_blacksmith": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_blacksmith.tres"
+},
+"buildings_house_1": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_house_1.tres"
+},
+"buildings_house_2": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_house_2.tres"
+},
+"buildings_house_3": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_house_3.tres"
+},
+"buildings_house_4": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_house_4.tres"
+},
+"buildings_house_4_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_house_4_001.tres"
+},
+"buildings_inn": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_inn.tres"
+},
+"buildings_mill": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_mill.tres"
+},
+"buildings_sawmill": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_sawmill.tres"
+},
+"buildings_train_station": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_train_station.tres"
+},
+"buildings_train_station_001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://demo/terrain/source/buildings_train_station_001.tres"
+}
+}
+}
+gltf/embedded_image_handling=1

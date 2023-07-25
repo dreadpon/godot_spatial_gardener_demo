@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bxb3k3bud2lx0"]
+
+[resource]
+resource_name = "rail_metal"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.935823, 0.891989, 0.814679, 1)
+metallic = 1.0
+roughness = 0.708556

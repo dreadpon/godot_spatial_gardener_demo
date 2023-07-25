@@ -35,6 +35,9 @@ mouse_sensitivity=0.5
 [debug]
 
 gdscript/warnings/unused_variable=false
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_private_class_variable=0
+gdscript/warnings/unused_parameter=0
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 gdscript/warnings/unused_argument=false
@@ -45,9 +48,13 @@ window/size/viewport_width=2560
 window/size/viewport_height=1440
 window/size/window_width_override=1000
 window/size/window_height_override=600
-window/stretch/mode="2d"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=false
+
+[dreadpons_spatial_gardener]
+
+input_and_ui/brush_prop_edit_button=8
 
 [editor_plugins]
 
@@ -192,6 +199,12 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+lights_and_shadows/directional_shadow/size=8192
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+anti_aliasing/screen_space_roughness_limiter/enabled=false
+anti_aliasing/quality/msaa_3d=3
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_debanding=true
 environment/defaults/default_environment="res://default_env.tres"
 quality/directional_shadow/size=8192
 quality/shadows/filter_mode=2
@@ -202,6 +215,13 @@ rendering/lights_and_shadows/shadow_atlas/size=8192
 rendering/quality/shadows/filter_mode=2
 rendering/lights_and_shadows/shadow_atlas/size.mobile=2048
 rendering/quality/shadows/filter_mode.mobile=1
+
+[shader_globals]
+
+time_scale={
+"type": "float",
+"value": 1.0
+}
 
 [sound]
 

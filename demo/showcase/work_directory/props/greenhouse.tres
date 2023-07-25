@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_rock_4.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_rock_pillar_1.tscn" id="10"]
 
-[sub_resource type="Resource" id="189181"]
+[sub_resource type="Resource" id="Resource_nhi37"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("5")
@@ -19,10 +19,10 @@ spawned_spatial = ExtResource("8")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="10"]
+[sub_resource type="Resource" id="Resource_u34qi"]
 resource_name = "Greenhouse_Plant"
 script = ExtResource("3")
-mesh/mesh_LOD_variants = [SubResource("189181")]
+mesh/mesh_LOD_variants = [SubResource("Resource_nhi37")]
 mesh/mesh_LOD_max_distance = 10.0
 mesh/mesh_LOD_kill_distance = -1.0
 mesh/mesh_LOD_max_capacity = 100
@@ -54,15 +54,15 @@ import_export/import_greenhouse_data_button = false
 import_export/export_greenhouse_data_button = false
 metadata/class = "Greenhouse_Plant"
 
-[sub_resource type="Resource" id="3"]
+[sub_resource type="Resource" id="Resource_u8qva"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("2")
 plant/plant_brush_active = true
 plant/plant_label = ""
-plant/plant = SubResource("10")
+plant/plant = SubResource("Resource_u34qi")
 metadata/class = "Greenhouse_PlantState"
 
-[sub_resource type="Resource" id="14"]
+[sub_resource type="Resource" id="Resource_2vgou"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("6")
@@ -70,10 +70,10 @@ spawned_spatial = ExtResource("9")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="11"]
+[sub_resource type="Resource" id="Resource_83mix"]
 resource_name = "Greenhouse_Plant"
 script = ExtResource("3")
-mesh/mesh_LOD_variants = [SubResource("14")]
+mesh/mesh_LOD_variants = [SubResource("Resource_2vgou")]
 mesh/mesh_LOD_max_distance = 10.0
 mesh/mesh_LOD_kill_distance = -1.0
 mesh/mesh_LOD_max_capacity = 100
@@ -105,15 +105,15 @@ import_export/import_greenhouse_data_button = false
 import_export/export_greenhouse_data_button = false
 metadata/class = "Greenhouse_Plant"
 
-[sub_resource type="Resource" id="6"]
+[sub_resource type="Resource" id="Resource_f2byf"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("2")
 plant/plant_brush_active = true
 plant/plant_label = ""
-plant/plant = SubResource("11")
+plant/plant = SubResource("Resource_83mix")
 metadata/class = "Greenhouse_PlantState"
 
-[sub_resource type="Resource" id="15"]
+[sub_resource type="Resource" id="Resource_60xtv"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("7")
@@ -121,10 +121,10 @@ spawned_spatial = ExtResource("10")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="12"]
+[sub_resource type="Resource" id="Resource_mq8pd"]
 resource_name = "Greenhouse_Plant"
 script = ExtResource("3")
-mesh/mesh_LOD_variants = [SubResource("15")]
+mesh/mesh_LOD_variants = [SubResource("Resource_60xtv")]
 mesh/mesh_LOD_max_distance = 10.0
 mesh/mesh_LOD_kill_distance = -1.0
 mesh/mesh_LOD_max_capacity = 100
@@ -156,17 +156,16 @@ import_export/import_greenhouse_data_button = false
 import_export/export_greenhouse_data_button = false
 metadata/class = "Greenhouse_Plant"
 
-[sub_resource type="Resource" id="9"]
+[sub_resource type="Resource" id="Resource_66e7v"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("2")
 plant/plant_brush_active = false
 plant/plant_label = ""
-plant/plant = SubResource("12")
+plant/plant = SubResource("Resource_mq8pd")
 metadata/class = "Greenhouse_PlantState"
 
 [resource]
 resource_name = "Greenhouse"
 script = ExtResource("1")
-plant_types/greenhouse_plant_states = [SubResource("3"), SubResource("6"), SubResource("9")]
-plant_types/selected_for_edit_resource = SubResource("3")
+plant_types/greenhouse_plant_states = [SubResource("Resource_u8qva"), SubResource("Resource_f2byf"), SubResource("Resource_66e7v")]
 metadata/class = "Greenhouse"

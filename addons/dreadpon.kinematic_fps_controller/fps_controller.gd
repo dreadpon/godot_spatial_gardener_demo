@@ -27,16 +27,16 @@ const MovementMode = preload("movement_mode.gd")
 @export var allowed_slope:float = 75.0 : set = _set_allowed_slope
 @export var bobbing_speed_walk:float = 8.0
 @export var bobbing_speed_run:float = 12.0
-@export var fall_sfx_trigger_distance:float = 2.0
+@export var fall_sfx_trigger_distance:float = 1.0
 
 var current_movement_mode:MovementMode = null
 var input_direction:Vector3 = Vector3()
 var floor_velocity:Vector3 = Vector3()
 var last_floor_state:bool = false
 var camera_bob_duration:float = 0.0
-var h_oscillator:Oscillator = Oscillator.new(0.2, 1.0)
+var h_oscillator:Oscillator = Oscillator.new(0.1, 1.0)
 var v_oscillator:Oscillator = Oscillator.new(0.075, 2.0)
-var r_z_oscillator:Oscillator = Oscillator.new(0.25, 1.0)
+var r_z_oscillator:Oscillator = Oscillator.new(0.05, 1.0)
 var distance_fallen:float = 0.0
 
 
@@ -159,11 +159,13 @@ func update_movement_mode():
 	else:
 		current_movement_mode = fall_mode
 	
-	if !floor_state && last_floor_state:
-		velocity += floor_velocity
-		floor_velocity = Vector3()
-	elif floor_state && !last_floor_state:
+#	if !floor_state && last_floor_state:
+#		velocity += floor_velocity
+#		floor_velocity = Vector3()
+#	elif floor_state && !last_floor_state:
+	if floor_state && !last_floor_state:
 		velocity -= floor_velocity
+		print(distance_fallen)
 		if distance_fallen >= fall_sfx_trigger_distance:
 			play_sfx("land")
 		distance_fallen = 0.0
@@ -204,12 +206,12 @@ func update_velocity(delta):
 
 
 func move_controller():
-	var delta_move = global_transform.origin
+	var last_pos = global_transform.origin
 	move_and_slide()
-	delta_move = global_transform.origin - delta_move
+	var delta_move = last_pos.y - global_transform.origin.y
 	
 	if current_movement_mode.movement_type == MovementMode.MovementType.FALL:
-		distance_fallen += delta_move.length()
+		distance_fallen += clamp(delta_move, 0, INF)
 
 
 func apply_camera_bob(delta):

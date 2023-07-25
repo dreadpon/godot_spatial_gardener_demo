@@ -13,24 +13,24 @@
 [ext_resource type="ArrayMesh" uid="uid://cqqpjb435sd7l" path="res://demo/mesh/plants/plants_bush_1_lod0.tres" id="11"]
 [ext_resource type="ArrayMesh" uid="uid://cokc25wcuydk5" path="res://demo/mesh/plants/plants_moss_lod0.tres" id="12"]
 
-[sub_resource type="Resource" id="189172"]
+[sub_resource type="Resource" id="Resource_fxd8m"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("5")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="22"]
+[sub_resource type="Resource" id="Resource_fki47"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("9")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="17"]
+[sub_resource type="Resource" id="Resource_fcnbd"]
 resource_name = "Greenhouse_Plant"
 script = ExtResource("3")
-mesh/mesh_LOD_variants = [SubResource("189172"), SubResource("22")]
+mesh/mesh_LOD_variants = [SubResource("Resource_fxd8m"), SubResource("Resource_fki47")]
 mesh/mesh_LOD_max_distance = 20.0
 mesh/mesh_LOD_kill_distance = 80.0
 mesh/mesh_LOD_max_capacity = 100
@@ -62,32 +62,32 @@ import_export/import_greenhouse_data_button = false
 import_export/export_greenhouse_data_button = false
 metadata/class = "Greenhouse_Plant"
 
-[sub_resource type="Resource" id="4"]
+[sub_resource type="Resource" id="Resource_5dxhk"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("2")
 plant/plant_brush_active = false
 plant/plant_label = ""
-plant/plant = SubResource("17")
+plant/plant = SubResource("Resource_fcnbd")
 metadata/class = "Greenhouse_PlantState"
 
-[sub_resource type="Resource" id="23"]
+[sub_resource type="Resource" id="Resource_gigmv"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("11")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="24"]
+[sub_resource type="Resource" id="Resource_j2gp8"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("7")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="18"]
+[sub_resource type="Resource" id="Resource_g1n1o"]
 resource_name = "Greenhouse_Plant"
 script = ExtResource("3")
-mesh/mesh_LOD_variants = [SubResource("23"), SubResource("24")]
+mesh/mesh_LOD_variants = [SubResource("Resource_gigmv"), SubResource("Resource_j2gp8")]
 mesh/mesh_LOD_max_distance = 20.0
 mesh/mesh_LOD_kill_distance = 80.0
 mesh/mesh_LOD_max_capacity = 100
@@ -119,32 +119,32 @@ import_export/import_greenhouse_data_button = false
 import_export/export_greenhouse_data_button = false
 metadata/class = "Greenhouse_Plant"
 
-[sub_resource type="Resource" id="8"]
+[sub_resource type="Resource" id="Resource_qla87"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("2")
 plant/plant_brush_active = false
 plant/plant_label = ""
-plant/plant = SubResource("18")
+plant/plant = SubResource("Resource_g1n1o")
 metadata/class = "Greenhouse_PlantState"
 
-[sub_resource type="Resource" id="189173"]
+[sub_resource type="Resource" id="Resource_gnwn8"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("8")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="189174"]
+[sub_resource type="Resource" id="Resource_teh1l"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("10")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="19"]
+[sub_resource type="Resource" id="Resource_pi6kf"]
 resource_name = "Greenhouse_Plant"
 script = ExtResource("3")
-mesh/mesh_LOD_variants = [SubResource("189173"), SubResource("189174")]
+mesh/mesh_LOD_variants = [SubResource("Resource_gnwn8"), SubResource("Resource_teh1l")]
 mesh/mesh_LOD_max_distance = 30.0
 mesh/mesh_LOD_kill_distance = 200.0
 mesh/mesh_LOD_max_capacity = 100
@@ -176,32 +176,32 @@ import_export/import_greenhouse_data_button = false
 import_export/export_greenhouse_data_button = false
 metadata/class = "Greenhouse_Plant"
 
-[sub_resource type="Resource" id="12"]
+[sub_resource type="Resource" id="Resource_12x8v"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("2")
 plant/plant_brush_active = false
 plant/plant_label = ""
-plant/plant = SubResource("19")
+plant/plant = SubResource("Resource_pi6kf")
 metadata/class = "Greenhouse_PlantState"
 
-[sub_resource type="Resource" id="27"]
+[sub_resource type="Resource" id="Resource_grtdv"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("12")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="28"]
+[sub_resource type="Resource" id="Resource_3xv4o"]
 resource_name = "Greenhouse_LODVariant"
 script = ExtResource("4")
 mesh = ExtResource("6")
 cast_shadow = 1
 metadata/class = "Greenhouse_LODVariant"
 
-[sub_resource type="Resource" id="20"]
+[sub_resource type="Resource" id="Resource_gcx3f"]
 resource_name = "Greenhouse_Plant"
 script = ExtResource("3")
-mesh/mesh_LOD_variants = [SubResource("27"), SubResource("28")]
+mesh/mesh_LOD_variants = [SubResource("Resource_grtdv"), SubResource("Resource_3xv4o")]
 mesh/mesh_LOD_max_distance = 30.0
 mesh/mesh_LOD_kill_distance = 200.0
 mesh/mesh_LOD_max_capacity = 100
@@ -233,17 +233,16 @@ import_export/import_greenhouse_data_button = false
 import_export/export_greenhouse_data_button = false
 metadata/class = "Greenhouse_Plant"
 
-[sub_resource type="Resource" id="16"]
+[sub_resource type="Resource" id="Resource_l446v"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("2")
 plant/plant_brush_active = true
 plant/plant_label = ""
-plant/plant = SubResource("20")
+plant/plant = SubResource("Resource_gcx3f")
 metadata/class = "Greenhouse_PlantState"
 
 [resource]
 resource_name = "Greenhouse"
 script = ExtResource("1")
-plant_types/greenhouse_plant_states = [SubResource("4"), SubResource("8"), SubResource("12"), SubResource("16")]
-plant_types/selected_for_edit_resource = SubResource("16")
+plant_types/greenhouse_plant_states = [SubResource("Resource_5dxhk"), SubResource("Resource_qla87"), SubResource("Resource_12x8v"), SubResource("Resource_l446v")]
 metadata/class = "Greenhouse"

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://demo/mesh/train/train/train_loco.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://duyleelu2bvty" path="res://demo/mesh/train/train/train_loco/train_loco.glb" id="3"]
-[ext_resource type="ArrayMesh" path="res://demo/mesh/train/train/train_smoke/train_smoke_train_smoke.res" id="4"]
+[ext_resource type="ArrayMesh" uid="uid://15binf73r6fw" path="res://demo/mesh/train/train/train_smoke/train_smoke_train_smoke.res" id="4"]
 [ext_resource type="AudioStream" uid="uid://c3v205ummamqr" path="res://demo/audio/looped_rails.ogg" id="5"]
 [ext_resource type="AudioStream" uid="uid://cblkuq1ox6eah" path="res://demo/audio/looped_bart_generator_loop.ogg" id="6"]
-[ext_resource type="PackedScene" path="res://demo/mesh/train/display/train_display.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://medasr1tx8cy" path="res://demo/mesh/train/display/train_display.tscn" id="7"]
 
 [sub_resource type="Curve" id="128053"]
 _data = [Vector2(0, 0), 0.0, 9.09687, 0, 0, Vector2(0.354767, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.86098, 0.0, 0, 0]
@@ -42,6 +42,7 @@ viewport_path = NodePath("SubViewport")
 collision_mask = 0
 motion_mode = 1
 script = ExtResource("1")
+emit_smoke = false
 animation_name = "train_loco_drive_baked"
 imported_model = NodePath("train_loco")
 
@@ -49,6 +50,7 @@ imported_model = NodePath("train_loco")
 
 [node name="smoke" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.37492, 4.31901)
+emitting = false
 amount = 30
 lifetime = 5.0
 randomness = 0.2
@@ -127,14 +129,9 @@ attenuation_filter_cutoff_hz = 20500.0
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(750, 230)
+render_target_update_mode = 4
 
 [node name="TrainDisplay" parent="SubViewport" instance=ExtResource("7")]
-layout_mode = 3
-anchors_preset = 15
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="TrainDisplaySpatial" type="Sprite3D" parent="."]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0.0450649, 3.44901, -1.82196)

@@ -1,8 +1,8 @@
-[gd_resource type="Theme" load_steps=29 format=3 uid="uid://ddia8xes5woe0"]
+[gd_resource type="Theme" load_steps=25 format=3 uid="uid://ddia8xes5woe0"]
 
 [ext_resource type="Texture2D" uid="uid://etrdfcb4uos0" path="res://demo/ui/textures/button_regular_normal.png" id="1"]
+[ext_resource type="FontVariation" uid="uid://dokuyg8sikplj" path="res://addons/dreadpon.spatial_gardener/utility/console/fonts/dynamic/urbanist_regular_var.tres" id="1_ky1ij"]
 [ext_resource type="Texture2D" uid="uid://dkn8qktukicbi" path="res://demo/ui/textures/panel.png" id="2"]
-[ext_resource type="FontFile" uid="uid://btvadi4yk0a3y" path="res://addons/dreadpon.spatial_gardener/utility/console/fonts/ttf/Urbanist-Regular.ttf" id="3"]
 [ext_resource type="Texture2D" uid="uid://bfpy1h31mcosb" path="res://demo/ui/textures/button_regular_hover.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://d4mq7tdjt6ha6" path="res://demo/ui/textures/slider_grabber_disabled.png" id="6"]
 [ext_resource type="Texture2D" uid="uid://5u50ixim0pmm" path="res://demo/ui/textures/slider_grabber.png" id="7"]
@@ -12,17 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://kgpkqfi618h7" path="res://demo/ui/textures/button_regular_focus.png" id="11"]
 [ext_resource type="Texture2D" uid="uid://ba8ut4fdu52xd" path="res://demo/ui/textures/check_button_hover.png" id="12"]
 
-[sub_resource type="FontFile" id="3"]
-fallbacks = Array[Font]([ExtResource("3")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+[sub_resource type="FontVariation" id="FontVariation_xqf3m"]
+base_font = ExtResource("1_ky1ij")
 
 [sub_resource type="StyleBoxTexture" id="12"]
 content_margin_left = 140.0
@@ -30,6 +21,10 @@ content_margin_top = 30.0
 content_margin_right = 140.0
 content_margin_bottom = 30.0
 texture = ExtResource("1")
+texture_margin_left = 128.0
+texture_margin_top = 32.0
+texture_margin_right = 128.0
+texture_margin_bottom = 32.0
 region_rect = Rect2(0, 0, 256, 152)
 modulate_color = Color(0.5, 0.5, 0.5, 1)
 
@@ -39,6 +34,10 @@ content_margin_top = 30.0
 content_margin_right = 140.0
 content_margin_bottom = 30.0
 texture = ExtResource("11")
+texture_margin_left = 128.0
+texture_margin_top = 32.0
+texture_margin_right = 128.0
+texture_margin_bottom = 32.0
 region_rect = Rect2(0, 0, 256, 152)
 modulate_color = Color(0.9, 0.9, 0.9, 1)
 
@@ -48,6 +47,10 @@ content_margin_top = 30.0
 content_margin_right = 140.0
 content_margin_bottom = 30.0
 texture = ExtResource("5")
+texture_margin_left = 128.0
+texture_margin_top = 32.0
+texture_margin_right = 128.0
+texture_margin_bottom = 32.0
 region_rect = Rect2(0, 0, 256, 152)
 
 [sub_resource type="StyleBoxTexture" id="11"]
@@ -56,6 +59,10 @@ content_margin_top = 30.0
 content_margin_right = 140.0
 content_margin_bottom = 30.0
 texture = ExtResource("1")
+texture_margin_left = 128.0
+texture_margin_top = 32.0
+texture_margin_right = 128.0
+texture_margin_bottom = 32.0
 region_rect = Rect2(0, 0, 256, 152)
 modulate_color = Color(0.9, 0.9, 0.9, 1)
 
@@ -65,6 +72,10 @@ content_margin_top = 30.0
 content_margin_right = 140.0
 content_margin_bottom = 30.0
 texture = ExtResource("5")
+texture_margin_left = 128.0
+texture_margin_top = 32.0
+texture_margin_right = 128.0
+texture_margin_bottom = 32.0
 region_rect = Rect2(0, 0, 256, 152)
 modulate_color = Color(0.8, 0.8, 0.8, 1)
 
@@ -72,6 +83,7 @@ modulate_color = Color(0.8, 0.8, 0.8, 1)
 bg_color = Color(1, 1, 1, 1)
 draw_center = false
 shadow_color = Color(1, 1, 1, 0)
+anti_aliasing_size = 0.625
 
 [sub_resource type="StyleBoxTexture" id="25"]
 texture = ExtResource("12")
@@ -96,61 +108,17 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="FontFile" id="19"]
-fallbacks = Array[Font]([ExtResource("3")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
 [sub_resource type="StyleBoxTexture" id="2"]
 content_margin_left = 240.0
 content_margin_top = 100.0
 content_margin_right = 240.0
 content_margin_bottom = 100.0
 texture = ExtResource("2")
+texture_margin_left = 128.0
+texture_margin_top = 128.0
+texture_margin_right = 128.0
+texture_margin_bottom = 128.0
 region_rect = Rect2(0, 0, 256, 256)
-
-[sub_resource type="FontFile" id="18"]
-fallbacks = Array[Font]([ExtResource("3")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="17"]
-fallbacks = Array[Font]([ExtResource("3")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
-
-[sub_resource type="FontFile" id="20"]
-fallbacks = Array[Font]([ExtResource("3")])
-face_index = null
-embolden = null
-transform = null
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
 [sub_resource type="StyleBoxFlat" id="21"]
 content_margin_left = 30.0
@@ -164,16 +132,22 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [resource]
-Button/fonts/font = SubResource("3")
+default_font = ExtResource("1_ky1ij")
+default_font_size = 32
+Button/fonts/font = SubResource("FontVariation_xqf3m")
 Button/styles/disabled = SubResource("12")
 Button/styles/focus = SubResource("24")
 Button/styles/hover = SubResource("13")
 Button/styles/normal = SubResource("11")
 Button/styles/pressed = SubResource("14")
-CheckButton/icons/off = ExtResource("9")
-CheckButton/icons/off_disabled = ExtResource("9")
-CheckButton/icons/on = ExtResource("10")
-CheckButton/icons/on_disabled = ExtResource("10")
+CheckButton/icons/checked = ExtResource("10")
+CheckButton/icons/checked_disabled = ExtResource("10")
+CheckButton/icons/checked_disabled_mirrored = ExtResource("10")
+CheckButton/icons/checked_mirrored = ExtResource("10")
+CheckButton/icons/unchecked = ExtResource("9")
+CheckButton/icons/unchecked_disabled = ExtResource("9")
+CheckButton/icons/unchecked_disabled_mirrored = ExtResource("9")
+CheckButton/icons/unchecked_mirrored = ExtResource("9")
 CheckButton/styles/disabled = SubResource("23")
 CheckButton/styles/focus = SubResource("25")
 CheckButton/styles/hover = SubResource("23")
@@ -186,11 +160,19 @@ HSlider/icons/grabber_highlight = ExtResource("8")
 HSlider/styles/grabber_area = SubResource("9")
 HSlider/styles/grabber_area_highlight = SubResource("26")
 HSlider/styles/slider = SubResource("10")
-Label/fonts/font = SubResource("19")
+Label/font_sizes/font_size = 58
+Label/fonts/font = ExtResource("1_ky1ij")
 PanelContainer/styles/panel = SubResource("2")
-RichTextLabel/fonts/normal_font = SubResource("18")
-TextEdit/fonts/font = SubResource("17")
+RichTextLabel/font_sizes/bold_font_size = 24
+RichTextLabel/font_sizes/bold_italics_font_size = 24
+RichTextLabel/font_sizes/italics_font_size = 24
+RichTextLabel/font_sizes/mono_font_size = 24
+RichTextLabel/font_sizes/normal_font_size = 24
+RichTextLabel/fonts/normal_font = ExtResource("1_ky1ij")
+TextEdit/font_sizes/font_size = 48
+TextEdit/fonts/font = ExtResource("1_ky1ij")
 TooltipLabel/colors/font_color = Color(1, 1, 1, 1)
-TooltipLabel/fonts/font = SubResource("20")
+TooltipLabel/font_sizes/font_size = 32
+TooltipLabel/fonts/font = ExtResource("1_ky1ij")
 TooltipPanel/styles/panel = SubResource("21")
 VSeparator/constants/separation = 0

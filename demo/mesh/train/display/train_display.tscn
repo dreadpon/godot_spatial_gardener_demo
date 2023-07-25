@@ -1,94 +1,68 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://medasr1tx8cy"]
 
-[ext_resource path="res://demo/ui/menu_theme.tres" type="Theme" id=1]
-[ext_resource path="res://demo/mesh/train/display/train_display.gd" type="Script" id=2]
+[ext_resource type="Theme" uid="uid://ddia8xes5woe0" path="res://demo/ui/menu_theme.tres" id="1"]
+[ext_resource type="Script" path="res://demo/mesh/train/display/train_display.gd" id="2"]
 
-
-[sub_resource type="StyleBoxFlat" id=1]
+[sub_resource type="StyleBoxFlat" id="1"]
 draw_center = false
 
 [node name="TrainDisplay" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -2560.0
-offset_bottom = -1440.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1")
+script = ExtResource("2")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
+layout_mode = 1
 offset_right = 750.0
 offset_bottom = 230.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
-offset_right = 750.0
-offset_bottom = 230.0
-custom_minimum_size = Vector2( 750, 230 )
+custom_minimum_size = Vector2(750, 230)
+layout_mode = 2
 
 [node name="Names" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-offset_right = 373.0
-offset_bottom = 230.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SpeedName" type="Label" parent="CenterContainer/HBoxContainer/Names"]
-offset_right = 373.0
-offset_bottom = 71.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "SPEED"
-align = 2
+horizontal_alignment = 2
 
 [node name="StatusName" type="Label" parent="CenterContainer/HBoxContainer/Names"]
-offset_top = 75.0
-offset_right = 373.0
-offset_bottom = 146.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "STATUS"
-align = 2
+horizontal_alignment = 2
 
 [node name="DepartureName" type="Label" parent="CenterContainer/HBoxContainer/Names"]
-offset_top = 150.0
-offset_right = 373.0
-offset_bottom = 221.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "DEPARTURE IN"
-align = 2
+horizontal_alignment = 2
 
 [node name="VSeparator" type="VSeparator" parent="CenterContainer/HBoxContainer"]
-offset_left = 377.0
-offset_right = 417.0
-offset_bottom = 230.0
+layout_mode = 2
 theme_override_constants/separation = 40
-theme_override_styles/separator = SubResource( 1 )
+theme_override_styles/separator = SubResource("1")
 
 [node name="Vals" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
-offset_left = 421.0
-offset_right = 750.0
-offset_bottom = 230.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SpeedVal" type="Label" parent="CenterContainer/HBoxContainer/Vals"]
-offset_right = 329.0
-offset_bottom = 71.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "30.0 u/s"
 
 [node name="StatusVal" type="Label" parent="CenterContainer/HBoxContainer/Vals"]
-offset_top = 75.0
-offset_right = 329.0
-offset_bottom = 146.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "SLOWDOWN"
 
 [node name="DepartureVal" type="Label" parent="CenterContainer/HBoxContainer/Vals"]
-offset_top = 150.0
-offset_right = 329.0
-offset_bottom = 221.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "00:15"

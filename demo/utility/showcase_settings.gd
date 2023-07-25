@@ -110,7 +110,7 @@ func set_setting(setting_id:String, val, write_to_file:bool):
 		"sound_volume":
 			AudioServer.set_bus_volume_db(0, linear_to_db(val))
 		"fullscreen":
-			get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (val) else Window.MODE_WINDOWED
+			get_window().set_deferred("mode", Window.MODE_EXCLUSIVE_FULLSCREEN if (val) else Window.MODE_WINDOWED)
 		"vsync":
 			DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if (val) else DisplayServer.VSYNC_DISABLED)
 		"rendering_quality":

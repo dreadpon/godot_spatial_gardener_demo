@@ -18,9 +18,11 @@ uniform vec3 sway2_strength = vec3(1, 0.1, 1);
 uniform float sway2_phase_len = 8.0;
 uniform float sway2_time_offset_tile_size : hint_range(0.001, 2048) = 10.0;
 
+global uniform float time_scale = 1.0;
+
 
 vec3 get_sway(vec3 vertex, float phase_len, float speed, vec3 strength, float time_offset) {
-	float time_speed = (TIME + time_offset) * speed;
+	float time_speed = (TIME + time_offset) * speed * time_scale;
 	
 	return vec3(
 		sin(vertex.x * phase_len * 1.123 + time_speed) * strength.x,
