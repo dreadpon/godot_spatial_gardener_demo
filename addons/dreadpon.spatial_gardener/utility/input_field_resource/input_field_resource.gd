@@ -612,7 +612,6 @@ func _handle_res_edit_prop_action_lifecycle(prop_action:PropAction, lifecycle_st
 							_undo_redo.add_undo_method(self, "_res_edit_select", array_prop, [res_val])
 					else:
 						if lifecycle_stage == PropActionLifecycle.AFTER_DO:
-							print("PA_ArrayRemove if lifecycle_stage == PropActionLifecycle.AFTER_DO:")
 							_res_edit_select(array_prop, [null])
 			"PA_ArraySet":
 				var new_res_val = prop_action.val
@@ -625,7 +624,6 @@ func _handle_res_edit_prop_action_lifecycle(prop_action:PropAction, lifecycle_st
 							_undo_redo.add_undo_method(self, "_res_edit_select", array_prop, [res_val])
 					else:
 						if lifecycle_stage == PropActionLifecycle.AFTER_DO:
-							print("PA_ArraySet if lifecycle_stage == PropActionLifecycle.AFTER_DO:")
 							_res_edit_select(array_prop, [new_res_val])
 
 

@@ -165,7 +165,6 @@ func update_movement_mode():
 #	elif floor_state && !last_floor_state:
 	if floor_state && !last_floor_state:
 		velocity -= floor_velocity
-		print(distance_fallen)
 		if distance_fallen >= fall_sfx_trigger_distance:
 			play_sfx("land")
 		distance_fallen = 0.0

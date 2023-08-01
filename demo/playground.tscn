@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cja5vnrmc627" path="res://demo/terrain/source/buildings_inn.tres" id="7_lxial"]
 [ext_resource type="PackedScene" uid="uid://d3kl50fpxey13" path="res://demo/ui/pause_menu.tscn" id="8"]
 [ext_resource type="ArrayMesh" uid="uid://c0rrob6ahmgd7" path="res://demo/terrain/source/islands_island_006.tres" id="8_y24q0"]
-[ext_resource type="PackedScene" path="res://addons/dreadpon.kinematic_fps_controller/fps_character.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://ckjlrtqfrkd55" path="res://addons/dreadpon.kinematic_fps_controller/fps_character.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://cpcmbwh1aqb4x" path="res://addons/dreadpon.spatial_gardener/utility/console/console.tscn" id="12"]
 [ext_resource type="Environment" uid="uid://bwwf4qs2o52o0" path="res://demo/playground/playground_env.tres" id="13"]
 
@@ -49,7 +49,7 @@ directional_shadow_blend_splits = true
 directional_shadow_max_distance = 300.0
 script = ExtResource("5_ghwnc")
 
-[node name="DirectionalLight2" type="DirectionalLight3D" parent="."]
+[node name="AmbientLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -3.75549, 0)
 light_energy = 0.1
 shadow_normal_bias = 1.0

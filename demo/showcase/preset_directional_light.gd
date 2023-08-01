@@ -21,14 +21,14 @@ func set_preset(preset_float:float):
 		0:
 			directional_shadow_mode = DirectionalLight3D.SHADOW_ORTHOGONAL
 			directional_shadow_max_distance = 150.0
-			shadow_normal_bias = 2.0
-			shadow_bias = 0.1
+			shadow_normal_bias = 1.0
+			shadow_bias = 0.05
 		
 		1:
-			directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_2_SPLITS
+			directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS
 			directional_shadow_max_distance = 300.0
-			shadow_normal_bias = 1.5
-			shadow_bias = 0.075
+			shadow_normal_bias = 1.0
+			shadow_bias = 0.05
 		
 		2:
 			directional_shadow_mode = DirectionalLight3D.SHADOW_PARALLEL_4_SPLITS

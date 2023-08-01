@@ -154,49 +154,29 @@ func save_config(config:ConfigFile, full_path:String):
 #		print("Config file saving failed: %s, error %s!" % [full_path, Globals.get_err_message(error)])
 
 
+var rendering_presets = {
+	"rendering/textures/default_filters/use_nearest_mipmap_filter": 				[true, false, false],
+	"rendering/anti_aliasing/quality/msaa_3d": 										[1, 2, 3],
+	"rendering/anti_aliasing/quality/screen_space_aa": 								[0, 1, 1],
+	"rendering/anti_aliasing/quality/use_debanding": 								[false, true, true],
+	"rendering/lights_and_shadows/directional_shadow/size": 						[2048, 4096, 8192],
+	"rendering/lights_and_shadows/positional_shadow/atlas_size": 					[2048, 4096, 8192],
+	"rendering/lights_and_shadows/directional_shadow/soft_shadow_filter_quality": 	[1, 3, 5],
+	"rendering/lights_and_shadows/positional_shadow/soft_shadow_filter_quality": 	[1, 3, 5],
+}
+
+
 func set_rendering_quality(stage:int):
 	var config = ConfigFile.new()
 	var full_path = get_config_file_path()
 	config.load(full_path)
 	
-	match stage:
-		
-		0:
-			config.set_value("rendering", "quality/filters/use_nearest_mipmap_filter", true)
-			config.set_value("rendering", "quality/filters/msaa", 1)
-			config.set_value("rendering", "quality/filters/use_fxaa", false)
-			config.set_value("rendering", "quality/filters/use_debanding", false)
-			config.set_value("rendering", "quality/directional_shadow/size", 2048)
-			config.set_value("rendering", "quality/directional_shadow/size.mobile", 512)
-			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size", 2048)
-			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size.mobile", 512)
-			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 1)
-			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 0)
-		
-		1:
-			config.set_value("rendering", "quality/filters/use_nearest_mipmap_filter", false)
-			config.set_value("rendering", "quality/filters/msaa", 2)
-			config.set_value("rendering", "quality/filters/use_fxaa", true)
-			config.set_value("rendering", "quality/filters/use_debanding", false)
-			config.set_value("rendering", "quality/directional_shadow/size", 4096)
-			config.set_value("rendering", "quality/directional_shadow/size.mobile", 1024)
-			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size", 4096)
-			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size.mobile", 1024)
-			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 2)
-			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 1)
-		
-		2:
-			config.set_value("rendering", "quality/filters/use_nearest_mipmap_filter", false)
-			config.set_value("rendering", "quality/filters/msaa", 3)
-			config.set_value("rendering", "quality/filters/use_fxaa", true)
-			config.set_value("rendering", "quality/filters/use_debanding", true)
-			config.set_value("rendering", "quality/directional_shadow/size.mobile", 2048)
-			config.set_value("rendering", "quality/directional_shadow/size", 8192)
-			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size", 8192)
-			config.set_value("rendering", "rendering/lights_and_shadows/shadow_atlas/size.mobile", 2048)
-			config.set_value("rendering", "rendering/quality/shadows/filter_mode", 2)
-			config.set_value("rendering", "rendering/quality/shadows/filter_mode.mobile", 1)
-	
+	var section := ""
+	var key := ""
+	for path in rendering_presets:
+		section = path.get_slice("/", 0)
+		key = path.trim_prefix(section + "/")
+		config.set_value(section, key, rendering_presets[path][stage])
 	config.save(full_path)
 
 

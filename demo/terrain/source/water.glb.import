@@ -29,12 +29,6 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
-"materials": {
-"shm_water": {
-"use_external/enabled": false,
-"use_external/path": "res://demo/terrain/source/shm_water.tres"
-}
-},
 "meshes": {
 "water_water": {
 "generate/lightmap_uv": 0,

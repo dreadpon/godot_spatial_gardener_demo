@@ -15,6 +15,7 @@ lightning_quality=0.0
 [application]
 
 config/name="Dreadpon's Spatial Gardener Demo"
+run/main_scene="res://demo/showcase.tscn"
 config/project_settings_override="user://save_files/settings.cfg"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
@@ -46,8 +47,8 @@ gdscript/warnings/unused_argument=false
 
 window/size/viewport_width=2560
 window/size/viewport_height=1440
-window/size/window_width_override=1000
-window/size/window_height_override=600
+window/size/window_width_override=1920
+window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=false
@@ -199,22 +200,26 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-lights_and_shadows/directional_shadow/size=8192
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+camera/depth_of_field/depth_of_field_bokeh_shape=0
+environment/ssao/quality=1
+environment/ssil/quality=1
 anti_aliasing/screen_space_roughness_limiter/enabled=false
-anti_aliasing/quality/msaa_3d=3
+environment/glow/upscale_mode=0
+anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/screen_space_aa=1
 anti_aliasing/quality/use_debanding=true
 environment/defaults/default_environment="res://default_env.tres"
-quality/directional_shadow/size=8192
-quality/shadows/filter_mode=2
-quality/filters/msaa=3
-quality/filters/use_fxaa=true
+quality/directional_shadow/size=2048
+quality/shadows/filter_mode=0
+quality/filters/msaa=0
+quality/filters/use_fxaa=false
 quality/filters/use_debanding=true
-rendering/lights_and_shadows/shadow_atlas/size=8192
-rendering/quality/shadows/filter_mode=2
+rendering/lights_and_shadows/shadow_atlas/size=2048
+rendering/quality/shadows/filter_mode=0
 rendering/lights_and_shadows/shadow_atlas/size.mobile=2048
-rendering/quality/shadows/filter_mode.mobile=1
+rendering/quality/shadows/filter_mode.mobile=0
 
 [shader_globals]
 

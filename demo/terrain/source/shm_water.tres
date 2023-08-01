@@ -1,14 +1,14 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dthxo6f6y7wnf"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dsemvt585ylar"]
 
-[ext_resource type="Shader" path="res://demo/mesh/plants/sh_single_wind_opaque.gdshader" id="1"]
+[ext_resource type="Shader" path="res://demo/mesh/plants/sh_single_wind_opaque.gdshader" id="1_2d31s"]
 
 [resource]
 render_priority = 0
-shader = ExtResource("1")
+shader = ExtResource("1_2d31s")
 shader_parameter/albedo = Color(0.215686, 0.807843, 0.772549, 1)
 shader_parameter/specular = 1.0
-shader_parameter/metallic = 0.0
-shader_parameter/roughness = 0.0
+shader_parameter/metallic = null
+shader_parameter/roughness = null
 shader_parameter/backlight = Color(0.14902, 0.6, 0.572549, 1)
 shader_parameter/sway1_speed = 2.0
 shader_parameter/sway1_strength = Vector3(0.002, 0.002, 0.002)

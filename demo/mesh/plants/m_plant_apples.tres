@@ -1,6 +1,6 @@
-[gd_resource type="SpatialMaterial" format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dnb0hir1ddacq"]
 
 [resource]
 resource_name = "plant_apples"
-albedo_color = Color( 0.952941, 0.407843, 0.282353, 1 )
+albedo_color = Color(0.952941, 0.407843, 0.282353, 1)
 roughness = 0.5

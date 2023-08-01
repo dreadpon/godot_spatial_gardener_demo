@@ -263,12 +263,18 @@ func reload_resources():
 	
 	var created_new_toolshed := false
 	var created_new_greenhouse := false
-	toolshed = FunLib.load_res(garden_work_directory, "toolshed.tres", false)
-	greenhouse = FunLib.load_res(garden_work_directory, "greenhouse.tres", false)
+	
+	if !FunLib.is_dir_valid(garden_work_directory):
+		logger.warn("Skipped loading Toolshed and Greenhouse, please specify a working directory for this Gardener (%s)" % [str(self)])
+	else:
+		toolshed = FunLib.load_res(garden_work_directory, "toolshed.tres", false)
+		greenhouse = FunLib.load_res(garden_work_directory, "greenhouse.tres", false)
 	if !toolshed: 
+		logger.warn("Unable to load Toolshed, created a new one")
 		toolshed = Defaults.DEFAULT_TOOLSHED()
 		created_new_toolshed = true
 	if !greenhouse: 
+		logger.warn("Unable to load Greenhouse, created a new one")
 		greenhouse = Greenhouse.new()
 		created_new_greenhouse = true
 	
@@ -373,7 +379,6 @@ func start_editing(__base_control:Control, __resource_previewer, __undoRedo, __s
 
 	_side_panel = __side_panel
 	changed_initialized_for_edit.connect(_side_panel.set_main_control_state)
-	
 	var start = Time.get_ticks_msec()
 	ui_category_brushes = toolshed.create_ui(_base_control, _resource_previewer)
 	ui_category_plants = greenhouse.create_ui(_base_control, _resource_previewer)
@@ -660,7 +665,7 @@ func on_changed_active_brush_prop(prop: String, val, final:bool):
 		prop_action = PA_PropSet.new(prop, val)
 	else:
 		prop_action = PA_PropEdit.new(prop, val)
-	
+#	print("on_changed_active_brush_prop ", prop_action)
 	if prop_action:
 		toolshed.active_brush.request_prop_action(prop_action)
 
