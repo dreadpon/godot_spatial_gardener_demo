@@ -15,7 +15,7 @@ lightning_quality=0.0
 [application]
 
 config/name="Dreadpon's Spatial Gardener Demo"
-run/main_scene="res://demo/showcase.tscn"
+run/main_scene="res://demo/playground.tscn"
 config/project_settings_override="user://save_files/settings.cfg"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
@@ -52,10 +52,6 @@ window/size/window_height_override=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=false
-
-[dreadpons_spatial_gardener]
-
-input_and_ui/brush_prop_edit_button=8
 
 [editor_plugins]
 

@@ -3,23 +3,11 @@
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/toolshed/toolshed.gd" id="1"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/toolshed/toolshed_brush.gd" id="2"]
 
-[sub_resource type="Resource" id="Resource_un1hm"]
-resource_name = "Toolshed_Brush"
-script = ExtResource("2")
-behavior/behavior_brush_type = 2
-shape/shape_volume_size = 1.0
-shape/shape_projection_size = 1.0
-behavior/behavior_strength = 1.0
-behavior/behavior_passthrough = false
-behavior/behavior_overlap_mode = 0
-behavior/behavior_no_settings_text = "This brush has no additional settings"
-metadata/class = "Toolshed_Brush"
-
 [sub_resource type="Resource" id="Resource_3omym"]
 resource_name = "Toolshed_Brush"
 script = ExtResource("2")
 behavior/behavior_brush_type = 0
-shape/shape_volume_size = 38.8
+shape/shape_volume_size = 55.4
 shape/shape_projection_size = 1.0
 behavior/behavior_strength = 1.0
 behavior/behavior_passthrough = false
@@ -35,6 +23,18 @@ shape/shape_volume_size = 27.8
 shape/shape_projection_size = 358.0
 behavior/behavior_strength = 1.0
 behavior/behavior_passthrough = true
+behavior/behavior_overlap_mode = 0
+behavior/behavior_no_settings_text = "This brush has no additional settings"
+metadata/class = "Toolshed_Brush"
+
+[sub_resource type="Resource" id="Resource_un1hm"]
+resource_name = "Toolshed_Brush"
+script = ExtResource("2")
+behavior/behavior_brush_type = 2
+shape/shape_volume_size = 1.0
+shape/shape_projection_size = 1.0
+behavior/behavior_strength = 1.0
+behavior/behavior_passthrough = false
 behavior/behavior_overlap_mode = 0
 behavior/behavior_no_settings_text = "This brush has no additional settings"
 metadata/class = "Toolshed_Brush"
@@ -55,5 +55,5 @@ metadata/class = "Toolshed_Brush"
 resource_name = "Toolshed"
 script = ExtResource("1")
 brush/brushes = [SubResource("Resource_3omym"), SubResource("Resource_rci02"), SubResource("Resource_un1hm"), SubResource("Resource_g3jit")]
-brush/active_brush = SubResource("Resource_un1hm")
+brush/active_brush = SubResource("Resource_3omym")
 metadata/class = "Toolshed"

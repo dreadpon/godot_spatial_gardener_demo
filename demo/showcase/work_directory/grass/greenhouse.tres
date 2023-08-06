@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=37 format=3 uid="uid://bkhm351bgc8rx"]
 
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd" id="1"]
-[ext_resource type="ArrayMesh" uid="uid://d0s55888uns01" path="res://demo/mesh/plants/plants_grass_lod0.tres" id="1_6epb6"]
+[ext_resource type="ArrayMesh" uid="uid://d0s55888uns01" path="res://demo/playground/plants/grass/plants_grass_lod0.tres" id="1_6epb6"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_LOD_variant.gd" id="2_7yd4k"]
-[ext_resource type="ArrayMesh" uid="uid://cwukj1f18r2mv" path="res://demo/mesh/plants/plants_grass_lod1.tres" id="3_ogbhk"]
-[ext_resource type="ArrayMesh" uid="uid://bktvhdghlk0di" path="res://demo/mesh/plants/plants_grass_lod2.tres" id="4_hxafq"]
+[ext_resource type="ArrayMesh" uid="uid://cwukj1f18r2mv" path="res://demo/playground/plants/grass/plants_grass_lod1.tres" id="3_ogbhk"]
+[ext_resource type="ArrayMesh" uid="uid://bktvhdghlk0di" path="res://demo/playground/plants/grass/plants_grass_lod2.tres" id="4_hxafq"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" id="5_5wahe"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant_state.gd" id="6_hwhhg"]
 [ext_resource type="ArrayMesh" uid="uid://d31xq0dr82ukr" path="res://demo/mesh/plants/plants_grass_tail_lod0.tres" id="7_le7ph"]
@@ -41,9 +41,9 @@ metadata/class = "Greenhouse_LODVariant"
 resource_name = "Greenhouse_Plant"
 script = ExtResource("5_5wahe")
 mesh/mesh_LOD_variants = [SubResource("Resource_hyesc"), SubResource("Resource_ve085"), SubResource("Resource_5ly2g")]
-mesh/selected_for_edit_resource = SubResource("Resource_ve085")
-mesh/mesh_LOD_max_distance = 15.0
-mesh/mesh_LOD_kill_distance = 50.0
+mesh/selected_for_edit_resource = SubResource("Resource_hyesc")
+mesh/mesh_LOD_max_distance = 50.0
+mesh/mesh_LOD_kill_distance = 100.0
 mesh/mesh_LOD_max_capacity = 500
 mesh/mesh_LOD_min_size = 1.0
 octree/octree_reconfigure_button = false

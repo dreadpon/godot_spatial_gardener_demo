@@ -6,8 +6,8 @@
 [ext_resource type="ArrayMesh" uid="uid://bseuve11ubaon" path="res://demo/mesh/plants/plants_bush_lod1.tres" id="3_82ldu"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" id="4_s2lqv"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant_state.gd" id="5_iclsf"]
-[ext_resource type="ArrayMesh" uid="uid://cqqpjb435sd7l" path="res://demo/mesh/plants/plants_bush_1_lod0.tres" id="6_dl1o6"]
-[ext_resource type="ArrayMesh" uid="uid://byijtq7f3kg84" path="res://demo/mesh/plants/plants_bush_1_lod1.tres" id="7_unret"]
+[ext_resource type="ArrayMesh" uid="uid://cqqpjb435sd7l" path="res://demo/playground/plants/bush/plants_bush_1_lod0.tres" id="6_dl1o6"]
+[ext_resource type="ArrayMesh" uid="uid://byijtq7f3kg84" path="res://demo/playground/plants/bush/plants_bush_1_lod1.tres" id="7_unret"]
 [ext_resource type="ArrayMesh" uid="uid://bt0urde5h1nn" path="res://demo/mesh/plants/plants_liana_lod0.tres" id="8_thj8w"]
 [ext_resource type="ArrayMesh" uid="uid://ctnwcrcp5jkyt" path="res://demo/mesh/plants/plants_liana_lod1.tres" id="9_g7c5k"]
 [ext_resource type="ArrayMesh" uid="uid://cokc25wcuydk5" path="res://demo/mesh/plants/plants_moss_lod0.tres" id="10_ok7l0"]
@@ -182,7 +182,7 @@ metadata/class = "Greenhouse_Plant"
 [sub_resource type="Resource" id="Resource_tkv80"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("5_iclsf")
-plant/plant_brush_active = false
+plant/plant_brush_active = true
 plant/plant_label = "Liana"
 plant/plant = SubResource("Resource_iblwn")
 metadata/class = "Greenhouse_PlantState"
@@ -240,7 +240,7 @@ metadata/class = "Greenhouse_Plant"
 [sub_resource type="Resource" id="Resource_tl7uv"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("5_iclsf")
-plant/plant_brush_active = true
+plant/plant_brush_active = false
 plant/plant_label = "Moss"
 plant/plant = SubResource("Resource_xqt2v")
 metadata/class = "Greenhouse_PlantState"
@@ -249,5 +249,5 @@ metadata/class = "Greenhouse_PlantState"
 resource_name = "Greenhouse"
 script = ExtResource("1_5syrp")
 plant_types/greenhouse_plant_states = [SubResource("Resource_vvv77"), SubResource("Resource_obe6w"), SubResource("Resource_tkv80"), SubResource("Resource_tl7uv")]
-plant_types/selected_for_edit_resource = SubResource("Resource_tl7uv")
+plant_types/selected_for_edit_resource = SubResource("Resource_tkv80")
 metadata/class = "Greenhouse"
