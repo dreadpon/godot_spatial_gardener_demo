@@ -3,21 +3,21 @@
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd" id="1_2kp1q"]
 [ext_resource type="ArrayMesh" uid="uid://cfd5gqdbj108l" path="res://demo/playground/plants/pine/plants_tree_pine_lod0.tres" id="1_fm0el"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_LOD_variant.gd" id="2_o58ym"]
-[ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_tree_pine.tscn" id="3_swjas"]
+[ext_resource type="PackedScene" uid="uid://86ki7osdl11c" path="res://demo/mesh/plants/body_plants_tree_pine.tscn" id="3_swjas"]
 [ext_resource type="ArrayMesh" uid="uid://ctehktvpdjqgm" path="res://demo/playground/plants/pine/plants_tree_pine_lod1.tres" id="4_vsn2x"]
 [ext_resource type="ArrayMesh" uid="uid://cm3h5thscmn6x" path="res://demo/playground/plants/pine/plants_tree_pine_lod2.tres" id="5_injcm"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" id="6_ymqti"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant_state.gd" id="7_wq47x"]
 [ext_resource type="ArrayMesh" uid="uid://bqh6ofmnlq0fs" path="res://demo/mesh/plants/plants_tree_generic_lod0.tres" id="8_rxlm2"]
-[ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_tree_generic.tscn" id="9_lncxw"]
+[ext_resource type="PackedScene" uid="uid://ynuck1lpt711" path="res://demo/mesh/plants/body_plants_tree_generic.tscn" id="9_lncxw"]
 [ext_resource type="ArrayMesh" uid="uid://b15557kcd7dr" path="res://demo/mesh/plants/plants_tree_generic_lod1.tres" id="10_eu21j"]
 [ext_resource type="ArrayMesh" uid="uid://uxo2ew85n4as" path="res://demo/mesh/plants/plants_tree_generic_lod2.tres" id="11_gv3ba"]
 [ext_resource type="ArrayMesh" uid="uid://t7v71da80vvt" path="res://demo/mesh/plants/plants_apple_tree_lod0.tres" id="12_xau6v"]
-[ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_apple_tree.tscn" id="13_qxkum"]
+[ext_resource type="PackedScene" uid="uid://dxgugfk22ehnb" path="res://demo/mesh/plants/body_plants_apple_tree.tscn" id="13_qxkum"]
 [ext_resource type="ArrayMesh" uid="uid://l0nhujpjjjka" path="res://demo/mesh/plants/plants_apple_tree_lod1.tres" id="14_anoq4"]
 [ext_resource type="ArrayMesh" uid="uid://dypidy3s2s1d6" path="res://demo/mesh/plants/plants_apple_tree_lod2.tres" id="15_x3tf1"]
 [ext_resource type="ArrayMesh" uid="uid://dkidh1t4snikx" path="res://demo/mesh/plants/plants_curved_tree_lod0.tres" id="16_hmdi8"]
-[ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_curved_tree.tscn" id="17_gvl5r"]
+[ext_resource type="PackedScene" uid="uid://cw2b50wr4h37t" path="res://demo/mesh/plants/body_plants_curved_tree.tscn" id="17_gvl5r"]
 [ext_resource type="ArrayMesh" uid="uid://p3va252ypsor" path="res://demo/mesh/plants/plants_curved_tree_lod1.tres" id="18_miyis"]
 [ext_resource type="ArrayMesh" uid="uid://b0g25fsubh5re" path="res://demo/mesh/plants/plants_curved_tree_lod2.tres" id="19_pmtm4"]
 
@@ -84,7 +84,7 @@ metadata/class = "Greenhouse_Plant"
 [sub_resource type="Resource" id="Resource_p1vrd"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("7_wq47x")
-plant/plant_brush_active = false
+plant/plant_brush_active = true
 plant/plant_label = "Pine Tree"
 plant/plant = SubResource("Resource_kkmqp")
 metadata/class = "Greenhouse_PlantState"
@@ -218,7 +218,7 @@ metadata/class = "Greenhouse_Plant"
 [sub_resource type="Resource" id="Resource_6tg7x"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("7_wq47x")
-plant/plant_brush_active = false
+plant/plant_brush_active = true
 plant/plant_label = "Apple Tree"
 plant/plant = SubResource("Resource_mwinq")
 metadata/class = "Greenhouse_PlantState"
@@ -285,7 +285,7 @@ metadata/class = "Greenhouse_Plant"
 [sub_resource type="Resource" id="Resource_b6vlw"]
 resource_name = "Greenhouse_PlantState"
 script = ExtResource("7_wq47x")
-plant/plant_brush_active = false
+plant/plant_brush_active = true
 plant/plant_label = "Weird Tree"
 plant/plant = SubResource("Resource_oxxpe")
 metadata/class = "Greenhouse_PlantState"

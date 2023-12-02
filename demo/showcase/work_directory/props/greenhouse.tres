@@ -3,13 +3,13 @@
 [ext_resource type="ArrayMesh" uid="uid://t2lylse0l3x5" path="res://demo/mesh/plants/plants_rock_3.tres" id="1_ks3xv"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse.gd" id="1_pke16"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_LOD_variant.gd" id="2_hfvuk"]
-[ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_rock_3.tscn" id="3_c7cac"]
+[ext_resource type="PackedScene" uid="uid://cbjjqytudnkje" path="res://demo/mesh/plants/body_plants_rock_3.tscn" id="3_c7cac"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant.gd" id="4_bxu72"]
 [ext_resource type="Script" path="res://addons/dreadpon.spatial_gardener/greenhouse/greenhouse_plant_state.gd" id="5_2kkq6"]
 [ext_resource type="ArrayMesh" uid="uid://di3eq1tw4g5wy" path="res://demo/mesh/plants/plants_rock_4.tres" id="6_bxbcf"]
-[ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_rock_4.tscn" id="7_jvg6t"]
+[ext_resource type="PackedScene" uid="uid://6g68j2c58h5e" path="res://demo/mesh/plants/body_plants_rock_4.tscn" id="7_jvg6t"]
 [ext_resource type="ArrayMesh" uid="uid://brk3p667x1uwh" path="res://demo/mesh/plants/plants_rock_pillar_1.tres" id="8_0gaui"]
-[ext_resource type="PackedScene" path="res://demo/mesh/plants/body_plants_rock_pillar_1.tscn" id="9_7rmvj"]
+[ext_resource type="PackedScene" uid="uid://7d1rqttcwpdj" path="res://demo/mesh/plants/body_plants_rock_pillar_1.tscn" id="9_7rmvj"]
 
 [sub_resource type="Resource" id="Resource_axrt3"]
 resource_name = "Greenhouse_LODVariant"
