@@ -88,7 +88,6 @@ func _ready():
 		for octree_manager in octree_managers_copy:
 			octree_managers.append(octree_manager.duplicate_tree())
 	
-	
 	logger = Logger.get_for(self, name)
 	
 	owner = get_tree().get_edited_scene_root()
@@ -122,14 +121,22 @@ func _enter_tree():
 #	thread_instance_placement.start(Callable(self,"thread_update_LODs"))
 
 
+func _notification(what):
+	match what:
+		NOTIFICATION_PREDELETE:
+			for octree_manager in octree_managers:
+				octree_manager.destroy()
+
+
 func _exit_tree():
+	pass
 	# This is... weird
 	# Apparently I need to free any Resources that are left after closing a scene
 	# I'm not exactly sure why
 	# And it *might* be destructive to do so in editor
-	if Engine.is_editor_hint(): return
-#	for octree_manager in octree_managers:
-#		octree_manager.destroy()
+	#if Engine.is_editor_hint(): return
+	#for octree_manager in octree_managers:
+		#octree_manager.destroy()
 #	octree_managers = []
 #	mutex_placement.lock()
 #	exit_instance_placement = true
