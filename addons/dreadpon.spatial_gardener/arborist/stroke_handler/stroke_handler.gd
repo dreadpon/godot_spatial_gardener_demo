@@ -243,7 +243,7 @@ func proj_get_placeforms_data_in_frustum(frustum_planes: Array, placeforms_data_
 	if is_box_intersecting_frustum(frustum_planes, octree_node_transform, octree_node_extents):
 		if octree_node.is_leaf:
 			var node_address = octree_node.get_address()
-			for member_idx in range(0, octree_node.member_count()):
+			for member_idx in range(0, octree_node.get_member_count()):
 				var placeform = octree_node.get_placeform(member_idx)
 				placeforms_data_in_frustum.append({"node_address": node_address, "member_idx": member_idx, "placeform": placeform})
 		else:
@@ -383,7 +383,7 @@ func debug_mk_debug_draw():
 	if !context.has_node('DponDebugDraw'):
 		var debug_draw := DponDebugDraw.new()
 		debug_draw.name = 'DponDebugDraw'
-		context.add_child(debug_draw)
+		context.add_child(debug_draw, true)
 
 
 func debug_draw_plane_array(planes: Array, origin_points: Array, color: Color = Color.RED):

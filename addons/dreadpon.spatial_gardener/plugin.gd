@@ -15,6 +15,7 @@ const FunLib = preload("utility/fun_lib.gd")
 const ProjectSettingsManager = preload("utility/project_settings_manager.gd")
 const Gardener = preload("gardener/gardener.gd")
 const DebugViewer = preload("gardener/debug_viewer.gd")
+const Baker = preload("gardener/baker.gd")
 const UI_SidePanel_SCN = preload("controls/side_panel/ui_side_panel.tscn")
 const UI_SidePanel = preload("controls/side_panel/ui_side_panel.gd")
 const ThemeAdapter = preload("controls/theme_adapter.gd")
@@ -40,6 +41,7 @@ var control_theme:Theme = null
 
 var toolbar:HBoxContainer = null
 var debug_view_menu:MenuButton
+var bake_menu:Button
 
 var active_gardener = null
 var gardeners_in_tree:Array = []
@@ -85,6 +87,13 @@ func _ready():
 	get_tree().node_removed.connect(on_tree_node_removed)
 	
 
+func _notification(what: int):
+	match what:
+		NOTIFICATION_PREDELETE:
+			if undo_redo is UndoRedo:
+				undo_redo.free()
+
+
 
 func _enter_tree():
 	# We need settings without editor too
@@ -106,10 +115,11 @@ func _enter_tree():
 	_side_panel.theme = control_theme
 	
 	make_debug_view_menu()
+	make_bake_menu()
 	
 	toolbar = HBoxContainer.new()
-	toolbar.add_child(VSeparator.new())
 	toolbar.add_child(debug_view_menu)
+	toolbar.add_child(bake_menu)
 	toolbar.visible = false
 	
 	add_custom_types()
@@ -134,6 +144,9 @@ func _exit_tree():
 		_side_panel.queue_free()
 	if is_instance_valid(toolbar):
 		toolbar.queue_free()
+
+
+
 
 
 # Previously here was '_apply_changes', but it fired even when scene was closed without saving
@@ -246,6 +259,16 @@ func on_debug_view_menu_id_pressed(id):
 		active_gardener.debug_view_flag_checked(debug_view_menu, id)
 
 
+func on_bake_menu_pressed():
+	if is_instance_valid(active_gardener):
+		active_gardener.bake_menu_pressed(bake_menu)
+
+
+func on_bake_requested():
+	if is_instance_valid(active_gardener):
+		active_gardener.bake_requested(bake_menu)
+
+
 # A somewhat hacky way to focus editor camera on the painter
 func focus_painter():
 	if !Engine.is_editor_hint(): return
@@ -299,6 +322,12 @@ func get_focus_painter_key():
 func make_debug_view_menu():
 	debug_view_menu = DebugViewer.make_debug_view_menu()
 	debug_view_menu.get_popup().id_pressed.connect(on_debug_view_menu_id_pressed)
+
+
+func make_bake_menu():
+	bake_menu = Baker.make_bake_menu()
+	bake_menu.pressed.connect(on_bake_menu_pressed)
+	bake_menu.connect("bake_requested", on_bake_requested)
 
 
 # Modify editor theme to use proper colors, margins, etc.

@@ -132,7 +132,7 @@ func _set_tab(index:int):
 	tab_spacer.visible = false if tab_index <= 0 else true
 	
 	if tab_index > 0:
-		var styleboxes = ThemeAdapter.lookup_sub_inspector_styleboxes(self, tab_index - 1)
+		var styleboxes = ThemeAdapter.lookup_sub_inspector_styleboxes(self, tab_index)
 		set_stylebox(styleboxes.sub_inspector_bg)
 	else:
 		var stylebox = StyleBoxFlat.new()
@@ -226,7 +226,7 @@ func _request_prop_action(val, prop_action_class:String, optional:Dictionary = {
 func on_node_received_input(event, node):
 	if node.has_focus():
 		if is_instance_of(event, InputEventKey) && !event.pressed:
-			if event.keycode == KEY_ENTER || event.keycode == KEY_ESCAPE:
+			if event.keycode == KEY_ENTER || event.keycode == KEY_KP_ENTER || event.keycode == KEY_ESCAPE:
 				node.release_focus()
 
 

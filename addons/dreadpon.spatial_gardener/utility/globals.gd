@@ -9,6 +9,11 @@
 #-------------------------------------------------------------------------------
 
 
+# Globally accessible parameters loaded from ProjectSettings
+static var is_threaded_LOD_update: bool = false
+static var use_precise_LOD_distances: bool = false
+static var use_precise_camera_frustum: bool = false
+static var force_readable_node_names: bool = false
 
 
 # Convert index starting from "0" to an enum value, where first index is the first enum value
@@ -33,7 +38,8 @@ static func get_err_message(err_code):
 const PLANT_DENSITY_UNITS:int = 100
 
 # A string to be used in tooltips/hints regarding plugin settings
-const AS_IN_SETTINGS_STRING:String = "As specified in 'Project' -> 'Project Settings' -> 'Dreadpons Node3D Gardener'"
+const AS_IN_SETTINGS_STRING:String = "As specified in 'Project' -> 'Project Settings' -> 'Dreadpons Spatial Gardener'"
+
 
 
 
@@ -328,4 +334,3 @@ const Error = {
 	ERR_BUG: "Bug error",
 	ERR_PRINTER_ON_FIRE: "Printer on fire error",
 }
-

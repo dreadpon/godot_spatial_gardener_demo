@@ -86,6 +86,21 @@ static func add_plugin_project_settings():
 		"dreadpons_spatial_gardener/plugin/scan_for_outdated_scenes",
 		true,
 		TYPE_BOOL)
+	add_project_setting(
+		"dreadpons_spatial_gardener/plugin/is_threaded_LOD_update",
+		true,
+		TYPE_BOOL)
+	add_project_setting(
+		"dreadpons_spatial_gardener/plugin/use_precise_LOD_distances",
+		true,
+		TYPE_BOOL)
+	add_project_setting(
+		"dreadpons_spatial_gardener/plugin/use_precise_camera_frustum",
+		true,
+		TYPE_BOOL)
+	ProjectSettings.set_restart_if_changed("dreadpons_spatial_gardener/plugin/is_threaded_LOD_update", true)
+	ProjectSettings.set_restart_if_changed("dreadpons_spatial_gardener/plugin/use_precise_LOD_distances", true)
+	ProjectSettings.set_restart_if_changed("dreadpons_spatial_gardener/plugin/use_precise_camera_frustum", true)
 	
 	# Debug
 	add_project_setting_globals_enum(
@@ -118,6 +133,12 @@ static func add_plugin_project_settings():
 		"dreadpons_spatial_gardener/debug/stroke_handler_debug_draw",
 		false,
 		TYPE_BOOL)
+	# NOTE: this was removed because users shouldn't need acces to this variable, it's for internal and testing use only
+	#add_project_setting(
+		#"dreadpons_spatial_gardener/debug/force_readable_node_names",
+		#false,
+		#TYPE_BOOL)
+	#ProjectSettings.set_restart_if_changed("dreadpons_spatial_gardener/debug/force_readable_node_names", true)
 	
 	# Saving settings
 	var err: int = ProjectSettings.save()

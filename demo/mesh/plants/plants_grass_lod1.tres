@@ -1,20 +1,20 @@
-[gd_resource type="ArrayMesh" load_steps=2 format=3 uid="uid://cwukj1f18r2mv"]
+[gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://cwukj1f18r2mv"]
 
-[ext_resource type="Material" uid="uid://b51qceuivydbl" path="res://demo/mesh/plants/m_plant_grass.tres" id="1_ock4j"]
+[ext_resource type="Material" uid="uid://b51qceuivydbl" path="res://demo/mesh/plants/m_plant_grass.tres" id="1_sysn7"]
 
 [resource]
 resource_name = "plants_grass_lod1"
 _surfaces = [{
 "aabb": AABB(-0.704998, 0.00454637, -0.630621, 1.29295, 0.748199, 1.2702),
-"attribute_data": PackedByteArray(0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0),
+"attribute_data": PackedByteArray("AAAA/wAA//8AAAD///////////8AAAAA////////AAAAAAD/AAD//wAAAP///////////wAAAAD///////8AAAAAAP8AAP//AAAA////////////AAAAAP///////wAAAAAA/wAA//8AAAD///////////8AAAAA////////AAAAAAD/AAD//wAAAP///////////wAAAAD///////8AAA=="),
 "format": 34896613407,
 "index_count": 30,
-"index_data": PackedByteArray(16, 0, 19, 0, 17, 0, 16, 0, 18, 0, 19, 0, 8, 0, 11, 0, 9, 0, 8, 0, 10, 0, 11, 0, 12, 0, 15, 0, 13, 0, 12, 0, 14, 0, 15, 0, 0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
-"material": ExtResource("1_ock4j"),
+"index_data": PackedByteArray("EAATABEAEAASABMACAALAAkACAAKAAsADAAPAA0ADAAOAA8AAAADAAEAAAACAAMABAAHAAUABAAGAAcA"),
+"material": ExtResource("1_sysn7"),
 "name": "m_plant_grass",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 20,
-"vertex_data": PackedByteArray(230, 0, 0, 0, 247, 75, 137, 146, 4, 236, 0, 0, 153, 114, 66, 146, 3, 24, 243, 253, 52, 21, 194, 146, 254, 255, 125, 212, 101, 46, 101, 146, 105, 59, 0, 0, 83, 173, 42, 158, 18, 231, 0, 0, 239, 49, 119, 158, 235, 80, 122, 205, 65, 226, 7, 158, 195, 241, 11, 231, 209, 119, 68, 158, 76, 74, 0, 0, 159, 19, 43, 166, 68, 219, 0, 0, 34, 197, 57, 166, 147, 37, 77, 254, 238, 45, 36, 166, 248, 196, 130, 245, 126, 247, 49, 166, 110, 245, 0, 0, 163, 17, 33, 210, 187, 138, 0, 0, 214, 249, 44, 210, 213, 196, 255, 255, 247, 1, 27, 210, 119, 93, 173, 253, 109, 237, 38, 210, 250, 74, 0, 0, 0, 0, 173, 188, 140, 89, 0, 0, 199, 253, 171, 188, 0, 0, 123, 204, 233, 11, 174, 188, 33, 48, 125, 232, 255, 255, 172, 188, 157, 213, 122, 152, 207, 221, 129, 152, 193, 209, 119, 152, 241, 216, 125, 152, 248, 77, 220, 59, 136, 81, 63, 61, 74, 75, 209, 58, 103, 79, 107, 60, 103, 86, 215, 226, 37, 86, 96, 227, 137, 86, 144, 226, 76, 86, 15, 227, 79, 101, 95, 245, 106, 101, 182, 245, 65, 101, 49, 245, 91, 101, 134, 245, 192, 86, 154, 235, 192, 86, 143, 235, 192, 86, 159, 235, 192, 86, 148, 235)
+"vertex_data": PackedByteArray("5gAAAPdLiZIE7AAAmXJCkgMY8/00FcKS//991GUuZZJpOwAAU60qnhLnAADvMXee61B6zUHiB57D8Qvn0XdEnkxKAACfEyumRNsAACLFOaaTJU3+7i0kpvjEgvV+9zGmbvUAAKMRIdK7igAA1vks0tXE///3ARvSd12t/W3tJtL6SgAAAACtvIxZAADH/au8AAB7zOkLrrwhMH3o//+svJ3VepjP3YGYwdF3mPHYfZj4Tdw7iFE/PUpL0TpnT2s8Z1bX4iVWYOOJVpDiTFYP409lX/VqZbb1QWUx9VtlhvXAVprrwFaP68BWn+vAVpTr")
 }]
 blend_shape_mode = 0

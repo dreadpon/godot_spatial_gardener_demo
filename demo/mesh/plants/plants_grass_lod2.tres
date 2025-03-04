@@ -1,20 +1,20 @@
-[gd_resource type="ArrayMesh" load_steps=2 format=3 uid="uid://bktvhdghlk0di"]
+[gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://bktvhdghlk0di"]
 
-[ext_resource type="Material" uid="uid://b51qceuivydbl" path="res://demo/mesh/plants/m_plant_grass.tres" id="1_w1pj7"]
+[ext_resource type="Material" uid="uid://b51qceuivydbl" path="res://demo/mesh/plants/m_plant_grass.tres" id="1_et6qk"]
 
 [resource]
 resource_name = "plants_grass_lod2"
 _surfaces = [{
 "aabb": AABB(-0.704998, 0.00454637, -0.630621, 1.29295, 0.742218, 1.2702),
-"attribute_data": PackedByteArray(0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 0, 255, 0, 0, 255, 255, 0, 0, 0, 255, 255, 255, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0),
+"attribute_data": PackedByteArray("AAAA/wAA//8AAAD///////////8AAAAA////////AAAAAAD/AAD//wAAAP///////////wAAAAD///////8AAAAAAP8AAP//AAAA////////////AAAAAP///////wAA"),
 "format": 34896613407,
 "index_count": 18,
-"index_data": PackedByteArray(8, 0, 11, 0, 9, 0, 8, 0, 10, 0, 11, 0, 0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0, 4, 0, 7, 0, 5, 0, 4, 0, 6, 0, 7, 0),
-"material": ExtResource("1_w1pj7"),
+"index_data": PackedByteArray("CAALAAkACAAKAAsAAAADAAEAAAACAAMABAAHAAUABAAGAAcA"),
+"material": ExtResource("1_et6qk"),
 "name": "m_plant_grass",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 12,
-"vertex_data": PackedByteArray(230, 0, 0, 0, 247, 75, 137, 146, 4, 236, 0, 0, 153, 114, 66, 146, 3, 24, 255, 255, 52, 21, 194, 146, 254, 255, 51, 214, 101, 46, 101, 146, 105, 59, 0, 0, 83, 173, 42, 158, 18, 231, 0, 0, 239, 49, 119, 158, 235, 80, 34, 207, 65, 226, 7, 158, 195, 241, 232, 232, 209, 119, 68, 158, 250, 74, 0, 0, 0, 0, 173, 188, 140, 89, 0, 0, 199, 253, 171, 188, 0, 0, 33, 206, 233, 11, 174, 188, 33, 48, 92, 234, 255, 255, 172, 188, 157, 213, 122, 152, 207, 221, 129, 152, 193, 209, 119, 152, 241, 216, 125, 152, 248, 77, 220, 59, 136, 81, 63, 61, 74, 75, 209, 58, 103, 79, 107, 60, 192, 86, 154, 235, 192, 86, 143, 235, 192, 86, 159, 235, 192, 86, 148, 235)
+"vertex_data": PackedByteArray("5gAAAPdLiZIE7AAAmXJCkgMY//80FcKS//8z1mUuZZJpOwAAU60qnhLnAADvMXee61Aiz0HiB57D8ejo0XdEnvpKAAAAAK28jFkAAMf9q7wAACHO6QuuvCEwXOr//6y8ndV6mM/dgZjB0XeY8dh9mPhN3DuIUT89SkvROmdPazzAVprrwFaP68BWn+vAVpTr")
 }]
 blend_shape_mode = 0
