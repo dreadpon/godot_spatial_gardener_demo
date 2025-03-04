@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://b66epxkm0sy5"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_rocks_rock.tres" id="1_gqjlm"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_rocks_rock.tres" id="1_7vn7t"]
 
 [resource]
 resource_name = "plants_rock_2"
@@ -10,7 +10,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 192,
 "index_data": PackedByteArray("sgA1AGYAFwBVAJAAKgCsALAAsQBlACsAogC3ADwAGgCCAIUABgBPAIsAvwBWABkAvgAtALQAEAB3AA4AIABIAA0ARgAxAFsAGwCGAC4AEwBFAHgAmwAcAAsAvAAYACwAJwA7ACMAKQAlAKsAuwCeAHsAbQCjAH8AjgA/AG4AjQBTAAkACgBUALoADwBKABEAJgBLADoAHQBrAAIAFgCPAIAAnQBsAB4AcABBAJkAnwC9ALMARABaAKYAkQBxAIEAmgBhAGoArwBcADMAFQBkADQAnAAMAHYAFAAyAEcAMACIAKgAIgA4ALUAEgBMAGIAYwBNACgACAC5AHoAQgByAHUANgADAKEAIQA5AEkABwB5AJQAkgBOAAUApABzAEMABAA3AB8ALwCnALYAAQB+AKAAuACqACQAUQA9AIwAXgA+AFIAUACTAF0AAABpAH0AhwCEAFgAigCuAKkAZwBgAJUAQABfAJcAaACWAHwAmAB0AG8AiQBZAK0ApQBXAIMA"),
-"material": ExtResource("1_gqjlm"),
+"material": ExtResource("1_7vn7t"),
 "name": "m_rocks_rock",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

@@ -1,8 +1,8 @@
 [gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://befgvh2ruuycj"]
 
-[ext_resource type="Material" uid="uid://dorf1g1mubsnh" path="res://demo/mesh/plants/m_plant_daisys_stem.tres" id="1_nkjp4"]
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_daisy_yellow.tres" id="2_yt5db"]
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_daisy_white.tres" id="3_pxgfe"]
+[ext_resource type="Material" uid="uid://dorf1g1mubsnh" path="res://demo/mesh/plants/m_plant_daisys_stem.tres" id="1_fx1ps"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_daisy_yellow.tres" id="2_qv7b7"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_daisy_white.tres" id="3_iqrtb"]
 
 [resource]
 resource_name = "plants_daisys_lod1"
@@ -12,7 +12,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 66,
 "index_data": PackedByteArray("LwAAAAYAAQAEAAcAFQANABIAFQAPAA0ACwAOABQAGwAgACIAFgAdACMAOgAmAC0AJQApACsAGgA2ADgANAAcADkAAwAJAAUAMAAIAAIAEwAxAAoAEwAQADEAMgARAAwAJAA1ABgAJAAhADUAMwAfABkAJwAsACoAOwAuACgAFwA3AB4A"),
-"material": ExtResource("1_nkjp4"),
+"material": ExtResource("1_fx1ps"),
 "name": "m_plant_daisys_stem",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -24,7 +24,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 42,
 "index_data": PackedByteArray("EwAUABIAEwAVABQAAQADAAIAAQAAAAMABAAJAAsACQANABAADQAEAAcACQAEAA0AEQAMAAoADAAPAAYADAARAA8ACAAFAA4AGAAWABkAGAAXABYA"),
-"material": ExtResource("2_yt5db"),
+"material": ExtResource("2_qv7b7"),
 "name": "m_plant_daisy_yellow",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -36,7 +36,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 249,
 "index_data": PackedByteArray("BAAFAAMABwAIAAYACgALAAkAEAARAA8AEwAUABIAFwAZABwAKgAkACEAMQAiAC0APQA3ADQAWgBUAFAAaABiAF4AdQBvAGwAegB7AHkAfQB+AHwAigCDAIAApQCfAJwAtQCuAKwAuwC8ALoAxwDIAMYAzQDOAMwAAQAAAAIADQAMAA4AFgAYAB4AFgAbABgAJQAoAC4AJQArACgAGgAVAB0AHwAnACkAHwAwACcAQAA+ADsAQAA4AD4AJgAvACwAIAAjADIAMwA6ADwAMwA2ADoAQgBFAEkAQgBOAEUAPwA5ADUATQBKAEMATQBHAEoARABLAEgATABBAEYAXABZAFcAXABTAFkATwBVAFgATwBRAFUAagBnAGUAagBhAGcAWwBWAFIAXQBjAGYAXQBfAGMAeAB2AHMAeABwAHYAaQBkAGAAawByAHQAawBuAHIAdwBxAG0AiwCIAIUAiwCBAIgAfwCGAIkAfwCCAIYAjgCRAJUAjgCaAJEAjACHAIQAmQCWAI8AmQCTAJYAkACXAJQAmACNAJIAqACmAKMAqACgAKYAmwCiAKQAmwCeAKIAuAC2ALIAuACvALYApwChAJ0AqgCpAKsArQC0ALcArQCxALQAuQCzALAAvgC9AL8AwQDAAMIAxADDAMUAygDJAMsA"),
-"material": ExtResource("3_pxgfe"),
+"material": ExtResource("3_iqrtb"),
 "name": "m_plant_daisy_white",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

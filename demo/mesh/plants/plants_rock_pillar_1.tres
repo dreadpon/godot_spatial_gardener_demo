@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://brk3p667x1uwh"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_rocks_rock.tres" id="1_maqup"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_rocks_rock.tres" id="1_f43q0"]
 
 [resource]
 resource_name = "plants_rock_pillar_1"
@@ -10,7 +10,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 240,
 "index_data": PackedByteArray("TQCBAAwANgA7AAcAZACFABwAwAAaAHUAYQAbAFAAagAEACgAXQB/AEkAbwAYAEQAaQAkAHQAnACgAFUAHwB9AFsAxAAnAFgAHQBaAFIATwCYAKUAogCUADMAPgCJAJMATAALAD8AugCzAEYAxwBxACMAcgBFALEArwB4AIQADQB8AB4AMgAGAG4AEwCDAHcAAwAKAIAAhgAVACEAqwC2AI8AjQA6ADUASwCWAKQAmgAiAGcAVABcAJ8AYACoALgApwBmALAAawDJAMEAKQC8AMgAuwBwAMYAnQBWACUAwgBXAC8AUQCpAGIAoQAxAFkAQACXAE4AtQBBAI4AywAmAMMAcwC0AGgArgCCAGMADgAgABQAAgB+ABIArQCQAHYAjAA0AJUASgCjAF4AmQBlAKYAUwCeAJsAXwC3AKwAqgCyALkAbQDFADAALADKAGwAzgA8AAkA0AABABAA4gAPABcAiAA9ANIA1gDMAOAA5gDeAHoA3QA5AIoA7wDaANMAQgDqAOQALQAFADgAKgDZAOsAvwDtAEcAzQAIAAAAzwARAOMA4QAWAHsAhwDRANcA1QDfAOkA5wB5AJIA3ACLANgA7gDUAOgAQwDlAJEALgA3ANsAKwDsAL0AvgBIABkA"),
-"material": ExtResource("1_maqup"),
+"material": ExtResource("1_f43q0"),
 "name": "m_rocks_rock",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

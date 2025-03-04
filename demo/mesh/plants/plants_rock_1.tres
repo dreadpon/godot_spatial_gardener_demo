@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://bc5l5l31sop32"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_rocks_rock.tres" id="1_jf8o1"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_rocks_rock.tres" id="1_iockf"]
 
 [resource]
 resource_name = "plants_rock_1"
@@ -10,7 +10,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 180,
 "index_data": PackedByteArray("AgANAAQAAAAUAAwAAQAZABYAEwBZAAsACABSAD8ADgBeAEoAEQBnAFcAFQBwAGIAHQBDAGsAIACXAHUAJwChAHsAKgClAIQALQCtAIoANwCeAJAAmAA7AK4ArAA5AKoAqwCnAIcAiQCoACwAqQA4AKIApgCfAIUAhgCgACUAowA6AJMApACUAIAAfQCSAB4AlQA8AJoAlgCbAHQAeQCdADQARQA1AI8ARwCRAG0AbACOADIAbgAuAIsAcwCMAGMAYQCIACsAZQAoAIMAZACBAFMAVgCCACQAegCyACYAXQB/AEkASAB+AB8AUQAiAHgAUAB2AD0APgB3ADMAagAvAHEAaQBvABgAGgByABcAXwApAGYAYABoABIAVACwAFoAWABbAAoATAAhAE8ASwBOABAADwBNAAcAQQA2AEYAQABEAAkABgBCABwABQAbAAMAIwCxAFUAXACzAHwAMQCNAJwAMACZAK8A"),
-"material": ExtResource("1_jf8o1"),
+"material": ExtResource("1_iockf"),
 "name": "m_rocks_rock",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

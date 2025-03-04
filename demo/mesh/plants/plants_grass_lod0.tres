@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://d0s55888uns01"]
 
-[ext_resource type="Material" uid="uid://bfe70s6c5mq4i" path="res://demo/mesh/plants/shm_wind_plant_grass.tres" id="1_ooidi"]
+[ext_resource type="Material" uid="uid://bfe70s6c5mq4i" path="res://demo/mesh/plants/shm_wind_plant_grass.tres" id="1_574ib"]
 
 [resource]
 resource_name = "plants_grass_lod0"
@@ -10,7 +10,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 120,
 "index_data": PackedByteArray("JwAVACkAJwACABUAKgAXACwAKgAGABcAIQAZACMAIQAKABkAJAAbACYAJAAOABsAIAATAB8AIAAdABMAJgAPACUAJgAbAA8AIwALACIAIwAZAAsALAAHACsALAAXAAcAKQADACgAKQAVAAMAHgAdACAAHgASAB0AEAAgABwAEAAeACAAHAAfABEAHAAgAB8AGAAiAAkAGAAjACIACAAjABgACAAhACMAGgAlAA0AGgAmACUADAAmABoADAAkACYAFAAoAAEAFAApACgAAAApABQAAAAnACkAFgArAAUAFgAsACsABAAsABYABAAqACwA"),
-"material": ExtResource("1_ooidi"),
+"material": ExtResource("1_574ib"),
 "name": "shm_wind_plant_grass",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

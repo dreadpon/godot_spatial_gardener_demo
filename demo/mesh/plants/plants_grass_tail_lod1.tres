@@ -1,7 +1,7 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://d2d7j03jcc40k"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_leaf_light.tres" id="1_48t4g"]
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_grass_tail_beige.tres" id="2_j4vpk"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_leaf_light.tres" id="1_17bls"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_grass_tail_beige.tres" id="2_6o8lq"]
 
 [resource]
 resource_name = "plants_grass_tail_lod1"
@@ -11,7 +11,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 27,
 "index_data": PackedByteArray("AQAAAAIAEAAPABEADQAMAA4AFgAVABcAEwASABQAGQAYABoABQAEAAMACAAHAAYACwAKAAkA"),
-"material": ExtResource("1_48t4g"),
+"material": ExtResource("1_17bls"),
 "name": "m_plant_leaf_light",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -23,7 +23,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 108,
 "index_data": PackedByteArray("EwAQABIAEwARABAAAwAAAAIAAwABAAAACwAIAAoACwAJAAgABwAEAAYABwAFAAQAHwAcAB4AHwAdABwADwAMAA4ADwANAAwAGwAYABoAGwAZABgAIwAgACIAIwAhACAAFwAUABYAFwAVABQAJAAnACUAJAAmACcAKAArACkAKAAqACsALAAvAC0ALAAuAC8AMAAzADEAMAAyADMANAA3ADUANAA2ADcAOAA7ADkAOAA6ADsAPAA/AD0APAA+AD8AQABDAEEAQABCAEMARABHAEUARABGAEcA"),
-"material": ExtResource("2_j4vpk"),
+"material": ExtResource("2_6o8lq"),
 "name": "m_plant_grass_tail_beige",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

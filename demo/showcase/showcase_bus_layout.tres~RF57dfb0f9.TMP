@@ -1,0 +1,34 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://g81k3myxcn2l"]
+
+[sub_resource type="AudioEffectAmplify" id="1"]
+resource_name = "Amplify"
+volume_db = -38.0
+
+[resource]
+bus/0/volume_db = 0.0672607
+bus/1/name = &"ambient"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0672607
+bus/1/send = &"Master"
+bus/2/name = &"sfx"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"train_rails"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = &"Master"
+bus/3/effect/0/effect = SubResource("1")
+bus/3/effect/0/enabled = true
+bus/4/name = &"train_steam"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Master"

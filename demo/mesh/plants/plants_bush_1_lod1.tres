@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://byijtq7f3kg84"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_leaf_lighter.tres" id="1_yeltb"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_leaf_lighter.tres" id="1_e54x7"]
 
 [resource]
 resource_name = "plants_bush_1_lod1"
@@ -10,7 +10,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 144,
 "index_data": PackedByteArray("IQABADYAWAALABUADAAIAE0ALAAkAB8ASgBEAFQADwA1ADEALgAqACUANwAQAAUAPAADACYAGwA9AEYAXQArAC8APgApAEIADgBTABYAQABXABQAUQANAE8AOgAJAFsAQQAnAFkAVQBFABcAXAAtACAAIgA4AB0AMwA7ABkAMwACADsABwATAEwAQwBIAD8ASwASABoAOQBaAB4AHABHAE4AUABJAFIACgBWAAYAIwAoAAQAMAA0AAAAGAARADIAYQBkAG8AawBtAGMAYgBfAGoAaQBmAGwAbgBnAGAAZQBoAF4AeACNAIQAdgCDAIAAewB0AH4AcAB6AIYAhwCKAHEAfAByAHUAcwCMAHcAiwCJAIIAgQCIAH8AhQB5AH0A"),
-"material": ExtResource("1_yeltb"),
+"material": ExtResource("1_e54x7"),
 "name": "m_plant_leaf_lighter",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

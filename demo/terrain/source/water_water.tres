@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://ceglibwmreguf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4o6a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3avnr"]
 resource_name = "shm_water"
 transparency = 4
 cull_mode = 2
@@ -15,7 +15,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 216,
 "index_data": PackedByteArray("OAAfAMsADgBDAFMADQBsAKUAEgCWAKEASABqAAwAngB3ADUASQCtAGsAPQDMADMABQAgADkAfgAEAKgAqgDJADsAygAdAJQAUgBCABgAzQARADcApwADAMgAlQAeAIQANAAQAJ0AmAATAM4AAQAKAMcAqQBHAIEAkgACAHsAOgDGAAgADwCmAEQAAACRAAkARQALAE4AUABKALIATwB/AEYAVAAZAE0AaAArAD8ANgB4AHQAbwB1AHkAFAC1ABsAtABLABoAJgAvAG4AwQC3ABUAdgCcACUAWgBfAI8AKAC4AFcA0gC8AFsAcwBtAC0AXAC9AIsAjQCxAF0AWACvAF4ALADEAEAALgAjAMIAwwAkAFYAKQCfALkATAAWABwAjgDPAFkAegAnAHAAwABVALYAswCAAFEArgCJANMA1QCGAGMAIgBiAIUA1gBkALAAcQBmADAAkABgAAYAMgCsADwAFwBBAMUAIQAHAGEAlwCHAKIAaQCrADEAKgBnAHIAZQA+AKQAugCgAIMA0ACTAHwAfQC7ANEAggCbAL8A1wCjAIgA1ACKAJkAmgCMAL4A"),
-"material": SubResource("StandardMaterial3D_p4o6a"),
+"material": SubResource("StandardMaterial3D_3avnr"),
 "name": "shm_water",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

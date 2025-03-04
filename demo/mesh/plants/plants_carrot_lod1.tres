@@ -1,7 +1,7 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://hf64ry40x4b0"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_carrot_orange.tres" id="1_47ayw"]
-[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_c5gjl"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_carrot_orange.tres" id="1_u0u7o"]
+[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_8cswp"]
 
 [resource]
 resource_name = "plants_carrot_lod1"
@@ -11,7 +11,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 36,
 "index_data": PackedByteArray("DQAgABsAEAAZABQADAATAAIADgAfABcADwASACMAGAAHAAEAHQAJAAQACwAiABEAAwAVABoABQAWAB4ACAAcACEAAAAGAAoA"),
-"material": ExtResource("1_47ayw"),
+"material": ExtResource("1_u0u7o"),
 "name": "m_plant_carrot_orange",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -23,7 +23,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 318,
 "index_data": PackedByteArray("KAAvADwABgAWADsAGgAhAA8AMAAzAD0ALAAlAAUAJgAuAA0ADgAgACcAEAAqAEEASABKABQALQAZAAwAOQAVAEsAbAByAHsAXABiAFUAXwBpAHEAZAB4AGYAZwBdAFcAcwBSAFsAWQBrAHkAUAB3AGAAvQCVAJMAiQCRAKsAngCaAH0AjACXAKUAvgCGAJkAlgCKAK0AgACxAKIArgCDALsACwHdANgA1ADaAPYABwECAc0A4QDfAO0ACgHMANsA4ADiAPcAygD/AAEBxQD+APAAyAD0AOkA+gDSAAwBIgA6AEwAIgAbADoAKwA4ABgAKwADADgANgAXAAcANgAdABcAAAAxACkAAAAIADEAJABJAEYAJAAfAEkAQABHABMARAA0AAIARAA+ADQATQB2AE8ATQBYAHYACQA1ADIAEgAcAD8ATgBuAGoATgBUAG4ABAAjAEUAUQBhAFoAdQBeAHAAfACNAJwAfACzAI0AVgBjAGUAUwB0AG0AtQChALoAtQCbAKEAbwBoAHoAjgCoAJ0AjgC2AKgAkACvALwAkACIAK8AhACwAH8AowCqAIEAowCfAKoAtwB+AKkAtwCCAH4AsgCLAKQAuQCnAIcAuQCgAKcAywDHAL8AywAFAccArACSAJQAtAC4AI8ABgHAAOcABgEAAcAApgCYAIUAxgAIAfEAxgAEAQgB2QD7AA0B2QDTAPsAzwD5AMIA7gDzAMQA7gDoAPMACQHDAPIACQHRAMMA/QDlAO8AAwHsANAAAwHmAOwA6gDBAMkA/ADVAOMAAQBDAAsAAQARAEMA9QDXANwA1gD4AOQA6wDeAM4ACgAeADcACgBCAB4A"),
-"material": ExtResource("2_c5gjl"),
+"material": ExtResource("2_8cswp"),
 "name": "m_plant_leaf_dark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

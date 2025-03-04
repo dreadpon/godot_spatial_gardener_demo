@@ -1,7 +1,7 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://cm3h5thscmn6x"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_wood_light.tres" id="1_5pye2"]
-[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_oeelk"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_wood_light.tres" id="1_3ism5"]
+[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_kkkb4"]
 
 [resource]
 resource_name = "plants_tree_pine_lod2"
@@ -11,7 +11,7 @@ _surfaces = [{
 "format": 34896613439,
 "index_count": 30,
 "index_data": PackedByteArray("FAAFAAkAEwAEAAcADwACAAwAFQAKABsAEgAGABcADgALAAMAGgAIAAAAEAAWABwAEQAdABkADQAYAAEA"),
-"material": ExtResource("1_5pye2"),
+"material": ExtResource("1_3ism5"),
 "name": "m_plant_wood_light",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -23,7 +23,7 @@ _surfaces = [{
 "format": 34896613439,
 "index_count": 258,
 "index_data": PackedByteArray("9wBXAGIAOADvAPYAjQCIAOAAKQCcAA8AlQAVAAoA0ACkAPwAawBdALgAdQC1AFkAFwARANIArwAiAEUASADyAMAAsAC5AFgA6QDkAMUA4gCJAJYAfADcAM8AAgDCAAkAywD0AGUAvADIAHIA+gCiAIIA7QBPAFQApwAwAJIAiwAaAJkAUgCyAGkAtgB4AIEAJwAcAC8A4wCYAJ4AQQBOAOwA2wCEAKMAbACFAN0A/gAEAIcAOgC6AEsABwATABgAGwCqACwAMQBHAD0AWwBwAHkAdwB9APkAdABkANoAvQDxAMoAFADDANYAZwBhAN8AxgDlAKAAjgDhAOYAwQASAAUAlAAyAD4ApgBAADMAkQBNAD8AsQBcAGgAFgDRAAsADQCsAB4AUQC/ALQAIwA0AEkA6gDHAAMAHwCaACUAewDOAH8ArQDUACEAxACfANcAVgBtAF4A2AChAMwAlwAQAJ0A+wB+AM0AUACzAFUAqACTAEIADAAdACgAtwCDAGoAJgAuAKUAKgCpADUAbgDeAF8A/QCGAIwAdgD4AIAA1QCuAA4AOwBMAJAACAAZAIoAuwBvAFoAqwBEAC0ARgC+ADwAAQAGAAABcQDZAHoAyQBjAHMANgDzAEoAmwAgANMA6wBTAPAAKwA5ACQAQwDuADcA9QBgAGYA/wDnAAAAAQGPAOgA"),
-"material": ExtResource("2_oeelk"),
+"material": ExtResource("2_kkkb4"),
 "name": "m_plant_leaf_dark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

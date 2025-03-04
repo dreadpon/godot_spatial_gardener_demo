@@ -1,8 +1,8 @@
 [gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://dypidy3s2s1d6"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_wood_dark.tres" id="1_65ugd"]
-[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_rtk47"]
-[ext_resource type="Material" uid="uid://dnb0hir1ddacq" path="res://demo/mesh/plants/m_plant_apples.tres" id="3_afytk"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_wood_dark.tres" id="1_55l0v"]
+[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_f3mf3"]
+[ext_resource type="Material" uid="uid://dnb0hir1ddacq" path="res://demo/mesh/plants/m_plant_apples.tres" id="3_cwhd3"]
 
 [resource]
 resource_name = "plants_apple_tree_lod2"
@@ -12,7 +12,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 255,
 "index_data": PackedByteArray("QwArAAwASABGABEAMABMABUALQAYALYAJgC0ABYAIwAZABMAIAAPAA0AHgAJALIAKQA/APgArAD+ADoAUQBYAMcAUgByAFkAxQBTAJIAbQBVAFcAzwBbAPsAXgBPADwAAABoANMA1QDCANcAwwBuANgAXwDbAHAAXQBlANkA5QCXAIYAOACOAPQAywAyAIMA+gAzAM0A5ADiAHcAfgCaAOYAmAB9AI8AegDfAIcAjQCJAO8ABQB/AOgAfAADAHUASQA9APYASwCvAD4A8QBEAEcAQACiAJwApADzAOkA7QCgAKgApwClAOoAqQCwAAcAQgALAA4ALwAUABoALAC1AK0AJwAXALsAswAlAL4AIgASALoAGwAkALwAHwAKALgAEAAhALkAHQCxAL0ABgAcALcASgAuAK4AKAD3AKoAUABgAHEAkQC/AMkAkwBUAMEAVgBvAMQATQDGAJQAXAA5AP0AzgCFAJUANwBOAJYAAgDcAGwAZwBhANAAagBjAGkAZgBrANoAAQDUANYAygDAANIAyADRAGIAWgDMAGQA4wCEAOEAkAA7AJkAMQDuAIAAggCLAOAA3QBzAHYAewCIAIwAigCBAPAAeAAEAOcAdADeAHkANgDsAPUAQQCdAPkAngA0APwANQCfAOsA8gCjAEUAoQCmAJsAqwAIACoA"),
-"material": ExtResource("1_65ugd"),
+"material": ExtResource("1_55l0v"),
 "name": "m_plant_wood_dark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -24,7 +24,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 378,
 "index_data": PackedByteArray("lgDbAMYA2gCVAFkBMAAzAHYAdADRAL0A0gB1ACgAIwAoAU0BPgAYALIASwA5ACcBTQAJADMBSgBTADoBSAB9AIwAgwBEAIkAhABSACIAOAFRAIAAQQAkAQUARwAjAVcAyQBSAV8AVgFmAGEAXgBkACcAAACBAG0AMQEHAIgAhwAGADkBrQAuAL4ALQBzALwAKwB4AEgBDACdACsBoAAPAI0AuQDZAFgB2AC4AGwAaQC3AKcAkQA2AKEANQCPAJoAkgAgAEYBHQC7AFoBEQA4AB4BOgAVAAoAcQAlAMEAVQEqAGUAxQCmALUAzAAZAEIBnwCxAFABcADTAEAB1AByAMIAWwCkAMQAegBnANwAfgAwAV0ANAESAB8B/gAFAXgBawH6AHIB+QAXARMB+wABAewAEQFmAXAB9AAIAXUBDQH1AGcBYgHpAOcAYAHuAFwBYQHiAO8AdgEKAeUAFQFjAV4BZAEWAeoAGwF3AeYAlwDIAM8AkwBDAVcBlADLAGAAmQBjAEoBNABHAXcA1QApAFQBQgCjACUBPwCzAKIAPQA8ARcATgAqAVUATwAgATsATAA7AQgAeQBDAC4BggAhAG4AVAApASYAQAAEAD8BIgFFAAEASQBaAC8BAgBvAD4BAwBGAIUAhgA3AX8ArgC/AEwBLwCvADEALABJAWIAEAAeAJAAGwAOAKsA1wBqAFkAawCoAOAANwCbAEsBjgBEAZgAHwBbAUUBHACsALoAPAANAC0BFgCqAAsAFADhAKkAJABOAcAAxwC2AM4AGgDNALQAygBBAVMBsACcADIAngBPASwBPQHQAFEBpQBcACYBWADDANYAewBWAGgAfADeAIsAMgGKAN0ANgEhAVAAEwA1Ad8AAAEdAesA/wB5ARwBAgFuAQcBbAFoAfcAbQFzAWkBbwEDAf0A+AASAXEB/ADtABkBZQEQAQwB8wB0AQQB9gAGAWoBCQHwAOQADwFdAfIADgHxAAsBGAFfARQBGgHjAOgA"),
-"material": ExtResource("2_rtk47"),
+"material": ExtResource("2_f3mf3"),
 "name": "m_plant_leaf_dark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -36,7 +36,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 45,
 "index_data": PackedByteArray("BgAAAAkABQACAAgADQAMAA4AEQAPABAAEwASABQAFwAVABYAGgAYABkAHQAbABwAHwAeACAAIwAhACIAJQAkACYAKQAnACgALAAqACsACgABAAMACwAEAAcA"),
-"material": ExtResource("3_afytk"),
+"material": ExtResource("3_cwhd3"),
 "name": "m_plant_apples",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

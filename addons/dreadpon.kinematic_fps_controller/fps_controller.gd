@@ -105,6 +105,7 @@ func _unhandled_input(event):
 func _process(delta):
 	if Engine.is_editor_hint(): return
 	rotate_controller_camera(delta)
+	apply_camera_bob(delta)
 
 
 func _physics_process(delta):
@@ -113,7 +114,6 @@ func _physics_process(delta):
 	update_movement_mode()
 	update_velocity(delta)
 	move_controller()
-	apply_camera_bob(delta)
 	input_direction = Vector3()
 
 

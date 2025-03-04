@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://bvjc0dxtjn0sa"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_leaf_darker.tres" id="1_2l700"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_leaf_darker.tres" id="1_3xus1"]
 
 [resource]
 resource_name = "plants_moss_lod1"
@@ -10,7 +10,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 108,
 "index_data": PackedByteArray("WwBHAEkAWgBAADYAVAASABQAOQBBAC0AYAAYADgADwA7AEMALgBCAAQAXgAzABYAUABdAEoATgACAFcAHAAiACYACQBRAEsAAABNAB0ARQAoAEgAJwBEADwAAwA/AFkANwAXAFwAEABTAD0AVQAVADEAMAAFAFIAMAAjAAUAKgAKAEwABgAgAE8ADAAaADIABwAkACEACAA+AFYACAApAD4ANQAbACUALwBhADoALwAOAGEAHgArAAEARgATABEARgBYABMAHwALACwAHwAZAAsADQA0AF8A"),
-"material": ExtResource("1_2l700"),
+"material": ExtResource("1_3xus1"),
 "name": "m_plant_leaf_darker",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

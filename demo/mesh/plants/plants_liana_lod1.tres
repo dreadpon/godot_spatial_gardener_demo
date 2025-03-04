@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://ctnwcrcp5jkyt"]
 
-[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="1_evvfp"]
+[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="1_8cvjd"]
 
 [resource]
 resource_name = "plants_liana_lod1"
@@ -10,7 +10,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 144,
 "index_data": PackedByteArray("WwANAGcABAASAHUAcgAfACMAdAAlAGgAUgAaAAkAhgADAHoAKwA5AIMAVQAXABsABgBrACkAagAFAHYARgA0AGEAcAATAHgATgCFADwANwAzAIIAKgAVAAcAKgBAABUAUQBBABYAfwAsAFgAWQBLAAwAWQAtAEsASAAeAHEASgBzABEAGQAiABwAaQAPACcAdwACAG8AOgAvAIAAXQA4AH4AOwBfAGUAQwAhABgAIABjAAoAbgBJABAARQBsADEAFAA+AHkAHQBHAGIAhwB7AD8ATwA9ACgAMgAAAIEANQBtAAEAWgAkAEQAWgBmACQATQAmAA4ATAAuAIQACwBkAF4ANgBgADAAfAAIAFwAfABQAAgAVgBTAH0AVABXAEIA"),
-"material": ExtResource("1_evvfp"),
+"material": ExtResource("1_8cvjd"),
 "name": "m_plant_leaf_dark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

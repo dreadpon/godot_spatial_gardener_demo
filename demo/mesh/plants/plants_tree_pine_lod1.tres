@@ -1,7 +1,7 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://ctehktvpdjqgm"]
 
-[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_wood_light.tres" id="1_q8wye"]
-[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_ynolx"]
+[ext_resource type="Material" path="res://demo/mesh/plants/m_plant_wood_light.tres" id="1_bkybs"]
+[ext_resource type="Material" uid="uid://b3by1ycoxio2g" path="res://demo/mesh/plants/m_plant_leaf_dark.tres" id="2_blghv"]
 
 [resource]
 resource_name = "plants_tree_pine_lod1"
@@ -11,7 +11,7 @@ _surfaces = [{
 "format": 34896613439,
 "index_count": 54,
 "index_data": PackedByteArray("HgAIAAwAGAAHAAoAEgAFAA8AHwANABwAFwAJACMAEQAOAAYAGQALAAAAAgAuADEAFQAiADQAAwApAC8AGwAyACQAEwAnACsAAQAwABoAFgA1AC0AHQAlACAAIQAmADMAFAAsACgAEAAqAAQA"),
-"material": ExtResource("1_q8wye"),
+"material": ExtResource("1_bkybs"),
 "name": "m_plant_wood_light",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -23,7 +23,7 @@ _surfaces = [{
 "format": 34896613439,
 "index_count": 522,
 "index_data": PackedByteArray("2gGaAPIBAgBpARQAUwF0AUkA6AHSAZgBAwH+ACQBggGJASAALgEqAboBNwE+AQwB9QAqABkA5AFKAQICSwFBAW4AJgExAcUBgwG5AcQBEwGnAGUBrQCuAb0AygBiAa8ALAAmAG4BOgBSAFoADQEeADUAdwGQAV0AXQGPAH8BewCWAY4AkgE5AFkAXwF6AaIAwAG8AYYBKAH/APgANgDJATsB5AC1AaMBeQFzAakB3wG4ANYACQCEAWwBnwHYAa8BcABFAYEAOAFAAFABfAGbAasA9wEWAfEAiQBaAZQApAH/AfwBfwCGAJ0A7gHcAbsA3gDNAPMATgFEAB0BAQEvAPoAmwCSAA8BYgBYAYMAZAHMANgAPAAyAEIAMAH3AAgBxgE0AT8BQwGHAIAA0wDdAEgBmQCgAPABAQJJARoBwQDaANIAEQG/ALYAAQATAP0AzgDlAOkAkABeAaEAcgF4AVYBaACKAFkBRgBNAGYAFgApAC0AMABSAUcASwBfAGsAGABrASQAsQDEAOAA5gDsAPQBpQCuAMgAJwAiAHABxwC8ALQBiwCUAZwBJQCKAaoBVgB0AHcAywE4AI4B0AF9AJYAkwHPAdUB6wG0ANsBvgDdAbYBAAKlAeMBjAHIAc4BVQBOAOYBsQHRAOEBcgCCANQBqACzAGcB6gGZAXYABAEnASsBgAEfAGgBsgHiAaABLwG7Ab8BjQCdAX0BNgEJAT0A9gAbAAcB5wFPAG0AZABMAGwATAFvAFAAJQHDAbgBIgHbAMIAHAGFAEIBkQCkAA4BIQCmAW8BgQHCAYgBFAFmASMBrAC6AMYAywCwAN8AxwFAAc0BKwBtARoAHABUATMAXAF+AWEB6wD5AfMBkQFYAGAAwQGHARIAKQH5ADMBNwA8ATUB4gCiAe4AdgGoAY8BiwHMAasBnwAVAe8B3gHVALcBHwFFAGUA0ABGAeAB2QAYAUcB4wDvAOgAMgEKAT0BlQHWAZ4B+wHtAKEBagBeAHoA7AG5AKwBiACTAJ4A3ADyABkBTwEeAUQBCwE0AD4AEgEhAcAAYwCEABsBYwHXACABPwBDAE0BDAD8AAIBfgCcAJcAOQFRAVEA/gEXAfgBwwDUALcAEAG1AO0BAAD7AAsAzwDqAPQA5wD1AfAAWwFgAZUAcQFVAR0AZwBXAWEAFwAuAAABMQBIAEEAFQAjACgAewGpAKMAdQFbAEoApgDJALIAeACMAGkABwBqAQMAxQCzAeEAmgGtAaoAEQCFAQoAdQCXAXwAVwB5AFwAygGNAacB0QGYANcBOgFTADsAVADlAXMAcQDTAekB2QHxAbABBQAOAAkCCAAEAAYCCAINAAYBBQIsAb4BBgAEAhAAAwK9AQ8ABwIFAS0B9gH6Af0B"),
-"material": ExtResource("2_ynolx"),
+"material": ExtResource("2_blghv"),
 "name": "m_plant_leaf_dark",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
