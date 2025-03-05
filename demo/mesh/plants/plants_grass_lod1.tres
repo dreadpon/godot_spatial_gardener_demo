@@ -1,20 +1,20 @@
 [gd_resource type="ArrayMesh" load_steps=2 format=4 uid="uid://cwukj1f18r2mv"]
 
-[ext_resource type="Material" uid="uid://b51qceuivydbl" path="res://demo/mesh/plants/m_plant_grass.tres" id="1_3d3nn"]
+[ext_resource type="Material" uid="uid://b51qceuivydbl" path="res://demo/mesh/plants/m_plant_grass.tres" id="1_f0tsj"]
 
 [resource]
 resource_name = "plants_grass_lod1"
 _surfaces = [{
 "aabb": AABB(-0.704998, 0.00454637, -0.630621, 1.29295, 0.748199, 1.2702),
-"attribute_data": PackedByteArray("AAAA/wAA//8AAAD///////////8AAAAA////////AAAAAAD/AAD//wAAAP///////////wAAAAD///////8AAAAAAP8AAP//AAAA////////////AAAAAP///////wAAAAAA/wAA//8AAAD///////////8AAAAA////////AAAAAAD/AAD//wAAAP///////////wAAAAD///////8AAA=="),
+"attribute_data": PackedByteArray("AAAA/wAA//////////8AAAAAAP///////////wAAAAAAAAD/AAD//////////wAAAAAA////////////AAAAAAAAAP8AAP//////////AAAAAAD///////////8AAAAAAAAA/wAA//////////8AAAAAAP///////////wAAAAAAAAD/AAD//////////wAAAAAA////////////AAAAAA=="),
 "format": 34896613407,
 "index_count": 30,
-"index_data": PackedByteArray("EAATABEAEAASABMACAALAAkACAAKAAsADAAPAA0ADAAOAA8AAAADAAEAAAACAAMABAAHAAUABAAGAAcA"),
-"material": ExtResource("1_3d3nn"),
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEA"),
+"material": ExtResource("1_f0tsj"),
 "name": "m_plant_grass",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 20,
-"vertex_data": PackedByteArray("5gAAAPdLiZIE7AAAmXJCkgMY8/00FcKS//991GUuZZJpOwAAU60qnhLnAADvMXee61B6zUHiB57D8Qvn0XdEnkxKAACfEyumRNsAACLFOaaTJU3+7i0kpvjEgvV+9zGmbvUAAKMRIdK7igAA1vks0tXE///3ARvSd12t/W3tJtL6SgAAAACtvIxZAADH/au8AAB7zOkLrrwhMH3o//+svJ3VepjP3YGYwdF3mPHYfZj4Tdw7iFE/PUpL0TpnT2s8Z1bX4iVWYOOJVpDiTFYP409lX/VqZbb1QWUx9VtlhvXAVprrwFaP68BWn+vAVpTr")
+"vertex_data": PackedByteArray("+koAAAAArbwhMH3o//+svIxZAADH/au8AAB7zOkLrrxMSgAAnxMrpvjEgvV+9zGmRNsAACLFOaaTJU3+7i0kpm71AACjESHSd12t/W3tJtK7igAA1vks0tXE///3ARvS5gAAAPdLiZL//33UZS5lkgTsAACZckKSAxjz/TQVwpJpOwAAU60qnsPxC+fRd0SeEucAAO8xd57rUHrNQeIHnsBWmuvAVpTrwFaP68BWn+tnVtfiTFYP4yVWYOOJVpDiT2Vf9VtlhvVqZbb1QWUx9Z3Vepjx2H2Yz92BmMHRd5j4Tdw7Z09rPIhRPz1KS9E6")
 }]
 blend_shape_mode = 0

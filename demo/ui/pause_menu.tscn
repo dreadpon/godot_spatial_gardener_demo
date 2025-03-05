@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://d3kl50fpxey13"]
 
-[ext_resource type="Script" path="res://demo/ui/pause_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://brycmvicxywsw" path="res://demo/ui/pause_menu.gd" id="1"]
 [ext_resource type="Theme" uid="uid://ddia8xes5woe0" path="res://demo/ui/menu_theme.tres" id="2"]
 [ext_resource type="Texture2D" uid="uid://etrdfcb4uos0" path="res://demo/ui/textures/button_regular_normal.png" id="3"]
 

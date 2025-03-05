@@ -17,7 +17,7 @@ lightning_quality=0.0
 config/name="Dreadpon's Spatial Gardener Demo"
 run/main_scene="res://demo/showcase.tscn"
 config/project_settings_override="user://save_files/settings.cfg"
-config/features=PackedStringArray("4.3")
+config/features=PackedStringArray("4.4")
 config/icon="res://icon.png"
 
 [audio]
@@ -202,9 +202,9 @@ lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
 camera/depth_of_field/depth_of_field_bokeh_shape=0
 environment/ssao/quality=1
 environment/ssil/quality=1
+anti_aliasing/quality/msaa_3d=2
 anti_aliasing/screen_space_roughness_limiter/enabled=false
 environment/glow/upscale_mode=0
-anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/screen_space_aa=1
 anti_aliasing/quality/use_debanding=true
 environment/defaults/default_environment="res://default_env.tres"

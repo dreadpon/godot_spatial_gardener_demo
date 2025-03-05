@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://h44anw166emn"]
 
-[ext_resource type="Script" path="res://demo/mesh/train/train/train_loco.gd" id="1"]
+[ext_resource type="Script" uid="uid://bne5awkqi3e0f" path="res://demo/mesh/train/train/train_loco.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://duyleelu2bvty" path="res://demo/mesh/train/train/train_loco/train_loco.glb" id="3"]
 [ext_resource type="ArrayMesh" uid="uid://15binf73r6fw" path="res://demo/mesh/train/train/train_smoke/train_smoke_train_smoke.res" id="4"]
 [ext_resource type="AudioStream" uid="uid://c3v205ummamqr" path="res://demo/audio/looped_rails.ogg" id="5"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://df3pda5d6a6fu"]
 
-[ext_resource type="Script" path="res://demo/ui/fps_counter.gd" id="1"]
+[ext_resource type="Script" uid="uid://7inooiis4n1p" path="res://demo/ui/fps_counter.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://etrdfcb4uos0" path="res://demo/ui/textures/button_regular_normal.png" id="2"]
 [ext_resource type="FontFile" uid="uid://btvadi4yk0a3y" path="res://addons/dreadpon.spatial_gardener/utility/console/fonts/ttf/Urbanist-Regular.ttf" id="3"]
 [ext_resource type="Theme" uid="uid://ddia8xes5woe0" path="res://demo/ui/menu_theme.tres" id="4"]

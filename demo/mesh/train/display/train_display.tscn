@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://medasr1tx8cy"]
 
 [ext_resource type="Theme" uid="uid://ddia8xes5woe0" path="res://demo/ui/menu_theme.tres" id="1"]
-[ext_resource type="Script" path="res://demo/mesh/train/display/train_display.gd" id="2"]
+[ext_resource type="Script" uid="uid://c7g7pgftidbym" path="res://demo/mesh/train/display/train_display.gd" id="2"]
 
 [sub_resource type="StyleBoxFlat" id="1"]
 draw_center = false

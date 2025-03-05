@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ckjlrtqfrkd55"]
 
-[ext_resource type="Script" path="res://addons/dreadpon.kinematic_fps_controller/fps_controller.gd" id="1"]
-[ext_resource type="Script" path="res://addons/dreadpon.kinematic_fps_controller/movement_mode.gd" id="2"]
+[ext_resource type="Script" uid="uid://srnqw0a5012a" path="res://addons/dreadpon.kinematic_fps_controller/fps_controller.gd" id="1"]
+[ext_resource type="Script" uid="uid://jkt0lv02l4pd" path="res://addons/dreadpon.kinematic_fps_controller/movement_mode.gd" id="2"]
 
 [sub_resource type="Resource" id="2"]
 script = ExtResource("2")

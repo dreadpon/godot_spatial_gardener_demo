@@ -38,6 +38,7 @@ var h_oscillator:Oscillator = Oscillator.new(0.1, 1.0)
 var v_oscillator:Oscillator = Oscillator.new(0.075, 2.0)
 var r_z_oscillator:Oscillator = Oscillator.new(0.05, 1.0)
 var distance_fallen:float = 0.0
+var physics_camera_y_input: float = 0.0
 
 
 @onready var camera_axis = $CameraAxis
@@ -91,7 +92,8 @@ func _unhandled_input(event):
 	
 	if event is InputEventMouseMotion && Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		var mouse_sensitivity_actual = get_property_from_config("mouse_sensitivity")
-		rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity_actual))
+		#rotate_y(deg_to_rad(-event.relative.x * mouse_sensitivity_actual))
+		physics_camera_y_input += deg_to_rad(-event.relative.x * mouse_sensitivity_actual)
 		camera_axis.rotate_x(deg_to_rad(-event.relative.y * mouse_sensitivity_actual))
 		camera_axis.rotation.x = clamp(camera_axis.rotation.x, deg_to_rad(-89), deg_to_rad(89))
 	
@@ -106,23 +108,32 @@ func _process(delta):
 	if Engine.is_editor_hint(): return
 	rotate_controller_camera(delta)
 	apply_camera_bob(delta)
+	#print(camera_axis.rotation_degrees, " ", camera.rotation_degrees)
 
 
 func _physics_process(delta):
 	if Engine.is_editor_hint(): return
+	rotate_camera_physics()
 	update_input_direction()
 	update_movement_mode()
 	update_velocity(delta)
 	move_controller()
+	#rotate_controller_camera(delta)
+	#apply_camera_bob(delta)
 	input_direction = Vector3()
+
+
+func rotate_camera_physics():
+	rotate_y(physics_camera_y_input)
+	physics_camera_y_input = 0.0
 
 
 func rotate_controller_camera(delta):
 	var controller_sensitivity_actual = get_property_from_config("controller_sensitivity")
 	if Input.is_action_pressed("camera_left"):
-		rotate_y(deg_to_rad(controller_sensitivity_actual * Input.get_action_strength("camera_left") * delta))
+		physics_camera_y_input += deg_to_rad(controller_sensitivity_actual * Input.get_action_strength("camera_left") * delta)
 	if Input.is_action_pressed("camera_right"):
-		rotate_y(deg_to_rad(controller_sensitivity_actual * Input.get_action_strength("camera_right") * delta * -1.0))
+		physics_camera_y_input += deg_to_rad(controller_sensitivity_actual * Input.get_action_strength("camera_right") * delta * -1.0)
 	if Input.is_action_pressed("camera_up"):
 		camera_axis.rotate_x(deg_to_rad(controller_sensitivity_actual * Input.get_action_strength("camera_up") * delta))
 	if Input.is_action_pressed("camera_down"):

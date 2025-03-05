@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dvwtxo5fw251j"]
 
-[ext_resource type="Script" path="res://demo/mesh/train/train/train_cart.gd" id="1"]
+[ext_resource type="Script" uid="uid://dp8k88adbge7o" path="res://demo/mesh/train/train/train_cart.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cpacbvho4ovwx" path="res://demo/mesh/train/train/train_cart_open/train_cart_open.glb" id="3"]
 
 [sub_resource type="BoxShape3D" id="128039"]

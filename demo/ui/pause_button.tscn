@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://j816pw1eve7b"]
 
-[ext_resource type="Script" path="res://demo/ui/pause_button.gd" id="1"]
+[ext_resource type="Script" uid="uid://cwmbxoe0o3vby" path="res://demo/ui/pause_button.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://btvadi4yk0a3y" path="res://addons/dreadpon.spatial_gardener/utility/console/fonts/ttf/Urbanist-Regular.ttf" id="3"]
 [ext_resource type="Theme" uid="uid://ddia8xes5woe0" path="res://demo/ui/menu_theme.tres" id="4"]
 
